@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build & Output
+.output/
+.wrangler/
+.tanstack/
+.lovable/
+dist/
+build/
+tsconfig.tsbuildinfo
+find
+
+# Environment & Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lockb.bak
+
+# Encrypted Photo Archives & Raw Photo Storage
+*.enc
+Contenido-raw/
+Contenido-encrypted.tar.gz.gpg

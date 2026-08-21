@@ -1,0 +1,53 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/editorial/manifiesto")({
+  head: () => ({
+    meta: [
+      { title: "Manifiesto Editorial — Metáfora" },
+      {
+        name: "description",
+        content:
+          "Manifiesto editorial de Metáfora: imprenta artesanal, voces fuera del catálogo comercial.",
+      },
+    ],
+  }),
+  component: PaginaManifiestoEditorial,
+});
+
+function PaginaManifiestoEditorial() {
+  return (
+    <article className="max-w-4xl">
+      <span className="block font-mono text-[11px] uppercase tracking-[0.3em] text-carmine mb-4">
+        Carta Editorial · 2009
+      </span>
+      <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase leading-[0.9] tracking-tight mb-10 text-balance break-words font-bold">
+        Imprimir es <span className="text-carmine italic">desobedecer.</span>
+      </h1>
+
+      <div className="space-y-8 text-lg leading-relaxed text-ink/85">
+        <p className="text-2xl md:text-3xl font-display uppercase text-ink leading-tight">
+          Metáfora nace porque el mercado del libro centroamericano expulsa a las voces que más
+          necesitamos leer.
+        </p>
+        <p>
+          No editamos para vender. Editamos para preservar. Para que dentro de cincuenta años
+          alguien encuentre estos libros en una banca de mercado y entienda qué se decía aquí en
+          estos años, cómo se nombraba el cuerpo, cómo se gritaba la rabia, cómo se sostenía la
+          ternura.
+        </p>
+        <p>
+          Tirajes cortos. Papel reciclado. Riso bicolor. Encuadernación cosida a mano. Cada libro
+          pasa por las manos de tres personas antes de salir del taller en la Zona 1.
+        </p>
+        <p>
+          Priorizamos: voces indígenas, voces de mujeres, voces disidentes, voces de la diáspora,
+          voces de poetas que no tienen agente literario ni cuenta en redes sociales. La calidad la
+          mide el oído, no el algoritmo.
+        </p>
+        <p className="font-display text-3xl uppercase text-carmine leading-tight pt-6 border-t-2 border-ink">
+          Un libro impreso es un acto que el Estado todavía no sabe cómo desactivar.
+        </p>
+      </div>
+    </article>
+  );
+}
