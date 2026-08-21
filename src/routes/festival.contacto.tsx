@@ -20,7 +20,7 @@ function PaginaInformacionFestival() {
       <EncabezadoSeccion eyebrow="Información · FIPQ" title="El festival" accent="en contexto.">
         El Festival Internacional de Poesía de Quetzaltenango es una plataforma de lecturas,
         talleres y diálogo intercultural que conecta a poetas, estudiantes, instituciones y
-        comunidades de Xela y del occidente guatemalteco.
+        comunidades de Xelajuj No’j y del occidente guatemalteco.
       </EncabezadoSeccion>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

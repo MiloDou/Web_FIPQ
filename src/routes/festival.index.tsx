@@ -47,7 +47,7 @@ function InicioFestival() {
       <EncabezadoSeccion
         eyebrow="Festival Internacional de Poesía de Quetzaltenango"
         title="Poesía en acción"
-        accent="desde Xela."
+        accent="desde Xelajuj No’j."
       >
         Lecturas públicas, talleres y expresiones artísticas que conectan a poetas, estudiantes,
         instituciones y comunidades de Quetzaltenango, Totonicapán, Huehuetenango, San Marcos y

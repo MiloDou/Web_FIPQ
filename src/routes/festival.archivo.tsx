@@ -33,7 +33,7 @@ const ediciones = [
     year: "2019",
     title: "15 FIPQ · Ana María Rodas y mujeres desaparecidas",
     image: contenidoImages[62],
-    body: "Se realizó del 19 al 24 de agosto en Xela y otros departamentos. La edición fue dedicada a Ana María Rodas, a las mujeres desaparecidas y a quienes las buscan, con acciones de memoria y lecturas públicas.",
+    body: "Se realizó del 19 al 24 de agosto en Xelajuj No’j y otros departamentos. La edición fue dedicada a Ana María Rodas, a las mujeres desaparecidas y a quienes las buscan, con acciones de memoria y lecturas públicas.",
   },
   {
     number: "14",

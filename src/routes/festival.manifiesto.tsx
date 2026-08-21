@@ -50,11 +50,11 @@ function PaginaManifiesto() {
       </div>
 
       <div className="mt-16 flex items-center gap-6 font-mono text-[11px] uppercase tracking-widest text-ink/60">
-        <div className="w-20 h-20 border-2 border-carmine rounded-full flex items-center justify-center -rotate-12 shrink-0">
-          <span className="text-carmine text-center leading-none">
+        <div className="w-24 h-24 border-2 border-carmine rounded-full flex items-center justify-center -rotate-12 shrink-0 p-2">
+          <span className="text-carmine text-center leading-tight font-bold text-[10px]">
             FIPQ
             <br />
-            Xela
+            Xelajuj No’j
           </span>
         </div>
         <p>Síntesis basada en el archivo histórico y testimonios públicos sobre el festival.</p>

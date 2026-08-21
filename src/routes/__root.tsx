@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xela.",
+          "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.",
       },
       { name: "author", content: "FIPQ + Editorial Metáfora" },
       {
@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:description",
-        content: "Poesía en acción: comunidad, territorio y memoria desde Xela.",
+        content: "Poesía en acción: comunidad, territorio y memoria desde Xelajuj No’j.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

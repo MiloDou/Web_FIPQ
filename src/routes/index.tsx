@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Poesía en acción: una plataforma cultural construida desde Xela y el occidente de Guatemala.",
+          "Poesía en acción: una plataforma cultural construida desde Xelajuj No’j y el occidente de Guatemala.",
       },
     ],
   }),
@@ -65,7 +65,7 @@ function InicioPrincipal() {
             de Poesía <span className="italic">Quetzaltenango</span>
           </h1>
           <p className="mt-6 max-w-xl text-cream/90 font-mono text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.2em] leading-relaxed">
-            Poesía en acción · comunidad, territorio y memoria desde Xela
+            Poesía en acción · comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
 
@@ -100,8 +100,8 @@ function InicioPrincipal() {
               Festival
             </h2>
             <p className="mt-4 max-w-md text-cream/90 text-base md:text-lg font-medium leading-relaxed">
-              Lecturas públicas, talleres y encuentros que llevan la poesía a Xela y al occidente de
-              Guatemala.
+              Lecturas públicas, talleres y encuentros que llevan la poesía a Xelajuj No’j y al
+              occidente de Guatemala.
             </p>
           </div>
           <ul className="relative z-10 mt-6 md:mt-0 space-y-2 text-cream font-mono text-xs sm:text-sm font-semibold opacity-100 md:opacity-90 group-hover:opacity-100 transition-opacity duration-500">
@@ -186,12 +186,12 @@ function InicioPrincipal() {
             <div className="w-full aspect-square border border-cream/20 relative">
               <img
                 src={imagenesSitio.poetPortrait}
-                alt="Retrato de poeta en Xela"
+                alt="Retrato de poeta en Xelajuj No’j"
                 loading="lazy"
                 className="h-full w-full object-cover grayscale"
               />
-              <div className="absolute -bottom-4 -right-4 bg-carmine text-cream p-4 font-display text-2xl uppercase leading-none">
-                Xela
+              <div className="absolute -bottom-4 -right-4 bg-carmine text-cream p-4 font-display text-xl sm:text-2xl uppercase leading-none">
+                Xelajuj No’j
               </div>
             </div>
           </div>

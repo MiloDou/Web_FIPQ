@@ -49,7 +49,7 @@ function InicioEditorial() {
         accent="al libro."
       >
         La editorial nace como continuidad de las lecturas y talleres: publica poesía
-        centroamericana y algunas memorias del festival, desde Xela y para la región.
+        centroamericana y algunas memorias del festival, desde Xelajuj No’j y para la región.
       </EncabezadoSeccion>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">

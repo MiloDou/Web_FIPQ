@@ -79,8 +79,8 @@ function PaginaPortafolio() {
         accent="gráfico."
       >
         Selección del trabajo de impresión, diseño y encuadernación de la editorial. Todo hecho en
-        la sede de Xela con prensas riso y técnicas mixtas. Haz clic en cualquier trabajo para
-        ampliarlo.
+        la sede de Xelajuj No’j con prensas riso y técnicas mixtas. Haz clic en cualquier trabajo
+        para ampliarlo.
       </EncabezadoSeccion>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
