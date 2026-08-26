@@ -40,22 +40,20 @@ function InicioPrincipal() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer & Label (Inspired by Málaga label) */}
-        <div className="relative z-10 flex flex-col items-center mt-6">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-cream/70 font-bold border border-cream/20 px-3 py-1 bg-ink/30 backdrop-blur-xs">
-            COLECTIVO INDEPENDIENTE — DESDE 2004
-          </span>
-        </div>
+        {/* Top Spacer */}
+        <div className="h-6 sm:h-8" />
 
         {/* Hero Center Branding - Massive screen-filling typography */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12">
-          <h1 className="font-display text-[14vw] sm:text-[13vw] md:text-[12vw] lg:text-[11vw] font-black uppercase text-cream tracking-tighter leading-[0.8] select-none text-center">
-            METÁFORA
+          <h1 className="font-display text-[9vw] sm:text-[8vw] md:text-[7.5vw] lg:text-[6.5vw] font-black uppercase text-cream tracking-tighter leading-[0.85] select-none text-center">
+            FESTIVAL INTERNACIONAL
             <br />
-            <span className="text-carmine">COLECTIVO</span>
+            DE POESÍA DE
+            <br />
+            <span className="text-carmine">QUETZALTENANGO</span>
           </h1>
           <p className="mt-8 max-w-xl text-cream/70 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] leading-relaxed font-bold">
-            Festival Internacional de Poesía & Editorial · Xelajuj No’j
+            Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
 
