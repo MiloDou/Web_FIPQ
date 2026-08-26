@@ -197,37 +197,45 @@ function InicioPrincipal() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Card Festival */}
-              <div className="p-6 border border-carmine/20 bg-[#121212] hover:border-carmine/40 transition-all duration-300 rounded-sm">
-                <h4 className="font-display text-2xl uppercase mb-4 text-carmine tracking-wider">
-                  El Festival
-                </h4>
-                <p className="text-sm leading-relaxed text-cream/80">
-                  Un festival nacido de jóvenes poetas que construye comunidad mediante la palabra,
-                  el diálogo intercultural y la acción cultural.
-                </p>
-                <Link
-                  to="/festival"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
-                >
-                  → Entrar al festival
-                </Link>
+              <div className="p-8 border border-carmine/30 bg-[#121212] hover:bg-carmine/[0.06] hover:border-carmine/50 transition-all duration-300 rounded-sm flex flex-col justify-between">
+                <div>
+                  <h4 className="font-display text-2xl uppercase mb-4 text-carmine tracking-wider">
+                    El Festival
+                  </h4>
+                  <p className="text-sm leading-relaxed text-cream/80">
+                    Un festival nacido de jóvenes poetas que construye comunidad mediante la
+                    palabra, el diálogo intercultural y la acción cultural.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link
+                    to="/festival"
+                    className="inline-block bg-carmine text-cream hover:bg-carmine/90 px-6 py-3 font-mono text-xs uppercase tracking-widest font-bold transition-all duration-300 rounded-sm text-center shadow-[3px_3px_0_0_#0a0a0a]"
+                  >
+                    Entrar al festival
+                  </Link>
+                </div>
               </div>
 
               {/* Card Editorial */}
-              <div className="p-6 border border-cream/10 bg-[#121212] hover:border-cream/30 transition-all duration-300 rounded-sm">
-                <h4 className="font-display text-2xl uppercase mb-4 text-cream tracking-wider">
-                  La Editorial
-                </h4>
-                <p className="text-sm leading-relaxed text-cream/80">
-                  Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
-                  voz compartida al libro.
-                </p>
-                <Link
-                  to="/editorial"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-mustard transition-colors"
-                >
-                  → Ver el catálogo
-                </Link>
+              <div className="p-8 border border-cream/15 bg-[#121212] hover:bg-cream/[0.04] hover:border-cream/30 transition-all duration-300 rounded-sm flex flex-col justify-between">
+                <div>
+                  <h4 className="font-display text-2xl uppercase mb-4 text-cream tracking-wider">
+                    La Editorial
+                  </h4>
+                  <p className="text-sm leading-relaxed text-cream/80">
+                    Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
+                    voz compartida al libro.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link
+                    to="/editorial"
+                    className="inline-block bg-cream text-ink hover:bg-cream/90 px-6 py-3 font-mono text-xs uppercase tracking-widest font-bold transition-all duration-300 rounded-sm text-center shadow-[3px_3px_0_0_#0a0a0a]"
+                  >
+                    Ver el catálogo
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

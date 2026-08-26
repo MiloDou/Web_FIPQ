@@ -58,13 +58,12 @@ export function DisenoRama({
                   key={link.to}
                   to={link.to}
                   aria-current={active ? "page" : undefined}
-                  className={`shrink-0 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-widest transition-all rounded-sm ${
+                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all rounded-sm ${
                     active
                       ? "bg-cream text-ink font-bold shadow-sm"
                       : "text-cream/80 hover:bg-cream/15 hover:text-cream"
                   }`}
                 >
-                  {active ? "● " : "→ "}
                   {link.label}
                 </Link>
               );
