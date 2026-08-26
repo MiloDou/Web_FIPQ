@@ -45,8 +45,15 @@ function InicioPrincipal() {
           FUEGO
         </span>
 
+        {/* Top tag - positioned absolutely at the top */}
+        <div className="absolute top-6 inset-x-0 z-10 flex justify-center pointer-events-none">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-cream/80 font-bold">
+            Festival Internacional · Quetzaltenango, GuatemalaA
+          </span>
+        </div>
+
         {/* Hero Center Branding - Perfectly centered */}
-        <div className="relative z-10 flex flex-col items-center max-w-4xl my-auto">
+        <div className="relative z-10 flex flex-col items-center max-w-4xl mt-12 mb-16">
           <img
             src={logoImage}
             alt="Logo Festival Internacional de Poesía de Quetzaltenango"
@@ -70,7 +77,7 @@ function InicioPrincipal() {
           className="absolute bottom-6 inset-x-0 z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-90 transition-opacity"
         >
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream font-bold group-hover:text-mustard transition-colors">
-            Elige tu camino ↓
+            Elige tu camino
           </span>
           <div className="w-px h-6 sm:h-8 bg-cream/60 animate-pulse group-hover:bg-mustard transition-colors" />
         </a>
@@ -96,7 +103,7 @@ function InicioPrincipal() {
           </div>
           <div className="relative z-10">
             <span className="font-mono text-cream/80 text-xs sm:text-sm font-bold block mb-2 tracking-widest">
-              [01] ACCIÓN POÉTICA
+              ACCIÓN POÉTICA
             </span>
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display text-cream leading-none uppercase italic whitespace-nowrap group-hover:translate-x-2 md:group-hover:translate-x-4 transition-transform duration-500">
               Festival
@@ -108,16 +115,13 @@ function InicioPrincipal() {
           </div>
           <ul className="relative z-10 mt-6 md:mt-0 space-y-2 text-cream font-mono text-xs sm:text-sm font-semibold opacity-100 md:opacity-90 group-hover:opacity-100 transition-opacity duration-500">
             <li className="hover:text-mustard transition-colors flex items-center gap-1">
-              <span>→</span> <span>Programa histórico</span>
+              <span>→</span> <span>Manifiesto</span>
             </li>
             <li className="hover:text-mustard transition-colors flex items-center gap-1">
-              <span>→</span> <span>Manifiesto político</span>
+              <span>→</span> <span>Programa</span>
             </li>
             <li className="hover:text-mustard transition-colors flex items-center gap-1">
               <span>→</span> <span>Archivo histórico</span>
-            </li>
-            <li className="hover:text-mustard transition-colors flex items-center gap-1">
-              <span>→</span> <span>Información del festival</span>
             </li>
           </ul>
         </Link>
@@ -137,7 +141,7 @@ function InicioPrincipal() {
           </div>
           <div className="relative z-10">
             <span className="font-mono text-ink/80 text-xs sm:text-sm font-bold block mb-2 tracking-widest">
-              [02] PALABRA IMPRESA
+              PALABRA IMPRESA
             </span>
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display text-ink leading-none uppercase whitespace-nowrap group-hover:-translate-x-2 md:group-hover:-translate-x-4 transition-transform duration-500">
               Metáfora
@@ -158,13 +162,6 @@ function InicioPrincipal() {
               <span>→</span> <span>Contacto</span>
             </li>
           </ul>
-          <div className="pointer-events-none absolute bottom-6 right-6 md:bottom-8 md:right-8 w-24 h-24 sm:w-28 sm:h-28 border-[3px] border-carmine rounded-full flex items-center justify-center rotate-12 opacity-80 md:opacity-0 group-hover:opacity-100 transition-all duration-500 scale-100 md:scale-150 md:group-hover:scale-100 bg-cream/40 backdrop-blur-xs">
-            <span className="text-carmine font-display text-[10px] sm:text-[11px] font-bold text-center leading-tight uppercase">
-              Editorial
-              <br />
-              Certificada
-            </span>
-          </div>
         </Link>
       </section>
 
@@ -206,32 +203,28 @@ function InicioPrincipal() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-carmine text-cream border-2 border-ink shadow-[4px_4px_0_0_rgba(26,26,26,0.9)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none duration-300">
-                <h4 className="font-display text-2xl uppercase mb-4 text-cream font-bold">
-                  El Festival
-                </h4>
-                <p className="font-body text-sm leading-relaxed text-cream/95 font-medium">
+              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
+                <h4 className="font-display text-xl uppercase mb-4 text-mustard">El Festival</h4>
+                <p className="text-sm leading-relaxed text-cream/85">
                   Un festival nacido de jóvenes poetas que construye comunidad mediante la palabra,
                   el diálogo intercultural y la acción cultural.
                 </p>
                 <Link
                   to="/festival"
-                  className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-cream font-bold hover:text-mustard transition-colors"
+                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
                 >
                   → Entrar al festival
                 </Link>
               </div>
-              <div className="p-6 bg-cream text-ink border-2 border-ink shadow-[4px_4px_0_0_rgba(177,42,59,0.9)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none duration-300">
-                <h4 className="font-display text-2xl uppercase mb-4 text-ink font-bold">
-                  La Editorial
-                </h4>
-                <p className="font-body text-sm leading-relaxed text-ink/90 font-medium">
+              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
+                <h4 className="font-display text-xl uppercase mb-4 text-mustard">La Editorial</h4>
+                <p className="text-sm leading-relaxed text-cream/85">
                   Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
                   voz compartida al libro.
                 </p>
                 <Link
                   to="/editorial"
-                  className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-ink font-bold hover:text-carmine transition-colors"
+                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
                 >
                   → Ver el catálogo
                 </Link>
