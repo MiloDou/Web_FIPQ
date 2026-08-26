@@ -43,16 +43,16 @@ function InicioPrincipal() {
         {/* Top Spacer */}
         <div className="h-6 sm:h-8" />
 
-        {/* Hero Center Branding - Massive screen-filling typography */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12">
-          <h1 className="font-display text-[9vw] sm:text-[8vw] md:text-[7.5vw] lg:text-[6.5vw] font-black uppercase text-cream tracking-tighter leading-[0.85] select-none text-center">
+        {/* Hero Center Branding - Clean, readable and spacious screen-filling typography */}
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-4">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase text-cream tracking-[0.06em] leading-[1.18] select-none text-center">
             FESTIVAL INTERNACIONAL
             <br />
             DE POESÍA DE
             <br />
             <span className="text-carmine">QUETZALTENANGO</span>
           </h1>
-          <p className="mt-8 max-w-xl text-cream/70 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] leading-relaxed font-bold">
+          <p className="mt-10 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.25em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
