@@ -45,15 +45,8 @@ function InicioPrincipal() {
           FUEGO
         </span>
 
-        {/* Top tag - positioned absolutely at the top */}
-        <div className="absolute top-6 inset-x-0 z-10 flex justify-center pointer-events-none">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-cream/80 font-bold">
-            Festival Internacional · Quetzaltenango, GuatemalaA
-          </span>
-        </div>
-
         {/* Hero Center Branding - Perfectly centered */}
-        <div className="relative z-10 flex flex-col items-center max-w-4xl mt-12 mb-16">
+        <div className="relative z-10 flex flex-col items-center max-w-4xl my-auto">
           <img
             src={logoImage}
             alt="Logo Festival Internacional de Poesía de Quetzaltenango"
