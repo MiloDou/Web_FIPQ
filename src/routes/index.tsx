@@ -206,28 +206,32 @@ function InicioPrincipal() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
-                <h4 className="font-display text-xl uppercase mb-4 text-mustard">El Festival</h4>
-                <p className="text-sm leading-relaxed text-cream/85">
+              <div className="p-6 bg-carmine text-cream border-2 border-ink shadow-[4px_4px_0_0_rgba(227,160,29,0.9)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none duration-300">
+                <h4 className="font-display text-2xl uppercase mb-4 text-mustard font-bold">
+                  El Festival
+                </h4>
+                <p className="font-body text-sm leading-relaxed text-cream/95 font-medium">
                   Un festival nacido de jóvenes poetas que construye comunidad mediante la palabra,
                   el diálogo intercultural y la acción cultural.
                 </p>
                 <Link
                   to="/festival"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
+                  className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-cream font-bold hover:text-mustard transition-colors"
                 >
                   → Entrar al festival
                 </Link>
               </div>
-              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
-                <h4 className="font-display text-xl uppercase mb-4 text-mustard">La Editorial</h4>
-                <p className="text-sm leading-relaxed text-cream/85">
+              <div className="p-6 bg-mustard text-ink border-2 border-ink shadow-[4px_4px_0_0_rgba(177,42,59,0.9)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none duration-300">
+                <h4 className="font-display text-2xl uppercase mb-4 text-ink font-bold">
+                  La Editorial
+                </h4>
+                <p className="font-body text-sm leading-relaxed text-ink/90 font-medium">
                   Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
                   voz compartida al libro.
                 </p>
                 <Link
                   to="/editorial"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
+                  className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-ink font-bold hover:text-carmine transition-colors"
                 >
                   → Ver el catálogo
                 </Link>
