@@ -25,14 +25,14 @@ const imagenesDocumentales = [
 ];
 
 export const imagenesSitio = {
-  wallCollage: imagenesDocumentales[0],
-  booksStack: imagenesDocumentales[1],
-  poetPortrait: imagenesDocumentales[2],
-  stageNight: imagenesDocumentales[0],
-  crowdBw: imagenesDocumentales[3],
-  posterRed: imagenesDocumentales[2],
-  risographBook: imagenesDocumentales[1],
-  workshop: imagenesDocumentales[2],
+  wallCollage: obtenerImagenPorNombre("image01.jpg"),
+  booksStack: obtenerImagenPorNombre("image02.jpg"),
+  poetPortrait: obtenerImagenPorNombre("image03.jpg"),
+  stageNight: obtenerImagenPorNombre("image32.jpg"),
+  crowdBw: obtenerImagenPorNombre("image04.jpg"),
+  posterRed: obtenerImagenPorNombre("image03.jpg"),
+  risographBook: obtenerImagenPorNombre("image24.jpg"),
+  workshop: obtenerImagenPorNombre("image03.jpg"),
 };
 
 export const logoImage = Object.values(recursoLogo)[0] ?? "";

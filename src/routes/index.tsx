@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { logoImage, imagenesSitio } from "@/assets/contenido";
 import { EncabezadoSitio } from "@/components/site/SiteHeader";
 import { PieSitio } from "@/components/site/SiteFooter";
+import { AnimatedSection } from "@/components/site/AnimatedSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,30 +29,36 @@ function InicioPrincipal() {
     <div className="bg-cream text-ink font-body">
       <EncabezadoSitio />
 
-      <section className="relative h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center pt-8 pb-16 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
+      <section className="relative h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center pt-8 pb-24 sm:pb-28 md:pb-32 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
         {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <img
-            src={imagenesSitio.booksStack}
+            src={imagenesSitio.stageNight}
             alt=""
             className="h-full w-full object-cover grayscale opacity-35 animate-slow-pan"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer & Logo - Restored to original colors with a zine border stamp */}
-        <div className="relative z-10 flex flex-col items-center mt-4">
-          <img
-            src={logoImage}
-            alt="Logo FIPQ"
-            width={160}
-            height={160}
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain rounded-full p-1.5 bg-white shadow-[4px_4px_0_0_#1a1a1a] animate-fade-in-up"
-          />
+        {/* Top Spacer & Logo - Wrapped in a premium double-ring container with warm ambient glow */}
+        <div className="relative z-10 flex flex-col items-center mt-2 group animate-fade-in-up">
+          {/* Subtle warm ambient glow behind the logo */}
+          <div className="absolute inset-0 rounded-full bg-carmine/20 blur-xl opacity-60 scale-110 pointer-events-none" />
+
+          {/* Main logo frame with realistic drop shadow and white border ring */}
+          <div className="relative p-1 bg-white rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.6)] border border-white/20">
+            <img
+              src={logoImage}
+              alt="Logo FIPQ"
+              width={160}
+              height={160}
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-0"
+            />
+          </div>
         </div>
 
         {/* Hero Center Branding - Perfectly balanced, centered and fits strictly above the fold */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-6 px-4 flex-1">
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-4 px-4 flex-1">
           <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.05em] leading-[1.24] select-none text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-full">
             FESTIVAL INTERNACIONAL
             <br />
@@ -59,7 +66,7 @@ function InicioPrincipal() {
             <br />
             <span className="text-carmine">QUETZALTENANGO</span>
           </h1>
-          <p className="mt-6 max-w-xl text-cream/70 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] leading-relaxed font-bold">
+          <p className="mt-4 max-w-xl text-cream/70 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
@@ -67,7 +74,7 @@ function InicioPrincipal() {
         {/* Bottom scroll indicator */}
         <a
           href="#direcciones"
-          className="relative z-10 flex flex-col items-center gap-1 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2 mt-4"
+          className="relative z-10 flex flex-col items-center gap-1 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2"
         >
           <span className="font-mono text-[9px] sm:text-xs uppercase tracking-[0.3em] text-cream/70 font-bold group-hover:text-carmine transition-colors">
             Elige tu camino ↓
@@ -98,7 +105,7 @@ function InicioPrincipal() {
             <span className="font-mono text-cream/80 text-xs sm:text-sm font-bold block mb-2 tracking-widest">
               ACCIÓN POÉTICA
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display text-cream leading-none uppercase italic whitespace-nowrap group-hover:translate-x-2 md:group-hover:translate-x-4 transition-transform duration-500">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display text-cream leading-none uppercase whitespace-nowrap group-hover:translate-x-2 md:group-hover:translate-x-4 transition-transform duration-500">
               Festival
             </h2>
             <p className="mt-4 max-w-md text-cream/90 text-base md:text-lg font-medium leading-relaxed">
@@ -126,7 +133,7 @@ function InicioPrincipal() {
         >
           <div className="absolute inset-0 opacity-15 group-hover:opacity-35 transition-opacity duration-500">
             <img
-              src={imagenesSitio.booksStack}
+              src={imagenesSitio.risographBook}
               alt=""
               loading="lazy"
               className="h-full w-full object-cover sepia"
@@ -159,88 +166,90 @@ function InicioPrincipal() {
       </section>
 
       {/* MANIFIESTO */}
-      <section className="py-32 px-6 md:px-12 bg-ink text-cream relative overflow-hidden">
-        <div
-          className="absolute top-0 left-0 w-full h-12 bg-cream"
-          style={{
-            clipPath:
-              "polygon(0 0, 10% 80%, 20% 30%, 35% 90%, 50% 40%, 65% 85%, 80% 20%, 90% 70%, 100% 0)",
-          }}
-        />
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-10">
-          <div className="lg:col-span-4 lg:sticky lg:top-24">
-            <h3 className="text-5xl md:text-6xl font-display uppercase leading-none text-mustard mb-6 italic">
-              Nuestra Voz
-            </h3>
-            <p className="font-mono text-xs uppercase tracking-widest text-cream/50 mb-8">
-              Poesía en acción · comunidad y memoria
-            </p>
-            <div className="w-full aspect-square border border-cream/20 relative">
-              <img
-                src={imagenesSitio.poetPortrait}
-                alt="Retrato de poeta en Xelajuj No’j"
-                loading="lazy"
-                className="h-full w-full object-cover grayscale"
-              />
-              <div className="absolute -bottom-4 -right-4 bg-carmine text-cream p-4 font-display text-xl sm:text-2xl uppercase leading-none">
-                Xelajuj No’j
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-8 space-y-12">
-            <p className="text-3xl md:text-5xl font-display uppercase text-balance leading-tight">
-              «La poesía no es un lujo, es una <span className="text-carmine">necesidad vital</span>{" "}
-              de existencia. Ella forma la calidad de la luz bajo la cual predicamos nuestras
-              esperanzas.»
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Card Festival */}
-              <div className="p-8 border border-carmine/30 bg-[#121212] hover:bg-carmine/[0.06] hover:border-carmine/50 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-display text-2xl uppercase mb-4 text-carmine tracking-wider">
-                    El Festival
-                  </h4>
-                  <p className="text-sm leading-relaxed text-cream/80">
-                    Un festival nacido de jóvenes poetas que construye comunidad mediante la
-                    palabra, el diálogo intercultural y la acción cultural.
-                  </p>
-                </div>
-                <div className="mt-8">
-                  <Link
-                    to="/festival"
-                    className="inline-block bg-carmine text-cream hover:bg-carmine/90 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-all duration-300 text-center shadow-[3px_3px_0_0_#0a0a0a]"
-                  >
-                    Entrar al festival
-                  </Link>
-                </div>
-              </div>
-
-              {/* Card Editorial */}
-              <div className="p-8 border border-cream/15 bg-[#121212] hover:bg-cream/[0.04] hover:border-cream/30 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-display text-2xl uppercase mb-4 text-cream tracking-wider">
-                    La Editorial
-                  </h4>
-                  <p className="text-sm leading-relaxed text-cream/80">
-                    Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
-                    voz compartida al libro.
-                  </p>
-                </div>
-                <div className="mt-8">
-                  <Link
-                    to="/editorial"
-                    className="inline-block bg-cream text-ink hover:bg-cream/90 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-all duration-300 text-center shadow-[3px_3px_0_0_#0a0a0a]"
-                  >
-                    Ver el catálogo
-                  </Link>
+      <AnimatedSection>
+        <section className="py-32 px-6 md:px-12 bg-ink text-cream relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 w-full h-12 bg-cream"
+            style={{
+              clipPath:
+                "polygon(0 0, 10% 80%, 20% 30%, 35% 90%, 50% 40%, 65% 85%, 80% 20%, 90% 70%, 100% 0)",
+            }}
+          />
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-10">
+            <div className="lg:col-span-4 lg:sticky lg:top-24">
+              <h3 className="text-5xl md:text-6xl font-display uppercase leading-none text-mustard mb-6">
+                Nuestra Voz
+              </h3>
+              <p className="font-mono text-xs uppercase tracking-widest text-cream/50 mb-8">
+                Poesía en acción · comunidad y memoria
+              </p>
+              <div className="w-full aspect-square border border-cream/20 relative">
+                <img
+                  src={imagenesSitio.poetPortrait}
+                  alt="Retrato de poeta en Xelajuj No’j"
+                  loading="lazy"
+                  className="h-full w-full object-cover grayscale"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-carmine text-cream p-4 font-display text-xl sm:text-2xl uppercase leading-none">
+                  Xelajuj No’j
                 </div>
               </div>
             </div>
+
+            <div className="lg:col-span-8 space-y-12">
+              <p className="text-3xl md:text-5xl font-display uppercase text-balance leading-tight">
+                «La poesía no es un lujo, es una <span className="text-carmine">necesidad vital</span>{" "}
+                de existencia. Ella forma la calidad de la luz bajo la cual predicamos nuestras
+                esperanzas.»
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Card Festival */}
+                <div className="p-8 border border-carmine/30 bg-[#121212] hover:bg-carmine/[0.06] hover:border-carmine/50 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <h4 className="font-display text-2xl uppercase mb-4 text-carmine tracking-wider">
+                      El Festival
+                    </h4>
+                    <p className="text-sm leading-relaxed text-cream/80">
+                      Un festival nacido de jóvenes poetas que construye comunidad mediante la
+                      palabra, el diálogo intercultural y la acción cultural.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <Link
+                      to="/festival"
+                      className="inline-block bg-carmine text-cream hover:bg-carmine/90 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-all duration-300 text-center shadow-[3px_3px_0_0_#0a0a0a]"
+                    >
+                      Entrar al festival
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Card Editorial */}
+                <div className="p-8 border border-cream/15 bg-[#121212] hover:bg-cream/[0.04] hover:border-cream/30 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <h4 className="font-display text-2xl uppercase mb-4 text-cream tracking-wider">
+                      La Editorial
+                    </h4>
+                    <p className="text-sm leading-relaxed text-cream/80">
+                      Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
+                      voz compartida al libro.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <Link
+                      to="/editorial"
+                      className="inline-block bg-cream text-ink hover:bg-cream/90 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-all duration-300 text-center shadow-[3px_3px_0_0_#0a0a0a]"
+                    >
+                      Ver el catálogo
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
       <PieSitio />
     </div>

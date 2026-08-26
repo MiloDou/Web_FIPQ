@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { EncabezadoSeccion } from "@/components/site/SectionHeading";
+import { AnimatedSection } from "@/components/site/AnimatedSection";
 
 export const Route = createFileRoute("/editorial/catalogo")({
   head: () => ({

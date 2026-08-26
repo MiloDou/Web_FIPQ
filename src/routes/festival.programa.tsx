@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { imagenesSitio } from "@/assets/contenido";
 import { EncabezadoSeccion } from "@/components/site/SectionHeading";
+import { AnimatedSection } from "@/components/site/AnimatedSection";
 
 export const Route = createFileRoute("/festival/programa")({
   head: () => ({
@@ -203,49 +204,46 @@ function PaginaPrograma() {
 
       <div className="space-y-12">
         {programa.map((jornada, indice) => (
-          <section
-            key={jornada.dia}
-            className="grid grid-cols-1 md:grid-cols-12 gap-6 border-t-2 border-ink pt-6"
-          >
-            <div className="md:col-span-3">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-carmine">
-                [{String(indice + 1).padStart(2, "0")}]
-              </span>
-              <h2 className="mt-1 font-display text-4xl uppercase leading-none">{jornada.dia}</h2>
-              <p className="mt-2 font-display text-lg uppercase text-ink/70 italic">
-                {jornada.titulo}
-              </p>
-              <img
-                src={jornada.imagen}
-                alt={`Registro visual de ${jornada.titulo}`}
-                loading="lazy"
-                className="mt-5 w-full max-h-56 object-contain bg-ink ring-1 ring-ink/20"
-              />
-            </div>
-            <ul className="md:col-span-9 divide-y divide-ink/15">
-              {jornada.actividades.map((actividad) => (
-                <li
-                  key={`${actividad.hora}-${actividad.lugar}`}
-                  className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 md:items-baseline py-4 hover:bg-mustard/10 transition-colors px-3 rounded-sm -mx-3"
-                >
-                  <div className="flex items-center justify-between md:contents">
-                    <span className="font-mono text-xs sm:text-sm tracking-wider text-carmine font-bold md:col-span-3">
-                      {actividad.hora}
+          <AnimatedSection key={jornada.dia}>
+            <section className="grid grid-cols-1 md:grid-cols-12 gap-6 border-t-2 border-ink pt-6">
+              <div className="md:col-span-3">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-carmine">
+                  [{String(indice + 1).padStart(2, "0")}]
+                </span>
+                <h2 className="mt-1 font-display text-4xl uppercase leading-none">{jornada.dia}</h2>
+                <p className="mt-2 font-display text-lg uppercase text-ink/70">{jornada.titulo}</p>
+                <img
+                  src={jornada.imagen}
+                  alt={`Registro visual de ${jornada.titulo}`}
+                  loading="lazy"
+                  className="mt-5 w-full max-h-56 object-contain bg-ink ring-1 ring-ink/20 rounded-none"
+                />
+              </div>
+              <ul className="md:col-span-9 divide-y divide-ink/15">
+                {jornada.actividades.map((actividad) => (
+                  <li
+                    key={`${actividad.hora}-${actividad.lugar}`}
+                    className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 md:items-baseline py-4 hover:bg-mustard/10 transition-colors px-3 rounded-none -mx-3"
+                  >
+                    <div className="flex items-center justify-between md:contents">
+                      <span className="font-mono text-xs sm:text-sm tracking-wider text-carmine font-bold md:col-span-3">
+                        {actividad.hora}
+                      </span>
+                      <span className="font-mono text-xs uppercase tracking-widest text-ink/75 font-bold md:col-span-3">
+                        {actividad.lugar}
+                      </span>
+                    </div>
+                    <span className="font-body text-base text-ink font-semibold md:col-span-4">
+                      {actividad.evento}
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-widest text-ink/75 font-bold md:col-span-3">
-                      {actividad.lugar}
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-ink/60 font-medium md:col-span-2 md:text-right">
+                      {actividad.encargado}
                     </span>
-                  </div>
-                  <span className="font-body text-base text-ink font-semibold md:col-span-4">
-                    {actividad.evento}
-                  </span>
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-ink/60 font-medium md:col-span-2 md:text-right">
-                    {actividad.encargado}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </AnimatedSection>
         ))}
       </div>
     </>

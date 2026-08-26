@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { EncabezadoSeccion } from "@/components/site/SectionHeading";
 import { CartelCollage } from "@/components/site/CollagePoster";
 import { imagenesSitio } from "@/assets/contenido";
+import { AnimatedSection } from "@/components/site/AnimatedSection";
 
 export const Route = createFileRoute("/editorial/")({
   head: () => ({
@@ -52,37 +53,41 @@ function InicioEditorial() {
         centroamericana y algunas memorias del festival, desde Xelajuj No’j y para la región.
       </EncabezadoSeccion>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-        {novedades.map((n, i) => (
-          <CartelCollage
-            key={n.title}
-            index={i}
-            tag={n.tag}
-            title={n.title}
-            meta={n.meta}
-            image={n.image}
-          >
-            {n.body}
-          </CartelCollage>
-        ))}
-      </div>
+      <AnimatedSection>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+          {novedades.map((n, i) => (
+            <CartelCollage
+              key={n.title}
+              index={i}
+              tag={n.tag}
+              title={n.title}
+              meta={n.meta}
+              image={n.image}
+            >
+              {n.body}
+            </CartelCollage>
+          ))}
+        </div>
+      </AnimatedSection>
 
-      <div className="mt-24 grid grid-cols-1 gap-8">
-        <Link
-          to="/editorial/catalogo"
-          className="block bg-ink text-cream p-6 sm:p-10 border-2 border-ink hover:bg-cream hover:text-ink transition-all hover:-translate-y-1 duration-300"
-        >
-          <span className="font-mono text-xs uppercase tracking-widest text-mustard font-bold">
-            → 01
-          </span>
-          <h3 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl uppercase leading-none font-bold break-words">
-            Catálogo completo
-          </h3>
-          <p className="mt-4 text-cream/90 text-sm font-medium leading-relaxed">
-            50 títulos registrados hasta ahora. Las colecciones se organizarán más adelante.
-          </p>
-        </Link>
-      </div>
+      <AnimatedSection>
+        <div className="mt-24 grid grid-cols-1 gap-8">
+          <Link
+            to="/editorial/catalogo"
+            className="block bg-ink text-cream p-6 sm:p-10 border-2 border-ink hover:bg-cream hover:text-ink transition-all hover:-translate-y-1 duration-300"
+          >
+            <span className="font-mono text-xs uppercase tracking-widest text-mustard font-bold">
+              → 01
+            </span>
+            <h3 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl uppercase leading-none font-bold break-words">
+              Catálogo completo
+            </h3>
+            <p className="mt-4 text-cream/90 text-sm font-medium leading-relaxed">
+              50 títulos registrados hasta ahora. Las colecciones se organizarán más adelante.
+            </p>
+          </Link>
+        </div>
+      </AnimatedSection>
     </>
   );
 }
