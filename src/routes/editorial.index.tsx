@@ -70,7 +70,7 @@ function InicioEditorial() {
       <div className="mt-24 grid grid-cols-1 gap-8">
         <Link
           to="/editorial/catalogo"
-          className="block bg-ink text-cream p-6 sm:p-10 hover:bg-carmine transition-all hover:-translate-y-1 duration-300"
+          className="block bg-ink text-cream p-6 sm:p-10 border-2 border-ink hover:bg-cream hover:text-ink transition-all hover:-translate-y-1 duration-300"
         >
           <span className="font-mono text-xs uppercase tracking-widest text-mustard font-bold">
             → 01

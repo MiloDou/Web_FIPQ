@@ -90,18 +90,18 @@ function PaginaPortafolio() {
             onClick={() => setSelectedPieza(p)}
             className={`relative ${p.span} ${p.rotate} hover:rotate-0 hover:scale-[1.02] transition-all duration-300 group cursor-pointer`}
           >
-            <div className="absolute -top-3 right-6 h-6 w-20 bg-carmine/70 mix-blend-multiply z-10" />
+            <div className="absolute -top-3 right-6 h-6 w-20 bg-ink/60 mix-blend-multiply z-10" />
             <img
               src={p.src}
               alt={p.titulo}
               loading="lazy"
-              className="w-full aspect-[4/5] object-cover shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[12px_12px_0_0_rgba(227,160,29,0.9)] transition-shadow duration-300"
+              className="w-full aspect-[4/5] object-cover shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[12px_12px_0_0_rgba(26,26,26,0.95)] transition-shadow duration-300"
             />
             <figcaption className="mt-3">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-carmine">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink/75">
                 {p.year} · {p.tipo}
               </span>
-              <h3 className="font-display text-xl sm:text-2xl uppercase leading-tight font-bold mt-1 group-hover:text-carmine transition-colors">
+              <h3 className="font-display text-xl sm:text-2xl uppercase leading-tight font-bold mt-1 group-hover:underline transition-colors">
                 {p.titulo}
               </h3>
             </figcaption>
@@ -130,7 +130,7 @@ function PaginaPortafolio() {
             </div>
             <button
               type="button"
-              className="mt-4 font-mono text-xs text-cream uppercase tracking-widest bg-carmine px-4 py-2 hover:bg-mustard hover:text-ink transition-colors cursor-pointer border border-ink"
+              className="mt-4 font-mono text-xs text-cream uppercase tracking-widest bg-ink px-4 py-2 hover:bg-cream hover:text-ink transition-colors cursor-pointer border border-ink"
               onClick={() => setSelectedPieza(null)}
             >
               Cerrar vista previa ×

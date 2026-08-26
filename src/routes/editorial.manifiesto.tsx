@@ -17,11 +17,11 @@ export const Route = createFileRoute("/editorial/manifiesto")({
 function PaginaManifiestoEditorial() {
   return (
     <article className="max-w-4xl">
-      <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-4">
+      <span className="block font-mono text-xs uppercase tracking-[0.25em] text-ink font-bold mb-4">
         Carta Editorial · 2009
       </span>
       <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide mb-10 font-bold">
-        Imprimir es <span className="text-carmine italic">desobedecer.</span>
+        Imprimir es <span className="italic">desobedecer.</span>
       </h1>
 
       <div className="space-y-8 text-base sm:text-lg leading-relaxed text-ink/85 font-medium">
@@ -44,7 +44,7 @@ function PaginaManifiestoEditorial() {
           voces de poetas que no tienen agente literario ni cuenta en redes sociales. La calidad la
           mide el oído, no el algoritmo.
         </p>
-        <p className="font-display text-3xl uppercase text-carmine leading-tight pt-6 border-t-2 border-ink">
+        <p className="font-display text-3xl uppercase text-ink leading-tight pt-6 border-t-2 border-ink">
           Un libro impreso es un acto que el Estado todavía no sabe cómo desactivar.
         </p>
       </div>

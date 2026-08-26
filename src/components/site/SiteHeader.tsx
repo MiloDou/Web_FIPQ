@@ -34,9 +34,9 @@ export function EncabezadoSitio() {
           <Link
             to="/editorial"
             activeProps={{
-              className: "text-carmine font-bold underline underline-offset-4 decoration-2",
+              className: "text-ink font-bold underline underline-offset-4 decoration-2",
             }}
-            className="hover:text-carmine transition-colors"
+            className="hover:text-ink transition-colors"
           >
             Editorial
           </Link>
@@ -76,8 +76,8 @@ export function EncabezadoSitio() {
             </Link>
             <Link
               to="/editorial"
-              activeProps={{ className: "bg-carmine text-cream font-bold" }}
-              className="px-3 py-3 hover:bg-carmine hover:text-cream transition-colors"
+              activeProps={{ className: "bg-ink text-cream font-bold" }}
+              className="px-3 py-3 hover:bg-ink hover:text-cream transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Editorial

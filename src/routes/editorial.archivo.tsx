@@ -77,9 +77,9 @@ function PaginaArchivoEditorial() {
             {agotados.map((a) => (
               <tr
                 key={a.titulo}
-                className="border-b border-cream/10 hover:bg-carmine/20 transition-colors"
+                className="border-b border-cream/10 hover:bg-cream/10 transition-colors"
               >
-                <td className="py-4 font-mono text-xs sm:text-sm text-carmine font-bold align-top">
+                <td className="py-4 font-mono text-xs sm:text-sm text-mustard font-bold align-top">
                   {a.year}
                 </td>
                 <td className="py-4 font-display text-lg sm:text-xl md:text-2xl uppercase leading-snug font-bold align-top">
@@ -106,7 +106,10 @@ function PaginaArchivoEditorial() {
       <p className="mt-12 max-w-2xl text-base text-ink/75 leading-relaxed">
         ¿Tienes un ejemplar agotado y quieres aportarlo al archivo digital de la editorial?
         Escríbenos a{" "}
-        <a href="mailto:archivo@fipq.org" className="text-carmine underline">
+        <a
+          href="mailto:archivo@fipq.org"
+          className="text-ink font-bold underline hover:text-ink/80 transition-colors"
+        >
           archivo@fipq.org
         </a>
         .
