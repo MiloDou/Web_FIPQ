@@ -53,7 +53,7 @@ function InicioPrincipal() {
 
         {/* Hero Center Branding - Perfectly balanced, centered and fits strictly above the fold */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-6 px-4 flex-1">
-          <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.05em] leading-[1.12] select-none text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-full">
+          <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.05em] leading-[1.24] select-none text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-full">
             FESTIVAL INTERNACIONAL
             <br />
             DE POESÍA DE
