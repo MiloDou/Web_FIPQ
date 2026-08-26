@@ -43,16 +43,23 @@ function InicioPrincipal() {
         {/* Top Spacer */}
         <div className="h-6 sm:h-8" />
 
-        {/* Hero Center Branding - Clean, readable and spacious screen-filling typography */}
+        {/* Hero Center Branding - Perfectly spaced, responsive lines preventing wrap and collision */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-4">
-          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase text-cream tracking-[0.06em] leading-[1.18] select-none text-center">
-            FESTIVAL INTERNACIONAL
-            <br />
-            DE POESÍA DE
-            <br />
-            <span className="text-carmine">QUETZALTENANGO</span>
+          <h1 className="font-display font-black uppercase tracking-[0.08em] leading-[1.22] select-none text-center flex flex-col gap-2 sm:gap-3">
+            <span className="text-cream text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              FESTIVAL
+            </span>
+            <span className="text-carmine text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+              INTERNACIONAL
+            </span>
+            <span className="text-cream text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              DE POESÍA DE
+            </span>
+            <span className="text-carmine text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+              QUETZALTENANGO
+            </span>
           </h1>
-          <p className="mt-10 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.25em] leading-relaxed font-bold">
+          <p className="mt-12 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.25em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
