@@ -40,15 +40,7 @@ export function EncabezadoSitio() {
           >
             Editorial
           </Link>
-          <Link
-            to="/festival/archivo"
-            activeProps={{
-              className: "text-carmine font-bold underline underline-offset-4 decoration-2",
-            }}
-            className="hover:text-carmine transition-colors"
-          >
-            Archivo
-          </Link>
+
           <Link
             to="/festival/contacto"
             activeProps={{ className: "bg-carmine border-carmine" }}
@@ -90,14 +82,7 @@ export function EncabezadoSitio() {
             >
               Editorial
             </Link>
-            <Link
-              to="/festival/archivo"
-              activeProps={{ className: "bg-carmine text-cream font-bold" }}
-              className="px-3 py-3 hover:bg-carmine hover:text-cream transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Archivo
-            </Link>
+
             <Link
               to="/festival/contacto"
               activeProps={{ className: "bg-carmine border-carmine" }}
