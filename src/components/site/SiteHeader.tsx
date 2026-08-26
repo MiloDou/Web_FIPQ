@@ -1,13 +1,41 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { logoImage } from "@/assets/contenido";
 
 export function EncabezadoSitio() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const [scrolled, setScrolled] = useState(!isHome);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-md transition-all duration-500 ease-in-out ${
+        isHome && !scrolled
+          ? "-translate-y-full opacity-0 pointer-events-none"
+          : "translate-y-0 opacity-100 pointer-events-auto"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setMenuOpen(false)}>
           <img

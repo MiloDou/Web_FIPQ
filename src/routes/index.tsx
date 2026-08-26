@@ -40,8 +40,16 @@ function InicioPrincipal() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer */}
-        <div className="h-8 sm:h-12" />
+        {/* Top Spacer & Logo */}
+        <div className="relative z-10 flex flex-col items-center mt-6">
+          <img
+            src={logoImage}
+            alt="Logo FIPQ"
+            width={120}
+            height={120}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain mix-blend-screen opacity-90 animate-fade-in-up"
+          />
+        </div>
 
         {/* Hero Center Branding - Leoleo inspired screen-filling typography with tight spacing */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-2">
