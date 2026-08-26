@@ -59,6 +59,46 @@ function PaginaManifiesto() {
         </div>
         <p>Síntesis basada en el archivo histórico y testimonios públicos sobre el festival.</p>
       </div>
+
+      <div className="mt-20 pt-16 border-t-2 border-ink">
+        <h2 className="font-display text-3xl sm:text-5xl md:text-6xl uppercase mb-8 font-bold">
+          El festival <span className="text-carmine italic">en contexto.</span>
+        </h2>
+        <p className="max-w-3xl text-base sm:text-lg leading-relaxed text-ink/85 font-medium mb-10">
+          El Festival Internacional de Poesía de Quetzaltenango es una plataforma de lecturas,
+          talleres y diálogo intercultural que conecta a poetas, estudiantes, instituciones y
+          comunidades de Xelajuj No’j y del occidente guatemalteco.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <section className="bg-ink text-cream p-8 shadow-[4px_4px_0_0_rgba(26,26,26,0.15)]">
+            <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 text-mustard font-bold">
+              Qué es
+            </h3>
+            <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 font-medium">
+              Un festival nacido de jóvenes poetas que convirtió la lectura pública y la convivencia
+              intercultural en una práctica sostenida de ciudad.
+            </p>
+          </section>
+          <section className="bg-carmine text-cream p-8 shadow-[4px_4px_0_0_rgba(177,42,59,0.15)]">
+            <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 font-bold">
+              Dónde ocurre
+            </h3>
+            <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 font-medium">
+              La poesía circula por colegios, universidades, parques, teatros y otros espacios de
+              Quetzaltenango y departamentos vecinos. Las sedes de cada edición quedan en el
+              archivo.
+            </p>
+          </section>
+          <section className="bg-cream text-ink p-8 border-2 border-ink shadow-[4px_4px_0_0_rgba(26,26,26,0.15)]">
+            <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 font-bold">Memoria</h3>
+            <p className="font-body text-sm sm:text-base leading-relaxed text-ink/90 font-medium">
+              El festival articula lecturas, talleres, publicaciones y colaboraciones culturales; la
+              fuente consultada registra también su reconocimiento como patrimonio de la ciudad.
+            </p>
+          </section>
+        </div>
+      </div>
     </article>
   );
 }

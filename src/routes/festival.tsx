@@ -5,11 +5,9 @@ import { DisenoRama } from "@/components/site/BranchLayout";
 
 const links = [
   { to: "/festival", label: "Inicio" },
+  { to: "/festival/manifiesto", label: "Manifiesto" },
   { to: "/festival/programa", label: "Programa" },
   { to: "/festival/galeria", label: "Galería" },
-  { to: "/festival/manifiesto", label: "Manifiesto" },
-  { to: "/festival/archivo", label: "Archivo" },
-  { to: "/festival/contacto", label: "Información" },
 ];
 
 export const Route = createFileRoute("/festival")({

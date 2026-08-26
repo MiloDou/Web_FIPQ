@@ -85,7 +85,7 @@ function InicioFestival() {
           </p>
         </Link>
         <Link
-          to="/festival/contacto"
+          to="/festival/manifiesto"
           className="block bg-mustard text-ink p-6 sm:p-10 hover:bg-cream transition-all hover:-translate-y-1 duration-300 ring-2 ring-ink"
         >
           <span className="font-mono text-xs uppercase tracking-widest text-ink font-bold">

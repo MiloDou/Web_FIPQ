@@ -42,7 +42,7 @@ export function EncabezadoSitio() {
           </Link>
 
           <Link
-            to="/festival/contacto"
+            to="/festival/manifiesto"
             activeProps={{ className: "bg-carmine border-carmine" }}
             className="rounded-none border-2 border-ink bg-ink px-3 py-1.5 text-cream hover:bg-carmine hover:border-carmine transition-colors"
           >
@@ -84,7 +84,7 @@ export function EncabezadoSitio() {
             </Link>
 
             <Link
-              to="/festival/contacto"
+              to="/festival/manifiesto"
               activeProps={{ className: "bg-carmine border-carmine" }}
               className="mt-2 border-2 border-ink bg-ink px-3 py-3 text-cream hover:bg-carmine hover:border-carmine transition-colors text-center"
               onClick={() => setMenuOpen(false)}
