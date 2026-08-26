@@ -7,23 +7,41 @@ export function EncabezadoSitio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const [scrolled, setScrolled] = useState(!isHome);
+  const [visible, setVisible] = useState(!isHome);
 
   useEffect(() => {
-    if (!isHome) {
-      setScrolled(true);
-      return;
-    }
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      if (isHome && currentScrollY < 120) {
+        setVisible(false);
+      } else {
+        if (currentScrollY < lastScrollY) {
+          setVisible(true); // Scroll up -> show
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setVisible(false); // Scroll down -> hide
+        }
+      }
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
 
     const handleScroll = () => {
-      if (window.scrollY > 150) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
       }
     };
 
-    handleScroll();
+    if (!isHome) {
+      setVisible(true);
+    } else {
+      setVisible(window.scrollY > 120);
+    }
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
@@ -33,9 +51,9 @@ export function EncabezadoSitio() {
       className={`${
         isHome ? "fixed" : "sticky"
       } top-0 left-0 right-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-md transition-all duration-500 ease-in-out ${
-        isHome && !scrolled
-          ? "-translate-y-full opacity-0 pointer-events-none"
-          : "translate-y-0 opacity-100 pointer-events-auto"
+        visible
+          ? "translate-y-0 opacity-100 pointer-events-auto"
+          : "-translate-y-full opacity-0 pointer-events-none"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
