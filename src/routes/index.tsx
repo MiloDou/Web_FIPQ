@@ -29,7 +29,7 @@ function InicioPrincipal() {
       <EncabezadoSitio />
 
       {/* HERO */}
-      <section className="relative h-[calc(100vh-65px)] min-h-[580px] w-full bg-carmine flex flex-col justify-between items-center overflow-hidden p-6 md:p-10">
+      <section className="relative min-h-[calc(100vh-65px)] w-full bg-carmine flex flex-col justify-between items-center py-8 px-4 sm:py-10 sm:px-6 md:py-12 md:px-8">
         <div className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none z-20">
           <img
             src={imagenesSitio.wallCollage}
@@ -46,27 +46,27 @@ function InicioPrincipal() {
         </span>
 
         {/* Top tag */}
-        <div className="relative z-10 flex justify-center pointer-events-none pt-2">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.4em] text-cream/80 font-bold">
+        <div className="relative z-10 flex justify-center pointer-events-none">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-cream/80 font-bold">
             Festival Internacional · Quetzaltenango, Guatemala
           </span>
         </div>
 
         {/* Hero Center Branding */}
-        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl my-auto">
+        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl my-6">
           <img
             src={logoImage}
             alt="Logo Festival Internacional de Poesía de Quetzaltenango"
             width={420}
             height={420}
-            className="w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 object-contain mix-blend-screen"
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 object-contain mix-blend-screen"
           />
-          <h1 className="mt-4 sm:mt-6 font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-cream uppercase tracking-tight leading-[0.95] max-w-4xl font-bold">
+          <h1 className="mt-4 sm:mt-5 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-cream uppercase tracking-tight leading-[1.02] max-w-4xl font-bold">
             Festival Internacional
             <br />
             de Poesía <span className="italic">Quetzaltenango</span>
           </h1>
-          <p className="mt-3 sm:mt-4 max-w-xl text-cream/90 font-mono text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.2em] leading-relaxed font-semibold">
+          <p className="mt-4 max-w-xl text-cream/90 font-mono text-xs sm:text-sm uppercase tracking-[0.18em] leading-relaxed font-semibold">
             Poesía en acción · comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
@@ -74,7 +74,7 @@ function InicioPrincipal() {
         {/* Bottom scroll / directions indicator */}
         <a
           href="#direcciones"
-          className="relative z-10 flex flex-col items-center gap-2 pb-2 group cursor-pointer hover:opacity-100 opacity-90 transition-opacity"
+          className="relative z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-90 transition-opacity mt-2"
         >
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream font-bold group-hover:text-mustard transition-colors">
             Elige tu camino ↓
