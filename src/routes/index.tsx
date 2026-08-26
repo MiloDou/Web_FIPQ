@@ -196,31 +196,54 @@ function InicioPrincipal() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
-                <h4 className="font-display text-xl uppercase mb-4 text-mustard">El Festival</h4>
-                <p className="text-sm leading-relaxed text-cream/85">
-                  Un festival nacido de jóvenes poetas que construye comunidad mediante la palabra,
-                  el diálogo intercultural y la acción cultural.
-                </p>
-                <Link
-                  to="/festival"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
-                >
-                  → Entrar al festival
-                </Link>
+              {/* Card Festival */}
+              <div className="group/card relative overflow-hidden p-6 border border-carmine/30 bg-carmine/10 hover:bg-carmine/20 transition-all duration-300">
+                <div className="absolute inset-0 z-0 opacity-15 group-hover/card:opacity-25 transition-opacity duration-300 pointer-events-none">
+                  <img
+                    src={imagenesSitio.wallCollage}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover grayscale mix-blend-overlay"
+                  />
+                </div>
+                <div className="relative z-10">
+                  <h4 className="font-display text-xl uppercase mb-4 text-mustard">El Festival</h4>
+                  <p className="text-sm leading-relaxed text-cream/85">
+                    Un festival nacido de jóvenes poetas que construye comunidad mediante la
+                    palabra, el diálogo intercultural y la acción cultural.
+                  </p>
+                  <Link
+                    to="/festival"
+                    className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
+                  >
+                    → Entrar al festival
+                  </Link>
+                </div>
               </div>
-              <div className="p-6 border border-cream/15 bg-white/5 backdrop-blur-sm">
-                <h4 className="font-display text-xl uppercase mb-4 text-mustard">La Editorial</h4>
-                <p className="text-sm leading-relaxed text-cream/85">
-                  Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
-                  voz compartida al libro.
-                </p>
-                <Link
-                  to="/editorial"
-                  className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
-                >
-                  → Ver el catálogo
-                </Link>
+
+              {/* Card Editorial */}
+              <div className="group/card relative overflow-hidden p-6 border border-cream/15 bg-white/5 hover:bg-white/10 transition-all duration-300">
+                <div className="absolute inset-0 z-0 opacity-15 group-hover/card:opacity-25 transition-opacity duration-300 pointer-events-none">
+                  <img
+                    src={imagenesSitio.booksStack}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover sepia mix-blend-overlay"
+                  />
+                </div>
+                <div className="relative z-10">
+                  <h4 className="font-display text-xl uppercase mb-4 text-mustard">La Editorial</h4>
+                  <p className="text-sm leading-relaxed text-cream/85">
+                    Metáfora continúa la experiencia del festival en publicaciones y memorias: de la
+                    voz compartida al libro.
+                  </p>
+                  <Link
+                    to="/editorial"
+                    className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-cream hover:text-carmine transition-colors"
+                  >
+                    → Ver el catálogo
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
