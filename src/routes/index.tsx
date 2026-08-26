@@ -45,9 +45,9 @@ function InicioPrincipal() {
           <img
             src={logoImage}
             alt="Logo FIPQ"
-            width={100}
-            height={100}
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full border-2 border-carmine p-1 bg-cream shadow-[3px_3px_0_0_#1a1a1a] animate-fade-in-up"
+            width={160}
+            height={160}
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain rounded-full border-2 border-carmine p-1.5 bg-cream shadow-[4px_4px_0_0_#1a1a1a] animate-fade-in-up"
           />
         </div>
 
