@@ -20,7 +20,7 @@ function PaginaManifiestoEditorial() {
       <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-4">
         Carta Editorial · 2009
       </span>
-      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-tight mb-10 font-bold">
+      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide mb-10 font-bold">
         Imprimir es <span className="text-carmine italic">desobedecer.</span>
       </h1>
 

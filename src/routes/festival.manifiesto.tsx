@@ -20,7 +20,7 @@ function PaginaManifiesto() {
       <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-4">
         Principios del festival · Archivo histórico
       </span>
-      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-tight mb-10 font-bold">
+      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide mb-10 font-bold">
         La poesía <span className="text-carmine italic">se comparte</span>, se pone en acción.
       </h1>
 
