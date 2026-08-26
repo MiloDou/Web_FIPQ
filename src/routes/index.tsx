@@ -30,36 +30,40 @@ function InicioPrincipal() {
 
       {/* HERO */}
       <section className="relative min-h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-16 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
-        {/* Cinematic Backdrop Image */}
+        {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <img
-            src={imagenesSitio.stageNight}
+            src={imagenesSitio.booksStack}
             alt=""
-            className="h-full w-full object-cover grayscale opacity-30 animate-slow-pan"
+            className="h-full w-full object-cover grayscale opacity-35 animate-slow-pan"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer */}
-        <div className="h-6 sm:h-8" />
+        {/* Top Spacer & Label (Inspired by Leoleo label) */}
+        <div className="relative z-10 flex flex-col items-center mt-6">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-cream font-bold">
+            FIPQ — EST. 2004
+          </span>
+        </div>
 
-        {/* Hero Center Branding - Perfectly spaced, responsive lines preventing wrap and collision */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-4">
-          <h1 className="font-display font-black uppercase tracking-[0.08em] leading-[1.22] select-none text-center flex flex-col gap-2 sm:gap-3">
-            <span className="text-cream text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+        {/* Hero Center Branding - Leoleo inspired screen-filling typography with tight spacing */}
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-2">
+          <h1 className="font-display font-black uppercase tracking-[-0.02em] leading-[0.88] select-none text-center flex flex-col text-cream">
+            <span className="text-[9.5vw] sm:text-[8vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[6vw]">
               FESTIVAL
             </span>
-            <span className="text-carmine text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+            <span className="text-[12.5vw] sm:text-[11.5vw] md:text-[10vw] lg:text-[9vw] xl:text-[8.5vw]">
               INTERNACIONAL
             </span>
-            <span className="text-cream text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-              DE POESÍA DE
+            <span className="text-[9.5vw] sm:text-[8vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[6vw]">
+              DE POESIA DE
             </span>
-            <span className="text-carmine text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+            <span className="text-[12.5vw] sm:text-[11.5vw] md:text-[10vw] lg:text-[9vw] xl:text-[8.5vw]">
               QUETZALTENANGO
             </span>
           </h1>
-          <p className="mt-12 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.25em] leading-relaxed font-bold">
+          <p className="mt-10 max-w-xl text-cream/60 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
@@ -69,10 +73,10 @@ function InicioPrincipal() {
           href="#direcciones"
           className="relative z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-85 transition-opacity pb-4"
         >
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream/80 font-bold group-hover:text-carmine transition-colors">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream/70 font-bold group-hover:text-carmine transition-colors">
             Elige tu camino ↓
           </span>
-          <div className="w-px h-8 bg-cream/40 animate-pulse group-hover:bg-carmine transition-colors" />
+          <div className="w-px h-8 bg-cream/30 animate-pulse group-hover:bg-carmine transition-colors" />
         </a>
       </section>
 
