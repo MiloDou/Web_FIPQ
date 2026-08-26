@@ -14,7 +14,7 @@ export function EncabezadoSeccion({
   return (
     <div className="mb-12">
       {eyebrow && (
-        <span className="block font-mono text-[11px] uppercase tracking-[0.3em] text-carmine mb-3">
+        <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-3">
           {eyebrow}
         </span>
       )}

@@ -17,15 +17,15 @@ export const Route = createFileRoute("/editorial/manifiesto")({
 function PaginaManifiestoEditorial() {
   return (
     <article className="max-w-4xl">
-      <span className="block font-mono text-[11px] uppercase tracking-[0.3em] text-carmine mb-4">
+      <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-4">
         Carta Editorial · 2009
       </span>
-      <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase leading-[0.9] tracking-tight mb-10 text-balance break-words font-bold">
+      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-tight mb-10 font-bold">
         Imprimir es <span className="text-carmine italic">desobedecer.</span>
       </h1>
 
-      <div className="space-y-8 text-lg leading-relaxed text-ink/85">
-        <p className="text-2xl md:text-3xl font-display uppercase text-ink leading-tight">
+      <div className="space-y-8 text-base sm:text-lg leading-relaxed text-ink/85 font-medium">
+        <p className="text-xl sm:text-2xl md:text-3xl font-display uppercase text-ink leading-snug font-bold">
           Metáfora nace porque el mercado del libro centroamericano expulsa a las voces que más
           necesitamos leer.
         </p>

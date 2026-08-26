@@ -36,20 +36,24 @@ export function CartelCollage({
             className="h-full w-full object-cover grayscale contrast-125"
           />
           {tag && (
-            <span className="absolute top-3 left-3 bg-mustard px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink">
+            <span className="absolute top-3 left-3 bg-mustard px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-ink">
               {tag}
             </span>
           )}
         </div>
       )}
       <div className="p-5 border-t border-ink/15">
-        <h3 className="font-display text-2xl uppercase leading-tight">{title}</h3>
+        <h3 className="font-display text-2xl uppercase leading-tight font-bold">{title}</h3>
         {meta && (
-          <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-carmine">
+          <p className="mt-1 font-mono text-xs font-semibold uppercase tracking-wider text-carmine">
             {meta}
           </p>
         )}
-        {children && <p className="mt-3 text-sm leading-relaxed text-ink/75">{children}</p>}
+        {children && (
+          <p className="mt-3 font-body text-sm leading-relaxed text-ink/85 font-medium">
+            {children}
+          </p>
+        )}
       </div>
     </article>
   );

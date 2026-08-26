@@ -28,31 +28,35 @@ function PaginaContactoEditorial() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-ink text-cream p-8">
-          <h3 className="font-display text-3xl uppercase mb-4 text-mustard">Manuscritos</h3>
-          <p className="text-sm leading-relaxed text-cream/85 mb-4">
+          <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 text-mustard font-bold">
+            Manuscritos
+          </h3>
+          <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 font-medium mb-4">
             Requisitos de manuscritos, correo y recepción pendientes de verificación.
           </p>
-          <span className="font-mono text-[11px] uppercase tracking-widest text-mustard">
+          <span className="font-mono text-xs uppercase tracking-wider text-mustard font-bold">
             → Correo pendiente de verificación
           </span>
         </div>
 
         <div className="bg-carmine text-cream p-8">
-          <h3 className="font-display text-3xl uppercase mb-4">Distribución</h3>
-          <p className="text-sm leading-relaxed text-cream/90 mb-4">
+          <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 font-bold">
+            Distribución
+          </h3>
+          <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 font-medium mb-4">
             Condiciones de distribución, cobertura y correo pendientes de verificación.
           </p>
-          <span className="font-mono text-[11px] uppercase tracking-widest text-cream">
+          <span className="font-mono text-xs uppercase tracking-wider text-cream font-bold">
             → Correo pendiente de verificación
           </span>
         </div>
 
         <div className="bg-mustard text-ink p-8 border-2 border-ink">
-          <h3 className="font-display text-3xl uppercase mb-4">Prensa</h3>
-          <p className="text-sm leading-relaxed text-ink/85 mb-4">
+          <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4 font-bold">Prensa</h3>
+          <p className="font-body text-sm sm:text-base leading-relaxed text-ink/90 font-medium mb-4">
             Canal de prensa y dossier de imágenes pendientes de verificación.
           </p>
-          <span className="font-mono text-[11px] uppercase tracking-widest text-ink">
+          <span className="font-mono text-xs uppercase tracking-wider text-ink font-bold">
             → Correo pendiente de verificación
           </span>
         </div>
@@ -60,18 +64,20 @@ function PaginaContactoEditorial() {
 
       <div className="mt-16 border-2 border-ink p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div>
-          <span className="font-mono text-[11px] uppercase tracking-widest text-carmine">
+          <span className="font-mono text-xs uppercase tracking-widest text-carmine font-bold">
             Visítanos
           </span>
-          <h3 className="font-display text-4xl uppercase mt-2 leading-none">Taller Metáfora</h3>
-          <p className="mt-4 font-mono text-sm leading-relaxed text-ink/80">
+          <h3 className="font-display text-3xl sm:text-4xl uppercase mt-2 leading-none font-bold">
+            Taller Metáfora
+          </h3>
+          <p className="font-body text-base leading-relaxed text-ink/85 font-medium mt-4">
             Sede y dirección pendientes de verificación.
           </p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/60">
+          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/65 font-semibold">
             Horario · Pendiente de verificación
           </p>
         </div>
-        <div className="font-display text-3xl md:text-4xl uppercase leading-tight text-ink/85">
+        <div className="font-display text-2xl sm:text-3xl md:text-4xl uppercase leading-snug text-ink/85 font-bold">
           «Información editorial pendiente de confirmación oficial.»
         </div>
       </div>

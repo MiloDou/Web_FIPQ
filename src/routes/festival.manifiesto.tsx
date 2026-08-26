@@ -17,15 +17,15 @@ export const Route = createFileRoute("/festival/manifiesto")({
 function PaginaManifiesto() {
   return (
     <article className="max-w-4xl">
-      <span className="block font-mono text-[11px] uppercase tracking-[0.3em] text-carmine mb-4">
+      <span className="block font-mono text-xs uppercase tracking-[0.25em] text-carmine font-bold mb-4">
         Principios del festival · Archivo histórico
       </span>
-      <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase leading-[0.9] tracking-tight mb-10 text-balance break-words font-bold">
+      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-tight mb-10 font-bold">
         La poesía <span className="text-carmine italic">se comparte</span>, se pone en acción.
       </h1>
 
-      <div className="space-y-8 text-lg leading-relaxed text-ink/85">
-        <p className="text-2xl md:text-3xl font-display uppercase text-ink leading-tight text-balance">
+      <div className="space-y-8 text-base sm:text-lg leading-relaxed text-ink/85 font-medium">
+        <p className="text-xl sm:text-2xl md:text-3xl font-display uppercase text-ink leading-snug font-bold">
           La poesía es una práctica pública: nace del encuentro entre quienes escriben, quienes
           escuchan y los territorios que hacen posible la conversación.
         </p>
