@@ -28,8 +28,7 @@ function InicioPrincipal() {
     <div className="bg-cream text-ink font-body">
       <EncabezadoSitio />
 
-      {/* HERO */}
-      <section className="relative h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-8 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
+      <section className="relative h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center pt-8 pb-16 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
         {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <img
@@ -68,7 +67,7 @@ function InicioPrincipal() {
         {/* Bottom scroll indicator */}
         <a
           href="#direcciones"
-          className="relative z-10 flex flex-col items-center gap-1 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2"
+          className="relative z-10 flex flex-col items-center gap-1 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2 mt-4"
         >
           <span className="font-mono text-[9px] sm:text-xs uppercase tracking-[0.3em] text-cream/70 font-bold group-hover:text-carmine transition-colors">
             Elige tu camino ↓
