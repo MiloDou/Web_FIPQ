@@ -29,7 +29,7 @@ function InicioPrincipal() {
       <EncabezadoSitio />
 
       {/* HERO */}
-      <section className="relative min-h-[calc(100vh-65px)] w-full bg-carmine flex flex-col justify-center items-center py-16 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-65px)] w-full bg-carmine flex flex-col justify-between items-center py-12 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
         <div className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none z-20">
           <img
             src={imagenesSitio.wallCollage}
@@ -45,8 +45,11 @@ function InicioPrincipal() {
           FUEGO
         </span>
 
+        {/* Top Spacer */}
+        <div className="h-4 sm:h-6 pointer-events-none" />
+
         {/* Hero Center Branding - Perfectly centered */}
-        <div className="relative z-10 flex flex-col items-center max-w-4xl my-auto">
+        <div className="relative z-10 flex flex-col items-center max-w-4xl my-auto py-6">
           <img
             src={logoImage}
             alt="Logo Festival Internacional de Poesía de Quetzaltenango"
@@ -64,13 +67,13 @@ function InicioPrincipal() {
           </p>
         </div>
 
-        {/* Bottom scroll / directions indicator - positioned absolutely at the bottom */}
+        {/* Bottom scroll / directions indicator */}
         <a
           href="#direcciones"
-          className="absolute bottom-6 inset-x-0 z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-90 transition-opacity"
+          className="relative z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-90 transition-opacity pb-2"
         >
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream font-bold group-hover:text-mustard transition-colors">
-            Elige tu camino
+            Elige tu camino ↓
           </span>
           <div className="w-px h-6 sm:h-8 bg-cream/60 animate-pulse group-hover:bg-mustard transition-colors" />
         </a>
