@@ -29,7 +29,7 @@ function InicioPrincipal() {
       <EncabezadoSitio />
 
       {/* HERO */}
-      <section className="relative min-h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-16 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
+      <section className="relative h-screen w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-8 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
         {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <img
@@ -41,26 +41,26 @@ function InicioPrincipal() {
         </div>
 
         {/* Top Spacer & Logo - Restored to original colors with a zine border stamp */}
-        <div className="relative z-10 flex flex-col items-center mt-8">
+        <div className="relative z-10 flex flex-col items-center mt-4">
           <img
             src={logoImage}
             alt="Logo FIPQ"
-            width={120}
-            height={120}
-            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain rounded-full border-2 border-carmine p-1 bg-cream shadow-[4px_4px_0_0_#1a1a1a] animate-fade-in-up"
+            width={100}
+            height={100}
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full border-2 border-carmine p-1 bg-cream shadow-[3px_3px_0_0_#1a1a1a] animate-fade-in-up"
           />
         </div>
 
-        {/* Hero Center Branding - Perfectly balanced, centered and highly readable layout */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-10 px-4 flex-1">
-          <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.04em] leading-[1.15] select-none text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl">
+        {/* Hero Center Branding - Perfectly balanced, centered and fits strictly above the fold */}
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-6 px-4 flex-1">
+          <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.05em] leading-[1.12] select-none text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-full">
             FESTIVAL INTERNACIONAL
             <br />
             DE POESÍA DE
             <br />
             <span className="text-carmine">QUETZALTENANGO</span>
           </h1>
-          <p className="mt-8 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] leading-relaxed font-bold">
+          <p className="mt-6 max-w-xl text-cream/70 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
@@ -68,12 +68,12 @@ function InicioPrincipal() {
         {/* Bottom scroll indicator */}
         <a
           href="#direcciones"
-          className="relative z-10 flex flex-col items-center gap-2 group cursor-pointer hover:opacity-100 opacity-85 transition-opacity pb-4"
+          className="relative z-10 flex flex-col items-center gap-1 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2"
         >
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cream/70 font-bold group-hover:text-carmine transition-colors">
+          <span className="font-mono text-[9px] sm:text-xs uppercase tracking-[0.3em] text-cream/70 font-bold group-hover:text-carmine transition-colors">
             Elige tu camino ↓
           </span>
-          <div className="w-px h-8 bg-cream/30 animate-pulse group-hover:bg-carmine transition-colors" />
+          <div className="w-px h-6 bg-cream/30 animate-pulse group-hover:bg-carmine transition-colors" />
         </a>
       </section>
 
