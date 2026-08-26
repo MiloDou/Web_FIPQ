@@ -264,26 +264,9 @@ function PaginaManifiesto() {
         </div>
       </div>
 
-      {/* Sello de Autenticidad */}
-      <div className="mt-16 flex items-center gap-6 font-mono text-[11px] uppercase tracking-widest text-ink/60">
-        <div className="w-24 h-24 border-2 border-carmine rounded-full flex items-center justify-center -rotate-12 shrink-0 p-2">
-          <span className="text-carmine text-center leading-tight font-bold text-[9px]">
-            FIPQ 19
-            <br />
-            SIMÓN
-            <br />
-            PEDROZA
-          </span>
-        </div>
-        <p>
-          Declaración y principios fundacionales del 19 Festival Internacional de Poesía de
-          Quetzaltenango.
-        </p>
-      </div>
-
       {/* Sección en Contexto - Unificada abajo */}
-      <div className="mt-20 pt-16 border-t-2 border-ink">
-        <h2 className="font-display text-3xl sm:text-5xl md:text-6xl uppercase mb-8 font-bold">
+      <div className="mt-12">
+        <h2 className="font-display text-3xl sm:text-5xl md:text-6xl uppercase mb-8 font-bold text-ink">
           El festival <span className="text-carmine italic">en contexto.</span>
         </h2>
         <p className="max-w-3xl text-base sm:text-lg leading-relaxed text-ink/85 font-medium mb-10 tracking-[0.02em]">
