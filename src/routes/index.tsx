@@ -40,14 +40,14 @@ function InicioPrincipal() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer & Logo */}
+        {/* Top Spacer & Logo - Blended organically with the zine bookshelf background */}
         <div className="relative z-10 flex flex-col items-center mt-6">
           <img
             src={logoImage}
             alt="Logo FIPQ"
             width={120}
             height={120}
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain mix-blend-screen opacity-90 animate-fade-in-up"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain rounded-full border border-cream/20 p-2 bg-[#0a0a0a]/50 backdrop-blur-xs grayscale opacity-75 hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] animate-fade-in-up"
           />
         </div>
 

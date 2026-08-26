@@ -30,7 +30,9 @@ export function EncabezadoSitio() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-md transition-all duration-500 ease-in-out ${
+      className={`${
+        isHome ? "fixed" : "sticky"
+      } top-0 left-0 right-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur-md transition-all duration-500 ease-in-out ${
         isHome && !scrolled
           ? "-translate-y-full opacity-0 pointer-events-none"
           : "translate-y-0 opacity-100 pointer-events-auto"
