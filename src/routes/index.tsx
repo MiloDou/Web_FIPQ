@@ -40,34 +40,27 @@ function InicioPrincipal() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer & Logo - Blended organically with the zine bookshelf background */}
-        <div className="relative z-10 flex flex-col items-center mt-6">
+        {/* Top Spacer & Logo - Restored to original colors with a zine border stamp */}
+        <div className="relative z-10 flex flex-col items-center mt-8">
           <img
             src={logoImage}
             alt="Logo FIPQ"
             width={120}
             height={120}
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain rounded-full border border-cream/20 p-2 bg-[#0a0a0a]/50 backdrop-blur-xs grayscale opacity-75 hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] animate-fade-in-up"
+            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain rounded-full border-2 border-carmine p-1 bg-cream shadow-[4px_4px_0_0_#1a1a1a] animate-fade-in-up"
           />
         </div>
 
-        {/* Hero Center Branding - Leoleo inspired screen-filling typography with tight spacing */}
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-2">
-          <h1 className="font-display font-black uppercase tracking-[-0.02em] leading-[0.88] select-none text-center flex flex-col text-cream">
-            <span className="text-[9.5vw] sm:text-[8vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[6vw]">
-              FESTIVAL
-            </span>
-            <span className="text-[12.5vw] sm:text-[11.5vw] md:text-[10vw] lg:text-[9vw] xl:text-[8.5vw]">
-              INTERNACIONAL
-            </span>
-            <span className="text-[9.5vw] sm:text-[8vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[6vw]">
-              DE POESIA DE
-            </span>
-            <span className="text-[12.5vw] sm:text-[11.5vw] md:text-[10vw] lg:text-[9vw] xl:text-[8.5vw]">
-              QUETZALTENANGO
-            </span>
+        {/* Hero Center Branding - Perfectly balanced, centered and highly readable layout */}
+        <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-10 px-4 flex-1">
+          <h1 className="font-display font-extrabold uppercase text-cream tracking-[0.04em] leading-[1.15] select-none text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl">
+            FESTIVAL INTERNACIONAL
+            <br />
+            DE POESÍA DE
+            <br />
+            <span className="text-carmine">QUETZALTENANGO</span>
           </h1>
-          <p className="mt-10 max-w-xl text-cream/60 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] leading-relaxed font-bold">
+          <p className="mt-8 max-w-xl text-cream/70 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] leading-relaxed font-bold">
             Comunidad, territorio y memoria desde Xelajuj No’j
           </p>
         </div>
