@@ -285,6 +285,41 @@ html {
   animation: slow-pan 18s ease-in-out infinite alternate;
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
 .torn-bottom {
   -webkit-mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
