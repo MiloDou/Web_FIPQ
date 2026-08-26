@@ -40,12 +40,8 @@ function InicioPrincipal() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/40" />
         </div>
 
-        {/* Top Spacer & Label (Inspired by Leoleo label) */}
-        <div className="relative z-10 flex flex-col items-center mt-6">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-cream font-bold">
-            FIPQ — EST. 2004
-          </span>
-        </div>
+        {/* Top Spacer */}
+        <div className="h-8 sm:h-12" />
 
         {/* Hero Center Branding - Leoleo inspired screen-filling typography with tight spacing */}
         <div className="relative z-10 flex flex-col items-center justify-center max-w-7xl my-auto py-12 px-2">
