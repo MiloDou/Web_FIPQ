@@ -15,9 +15,15 @@ export function EncabezadoSitio() {
 
     const updateHeader = () => {
       const currentScrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const threshold = viewportHeight - 120; // Just before the fold ends
 
-      if (isHome && currentScrollY < 120) {
-        setVisible(false);
+      if (isHome) {
+        if (currentScrollY >= threshold) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
       } else {
         if (currentScrollY < lastScrollY) {
           setVisible(true); // Scroll up -> show
@@ -39,7 +45,7 @@ export function EncabezadoSitio() {
     if (!isHome) {
       setVisible(true);
     } else {
-      setVisible(window.scrollY > 120);
+      setVisible(window.scrollY >= window.innerHeight - 120);
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
