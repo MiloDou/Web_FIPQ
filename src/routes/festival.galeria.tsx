@@ -49,7 +49,7 @@ function PaginaGaleria() {
               alt={foto.caption}
               loading="lazy"
               decoding="async"
-              className="block w-full h-auto shadow-[4px_4px_0_0_rgba(26,26,26,0.85)] md:shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[8px_8px_0_0_rgba(177,42,59,0.9)] md:group-hover:shadow-[12px_12px_0_0_rgba(177,42,59,0.9)] transition-shadow duration-300"
+              className="block w-full h-auto shadow-[4px_4px_0_0_rgba(26,26,26,0.85)] md:shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[8px_8px_0_0_rgba(186,0,56,0.9)] md:group-hover:shadow-[12px_12px_0_0_rgba(186,0,56,0.9)] transition-shadow duration-300"
             />
             <figcaption className="mt-2 md:mt-3 font-mono text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-ink/80 group-hover:text-carmine transition-colors">
               {foto.caption}

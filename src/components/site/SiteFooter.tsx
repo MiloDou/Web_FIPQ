@@ -64,18 +64,6 @@ export function PieSitio() {
               <Music2 size={16} aria-hidden="true" />
               Spotify
             </a>
-            <Link
-              to="/festival/archivo"
-              className="px-4 py-2 bg-ink text-cream font-display text-sm uppercase cursor-pointer hover:bg-carmine transition-colors"
-            >
-              Archivo Digital
-            </Link>
-            <Link
-              to="/editorial/catalogo"
-              className="px-4 py-2 bg-ink text-cream font-display text-sm uppercase cursor-pointer hover:bg-carmine transition-colors"
-            >
-              Catálogo
-            </Link>
           </div>
         </div>
         <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between text-[10px] font-mono uppercase tracking-widest text-ink/60">

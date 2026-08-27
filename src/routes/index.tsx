@@ -112,15 +112,15 @@ function InicioPrincipal() {
               occidente de Guatemala.
             </p>
           </div>
-          <ul className="relative z-10 mt-6 md:mt-0 space-y-4 text-cream font-mono text-xs sm:text-sm font-semibold opacity-100 md:opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+          <ul className="relative z-10 mt-6 md:mt-0 space-y-3 text-cream font-display text-lg sm:text-2xl font-normal tracking-[0.08em] uppercase opacity-95 group-hover:opacity-100 transition-opacity duration-500">
             <li className="hover:text-mustard transition-colors">
-              <Link to="/festival/manifiesto" hash="contenido" className="flex items-center gap-1.5 w-fit">
-                <span>→</span> <span>Manifiesto</span>
+              <Link to="/festival/manifiesto" hash="contenido" className="block w-fit">
+                Manifiesto
               </Link>
             </li>
             <li className="hover:text-mustard transition-colors">
-              <Link to="/festival/programa" hash="contenido" className="flex items-center gap-1.5 w-fit">
-                <span>→</span> <span>Programa</span>
+              <Link to="/festival/programa" hash="contenido" className="block w-fit">
+                Programa
               </Link>
             </li>
           </ul>
@@ -152,15 +152,15 @@ function InicioPrincipal() {
               festival.
             </p>
           </div>
-          <ul className="relative z-10 mt-6 md:mt-0 space-y-4 text-ink font-mono text-xs sm:text-sm font-semibold opacity-100 md:opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+          <ul className="relative z-10 mt-6 md:mt-0 space-y-3 text-ink font-display text-lg sm:text-2xl font-normal tracking-[0.08em] uppercase opacity-95 group-hover:opacity-100 transition-opacity duration-500">
             <li className="hover:text-carmine transition-colors">
-              <Link to="/editorial/catalogo" hash="contenido" className="flex items-center gap-1.5 w-fit">
-                <span>→</span> <span>Catálogo editorial</span>
+              <Link to="/editorial/catalogo" hash="contenido" className="block w-fit">
+                Catálogo editorial
               </Link>
             </li>
             <li className="hover:text-carmine transition-colors">
-              <Link to="/editorial/contacto" hash="contenido" className="flex items-center gap-1.5 w-fit">
-                <span>→</span> <span>Contacto</span>
+              <Link to="/editorial/contacto" hash="contenido" className="block w-fit">
+                Contacto
               </Link>
             </li>
           </ul>

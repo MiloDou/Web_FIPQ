@@ -42,10 +42,12 @@ export const imagenesSitio = {
   booksStack: obtenerImagenPorNombre("image02.jpg"),
   poetPortrait: obtenerImagenPorNombre("image03.jpg"),
   stageNight: obtenerImagenPorNombre("image32.jpg"),
-  crowdBw: obtenerImagenPorNombre("image04.jpg"),
+  crowdBw: obtenerImagenPorNombre("image81.jpeg"),
   posterRed: obtenerImagenPorNombre("image03.jpg"),
   risographBook: obtenerImagenPorNombre("image24.jpg"),
   workshop: obtenerImagenPorNombre("image03.jpg"),
+  festivalHeaderBg: obtenerImagenPorNombre("image86.jpeg"),
+  editorialHeaderBg: obtenerImagenPorNombre("image12.jpg"),
 };
 
 export const logoImage = Object.values(recursoLogo)[0] ?? "";

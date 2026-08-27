@@ -1,20 +1,17 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
-import type { ReactNode } from "react";
-
-type EnlaceRama = { to: string; label: string };
+import { ReactNode } from "react";
+import { imagenesSitio } from "@/assets/contenido";
 
 const configuracionRamas = {
   festival: {
-    eyebrow: " Acción Poética",
     title: "Festival",
-    accent: "Metáfora ",
     headerClass: "bg-carmine text-cream",
+    bgImage: imagenesSitio.festivalHeaderBg,
   },
   editorial: {
-    eyebrow: "Palabra Impresa",
     title: "Metáfora",
-    accent: "Editorial Metáfora",
     headerClass: "bg-ink text-cream",
+    bgImage: imagenesSitio.editorialHeaderBg,
   },
 } as const;
 
@@ -31,22 +28,26 @@ export function DisenoRama({
 
   return (
     <>
-      <section className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink`}>
-        <div className="mx-auto max-w-7xl px-6 py-10">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <span className="block font-mono text-[11px] uppercase tracking-[0.3em] opacity-80">
-                {config.eyebrow}
-              </span>
-              <h2 className="font-display text-5xl md:text-7xl uppercase leading-none mt-2">
-                {config.title}
-              </h2>
-              <p className="mt-3 max-w-xl text-sm md:text-base opacity-80">{tagline}</p>
-            </div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] opacity-70">
-              {config.accent}
-            </span>
+      <section className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink min-h-[300px] md:min-h-[380px] py-16 md:py-20 flex flex-col justify-center`}>
+        {/* Full-bleed Background Image with Flat screen-print texture (no gradients) */}
+        {config.bgImage && (
+          <div className="absolute inset-0 z-0 select-none pointer-events-none">
+            <img
+              src={config.bgImage}
+              alt=""
+              className="w-full h-full object-cover grayscale contrast-[1.3] brightness-[0.85] opacity-20 mix-blend-multiply"
+            />
           </div>
+        )}
+
+        {/* Text overlaid directly on the flat textured background (highly legible) */}
+        <div className="relative z-10 mx-auto max-w-7xl w-full px-6 flex flex-col justify-center">
+          <h2 className="font-display text-7xl sm:text-8xl md:text-9xl text-cream uppercase leading-none tracking-tight">
+            {config.title}
+          </h2>
+          <p className="mt-4 max-w-2xl font-body text-base sm:text-lg md:text-xl text-cream opacity-90 leading-relaxed tracking-wide">
+            {tagline}
+          </p>
         </div>
       </section>
       <main id="contenido" className="bg-cream text-ink">

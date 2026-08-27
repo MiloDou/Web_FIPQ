@@ -23,7 +23,7 @@ function DisenoFestival() {
       <EncabezadoSitio />
       <DisenoRama
         branch="festival"
-        tagline="Poesía en acción: lecturas, talleres y comunidad desde Xelajuj No’j y el occidente."
+        tagline="Comunidad poética: lecturas, talleres y memoria viva compartida desde Xelajuj No’j y el occidente de Guatemala."
       />
       <PieSitio />
     </div>
