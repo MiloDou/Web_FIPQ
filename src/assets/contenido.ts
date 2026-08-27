@@ -17,6 +17,19 @@ export const contenidoImages = Object.entries(recursosContenido)
   .sort(([first], [second]) => first.localeCompare(second, undefined, { numeric: true }))
   .map(([, url]) => url);
 
+export const galeriaImages = [
+  obtenerImagenPorNombre("image25.jpg"),
+  obtenerImagenPorNombre("image26.jpg"),
+  obtenerImagenPorNombre("image28.jpg"),
+  obtenerImagenPorNombre("image30.jpg"),
+  obtenerImagenPorNombre("image31.jpg"),
+  obtenerImagenPorNombre("image33.jpg"),
+  obtenerImagenPorNombre("image34.jpg"),
+  obtenerImagenPorNombre("image35.jpg"),
+  obtenerImagenPorNombre("image36.jpg"),
+  obtenerImagenPorNombre("image37.jpg"),
+];
+
 const imagenesDocumentales = [
   obtenerImagenPorNombre("image01.jpg"),
   obtenerImagenPorNombre("image02.jpg"),

@@ -3,13 +3,6 @@ import { EncabezadoSitio } from "@/components/site/SiteHeader";
 import { PieSitio } from "@/components/site/SiteFooter";
 import { DisenoRama } from "@/components/site/BranchLayout";
 
-const links = [
-  { to: "/editorial", label: "Inicio" },
-  { to: "/editorial/catalogo", label: "Catálogo" },
-  { to: "/editorial/archivo", label: "Archivo" },
-  { to: "/editorial/contacto", label: "Contacto" },
-];
-
 export const Route = createFileRoute("/editorial")({
   head: () => ({
     meta: [
@@ -30,7 +23,6 @@ function DisenoEditorial() {
       <DisenoRama
         branch="editorial"
         tagline="De la voz al libro. Memoria editorial y poesía centroamericana desde el festival."
-        links={links}
       />
       <PieSitio />
     </div>

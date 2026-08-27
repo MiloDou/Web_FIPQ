@@ -3,13 +3,6 @@ import { EncabezadoSitio } from "@/components/site/SiteHeader";
 import { PieSitio } from "@/components/site/SiteFooter";
 import { DisenoRama } from "@/components/site/BranchLayout";
 
-const links = [
-  { to: "/festival", label: "Inicio" },
-  { to: "/festival/manifiesto", label: "Manifiesto" },
-  { to: "/festival/programa", label: "Programa" },
-  { to: "/festival/galeria", label: "Galería" },
-];
-
 export const Route = createFileRoute("/festival")({
   head: () => ({
     meta: [
@@ -31,7 +24,6 @@ function DisenoFestival() {
       <DisenoRama
         branch="festival"
         tagline="Poesía en acción: lecturas, talleres y comunidad desde Xelajuj No’j y el occidente."
-        links={links}
       />
       <PieSitio />
     </div>

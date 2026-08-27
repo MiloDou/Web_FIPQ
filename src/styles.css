@@ -5,7 +5,7 @@
 /*
  * FIPQ + Editorial Metáfora — Urban Collage Zine.
  * Carmín #B12A3B · Crema #F5F2E9 · Tinta #1A1A1A · Mostaza #E3A01D
- * Display: Anton · Body: Public Sans · Mono: JetBrains Mono
+ * Font: Bebas Neue (Globally)
  */
 
 @theme {
@@ -13,9 +13,9 @@
   --color-cream: #f5f2e9;
   --color-ink: #1a1a1a;
   --color-mustard: #e3a01d;
-  --font-display: "Anton", "Impact", sans-serif;
-  --font-body: "Public Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Bebas Neue", sans-serif;
+  --font-mono: "Bebas Neue", sans-serif;
 }
 
 @theme inline {
@@ -26,6 +26,16 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Typography scale adjustments for Bebas Neue */
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.875rem;
+  --text-5xl: 2.25rem;
+  --text-6xl: 2.75rem;
+  --text-7xl: 3.5rem;
+  --text-8xl: 4.5rem;
+  --text-9xl: 5.5rem;
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -145,10 +155,22 @@ html {
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-body);
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 400;
+    letter-spacing: 0.01em;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 400;
   }
 
   ::selection {
@@ -169,84 +191,90 @@ html {
 
 /* 
  * Global Typography System Tokens & Utilities
- * Headings: Anton (font-display)
- * Body text: Public Sans (font-body)
- * Labels/Mono: JetBrains Mono (font-mono)
+ * ALL FONTS: Bebas Neue (All-Caps Display Font)
+ * Adjusted tracking and leading to ensure legibility.
  */
+@layer utilities {
+  .font-display {
+    font-family: "Bebas Neue", sans-serif !important;
+    letter-spacing: 0.01em;
+  }
+  
+  .animate-marquee {
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
 @utility heading-hero {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 6vw, 6rem);
-  line-height: 0.95;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: clamp(3.5rem, 8vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
 }
 
 @utility heading-section {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 4.5vw, 4.5rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.025em;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
 }
 
 @utility heading-card {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  line-height: 1.15;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
 }
 
 @utility heading-sub {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.2;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 }
 
 @utility body-lead {
   font-family: var(--font-body);
-  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-  line-height: 1.6;
-  font-weight: 500;
+  font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
   color: rgba(26, 26, 26, 0.9);
 }
 
 @utility body-normal {
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.625;
-  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
   color: rgba(26, 26, 26, 0.85);
 }
 
 @utility body-small {
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
   color: rgba(26, 26, 26, 0.8);
 }
 
 @utility meta-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
+  font-size: 1.125rem;
   letter-spacing: 0.25em;
-  font-weight: 700;
   color: var(--color-carmine);
 }
 
 @utility meta-label {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
+  font-size: 1rem;
   letter-spacing: 0.15em;
-  font-weight: 600;
 }
 
 @keyframes flicker {
@@ -269,6 +297,7 @@ html {
     opacity: 0.45;
   }
 }
+
 @keyframes slow-pan {
   0% {
     transform: scale(1.05) translate(0, 0);
@@ -278,11 +307,26 @@ html {
   }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
 .animate-flicker {
   animation: flicker 4s infinite;
 }
 .animate-slow-pan {
   animation: slow-pan 18s ease-in-out infinite alternate;
+}
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-delayed 9s ease-in-out 3s infinite;
 }
 
 @keyframes fade-in-up {

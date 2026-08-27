@@ -78,10 +78,9 @@ export function PieSitio() {
             </Link>
           </div>
         </div>
-        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-2 justify-between text-[10px] font-mono uppercase tracking-widest text-ink/60">
+        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between text-[10px] font-mono uppercase tracking-widest text-ink/60">
           <span>© {new Date().getFullYear()} Editorial Metáfora</span>
           <span>Hecho en el valle de Xelajuj No’j</span>
-          <span>Archivo histórico </span>
         </div>
       </div>
     </footer>

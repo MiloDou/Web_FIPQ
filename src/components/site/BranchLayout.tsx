@@ -21,15 +21,12 @@ const configuracionRamas = {
 export function DisenoRama({
   branch,
   tagline,
-  links,
   children,
 }: {
   branch: keyof typeof configuracionRamas;
   tagline: string;
-  links: EnlaceRama[];
   children?: ReactNode;
 }) {
-  const location = useLocation();
   const config = configuracionRamas[branch];
 
   return (
@@ -50,28 +47,9 @@ export function DisenoRama({
               {config.accent}
             </span>
           </div>
-          <nav className="mt-8 flex items-center overflow-x-auto no-scrollbar gap-1.5 border-t border-cream/20 pt-4 pb-1 -mx-6 px-6 sm:mx-0 sm:px-0">
-            {links.map((link) => {
-              const active = location.pathname === link.to;
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  aria-current={active ? "page" : undefined}
-                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all ${
-                    active
-                      ? "bg-cream text-ink font-bold shadow-sm"
-                      : "text-cream/80 hover:bg-cream/15 hover:text-cream"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
       </section>
-      <main className="bg-cream text-ink">
+      <main id="contenido" className="bg-cream text-ink">
         <div className="mx-auto max-w-7xl px-6 py-20">
           {children}
           <Outlet />
