@@ -14,8 +14,7 @@ export function Marquee({
   direction = "left",
 }: MarqueeProps) {
   // We'll use arbitrary CSS variables for duration and direction, or Tailwind classes if defined
-  const durationStyle =
-    speed === "slow" ? "40s" : speed === "fast" ? "15s" : "25s";
+  const durationStyle = speed === "slow" ? "40s" : speed === "fast" ? "15s" : "25s";
   const directionStyle = direction === "right" ? "reverse" : "normal";
 
   return (
@@ -24,18 +23,18 @@ export function Marquee({
     >
       <div
         className="flex min-w-full shrink-0 items-center justify-around gap-12 pr-12 animate-marquee"
-        style={{ 
+        style={{
           animationDuration: durationStyle,
-          animationDirection: directionStyle 
+          animationDirection: directionStyle,
         }}
       >
         {children}
       </div>
       <div
         className="flex min-w-full shrink-0 items-center justify-around gap-12 pr-12 animate-marquee"
-        style={{ 
+        style={{
           animationDuration: durationStyle,
-          animationDirection: directionStyle 
+          animationDirection: directionStyle,
         }}
         aria-hidden="true"
       >

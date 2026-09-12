@@ -1,0 +1,52 @@
+import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
+
+export function FestivalProgramPage() {
+  return (
+    <>
+      <EncabezadoSeccion
+        eyebrow="Agenda de actividades"
+        title="Próximamente"
+        accent="Estamos preparando el programa."
+      >
+        El cronograma completo de actividades, lecturas, talleres y encuentros comunitarios del
+        Festival será publicado en este espacio muy pronto.
+      </EncabezadoSeccion>
+
+      <div className="space-y-12 pb-32">
+        <AnimatedSection>
+          <div className="border-t-2 border-ink pt-12 flex flex-col items-center justify-center text-center min-h-[40vh]">
+            <span className="font-mono text-sm sm:text-base tracking-widest uppercase text-carmine font-bold mb-4">
+              [ En construcción ]
+            </span>
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase leading-none font-bold text-ink/20">
+              Programa en
+              <br />
+              desarrollo
+            </h2>
+            <p className="mt-6 max-w-md text-ink/70 font-body text-sm sm:text-base leading-relaxed">
+              Mantente atento a nuestras redes oficiales. Pronto revelaremos los horarios y sedes de
+              la próxima edición.
+            </p>
+            <div className="mt-8 flex gap-4">
+              <a
+                href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-ink text-cream hover:bg-carmine px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] cursor-pointer"
+              >
+                Seguir en Facebook
+              </a>
+              <a
+                href="/"
+                className="bg-white text-ink border-2 border-ink hover:bg-ink/5 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] cursor-pointer"
+              >
+                Volver al inicio
+              </a>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </>
+  );
+}

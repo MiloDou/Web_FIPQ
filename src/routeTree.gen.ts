@@ -20,6 +20,7 @@ import { Route as EditorialManifiestoRouteImport } from './routes/editorial.mani
 import { Route as EditorialPortafolioRouteImport } from './routes/editorial.portafolio'
 import { Route as FestivalIndexRouteImport } from './routes/festival.index'
 import { Route as FestivalArchivoRouteImport } from './routes/festival.archivo'
+import { Route as FestivalFipq21RouteImport } from './routes/festival.fipq21'
 import { Route as FestivalGaleriaRouteImport } from './routes/festival.galeria'
 import { Route as FestivalManifiestoRouteImport } from './routes/festival.manifiesto'
 import { Route as FestivalProgramaRouteImport } from './routes/festival.programa'
@@ -79,6 +80,11 @@ const FestivalArchivoRoute = FestivalArchivoRouteImport.update({
   path: '/archivo',
   getParentRoute: () => FestivalRoute,
 } as any)
+const FestivalFipq21Route = FestivalFipq21RouteImport.update({
+  id: '/fipq21',
+  path: '/fipq21',
+  getParentRoute: () => FestivalRoute,
+} as any)
 const FestivalGaleriaRoute = FestivalGaleriaRouteImport.update({
   id: '/galeria',
   path: '/galeria',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
   '/festival/archivo': typeof FestivalArchivoRoute
+  '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
   '/festival/programa': typeof FestivalProgramaRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
   '/festival/archivo': typeof FestivalArchivoRoute
+  '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
   '/festival/programa': typeof FestivalProgramaRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
   '/festival/archivo': typeof FestivalArchivoRoute
+  '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
   '/festival/programa': typeof FestivalProgramaRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
     | '/festival/archivo'
+    | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
     | '/festival/programa'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
     | '/festival/archivo'
+    | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
     | '/festival/programa'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
     | '/festival/archivo'
+    | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
     | '/festival/programa'
@@ -276,6 +288,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FestivalArchivoRouteImport
       parentRoute: typeof FestivalRoute
     }
+    '/festival/fipq21': {
+      id: '/festival/fipq21'
+      path: '/fipq21'
+      fullPath: '/festival/fipq21'
+      preLoaderRoute: typeof FestivalFipq21RouteImport
+      parentRoute: typeof FestivalRoute
+    }
     '/festival/galeria': {
       id: '/festival/galeria'
       path: '/galeria'
@@ -324,6 +343,7 @@ const EditorialRouteWithChildren = EditorialRoute._addFileChildren(
 
 interface FestivalRouteChildren {
   FestivalArchivoRoute: typeof FestivalArchivoRoute
+  FestivalFipq21Route: typeof FestivalFipq21Route
   FestivalGaleriaRoute: typeof FestivalGaleriaRoute
   FestivalManifiestoRoute: typeof FestivalManifiestoRoute
   FestivalProgramaRoute: typeof FestivalProgramaRoute
@@ -332,6 +352,7 @@ interface FestivalRouteChildren {
 
 const FestivalRouteChildren: FestivalRouteChildren = {
   FestivalArchivoRoute: FestivalArchivoRoute,
+  FestivalFipq21Route: FestivalFipq21Route,
   FestivalGaleriaRoute: FestivalGaleriaRoute,
   FestivalManifiestoRoute: FestivalManifiestoRoute,
   FestivalProgramaRoute: FestivalProgramaRoute,

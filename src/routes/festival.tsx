@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { EncabezadoSitio } from "@/components/site/SiteHeader";
-import { PieSitio } from "@/components/site/SiteFooter";
-import { DisenoRama } from "@/components/site/BranchLayout";
+import { EncabezadoSitio } from "@/components/layout/SiteHeader";
+import { PieSitio } from "@/components/layout/SiteFooter";
+import { DisenoRama } from "@/components/layout/BranchLayout";
 
 export const Route = createFileRoute("/festival")({
   head: () => ({

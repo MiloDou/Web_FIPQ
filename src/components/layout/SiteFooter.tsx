@@ -8,10 +8,10 @@ export function PieSitio() {
         <div className="flex flex-wrap gap-8 justify-between items-end mb-16">
           <div className="max-w-sm">
             <div className="text-5xl font-display text-carmine mb-4 leading-none uppercase">
-              FIPQ
+              <i>FIPQ</i>
             </div>
             <p className="text-xs font-mono uppercase leading-relaxed">
-              Festival Internacional de Poesía de Quetzaltenango y Editorial Metáfora.
+              Festival Internacional de Poesía de Quetzaltenango y Metáfora Editores.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -67,7 +67,7 @@ export function PieSitio() {
           </div>
         </div>
         <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between text-[10px] font-mono uppercase tracking-widest text-ink/60">
-          <span>© {new Date().getFullYear()} Editorial Metáfora</span>
+          <span>© {new Date().getFullYear()} Metáfora Editores</span>
           <span>Hecho en el valle de Xelajuj No’j</span>
         </div>
       </div>

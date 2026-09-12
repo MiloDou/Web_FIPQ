@@ -13,6 +13,13 @@
   --color-cream: #f5f2e9;
   --color-ink: #1a1a1a;
   --color-mustard: #e3a01d;
+  
+  /* Semantic Tokens for Feedback (Accessibility & UX) */
+  --color-success: #166534;
+  --color-warning: #b45309;
+  --color-danger: #991b1b;
+  --color-info: #1e40af;
+
   --font-display: "Bebas Neue", sans-serif;
   --font-body: "Bebas Neue", sans-serif;
   --font-mono: "Bebas Neue", sans-serif;
@@ -35,7 +42,7 @@
   --text-7xl: 3.5rem;
   --text-8xl: 4.5rem;
   --text-9xl: 5.5rem;
-  
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -184,8 +191,9 @@ html {
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-carmine);
-    outline-offset: 2px;
+    outline: 3px solid var(--color-carmine);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
@@ -199,7 +207,7 @@ html {
     font-family: "Bebas Neue", sans-serif !important;
     letter-spacing: 0.01em;
   }
-  
+
   .animate-marquee {
     animation-name: marquee;
     animation-timing-function: linear;
@@ -208,8 +216,12 @@ html {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @utility heading-hero {
@@ -308,12 +320,22 @@ html {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 @keyframes float-delayed {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 .animate-flicker {

@@ -9,7 +9,7 @@ const configuracionRamas = {
     bgImage: imagenesSitio.festivalHeaderBg,
   },
   editorial: {
-    title: "Metáfora",
+    title: "Metáfora Editores",
     headerClass: "bg-ink text-cream",
     bgImage: imagenesSitio.editorialHeaderBg,
   },
@@ -25,10 +25,15 @@ export function DisenoRama({
   children?: ReactNode;
 }) {
   const config = configuracionRamas[branch];
+  const location = useLocation();
+  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const subRoute = pathSegments.length > 1 ? pathSegments[pathSegments.length - 1].replace(/-/g, " ") : "";
 
   return (
     <>
-      <section className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink min-h-[300px] md:min-h-[380px] py-16 md:py-20 flex flex-col justify-center`}>
+      <section
+        className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink min-h-[160px] md:min-h-[200px] pt-24 pb-8 md:pt-28 md:pb-10 flex flex-col justify-center`}
+      >
         {/* Full-bleed Background Image with Flat screen-print texture (no gradients) */}
         {config.bgImage && (
           <div className="absolute inset-0 z-0 select-none pointer-events-none">
@@ -42,10 +47,15 @@ export function DisenoRama({
 
         {/* Text overlaid directly on the flat textured background (highly legible) */}
         <div className="relative z-10 mx-auto max-w-7xl w-full px-6 flex flex-col justify-center">
-          <h2 className="font-display text-7xl sm:text-8xl md:text-9xl text-cream uppercase leading-none tracking-tight">
-            {config.title}
-          </h2>
-          <p className="mt-4 max-w-2xl font-body text-base sm:text-lg md:text-xl text-cream opacity-90 leading-relaxed tracking-wide">
+          <div className="flex flex-col gap-1">
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-widest opacity-80">
+              {config.title} {subRoute && ` / ${subRoute}`}
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
+              {subRoute ? subRoute : config.title}
+            </h2>
+          </div>
+          <p className="mt-3 max-w-2xl font-body text-sm sm:text-base md:text-lg text-cream opacity-90 leading-relaxed tracking-wide">
             {tagline}
           </p>
         </div>

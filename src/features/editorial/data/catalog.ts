@@ -1,0 +1,60 @@
+export const catalogTitles = [
+  ["Palabra de búho", "Negma Coy"],
+  ["Carta Astral", "Delia Quiñónez"],
+  ["Slogan de una bala expansiva", "Javier Payeras"],
+  ["Poemas muy violetas", "Chary Gumeta"],
+  ["Trilogía de la violencia", "René Morales"],
+  ["Mujeres del viento", "Varias autoras"],
+  ["Al centro de la belleza", "Varias autoras"],
+  ["Despatriados", "Chary Gumeta"],
+  ["Una palabra que perfora el tiempo", "Varios autores"],
+  ["Madre nosotros también somos historia", "Francisco Morales Santos"],
+  ["Antes del mar", "Julio Serrano"],
+  ["Edad geológica del miedo", "Carmen Lucía Alvarado"],
+  ["Aquí está tu pangea", "Paola Ochoa"],
+  ["Memoria 12 FIPQ", "Varios autores"],
+  ["Memoria 13 FIPQ", "Varios autores"],
+  ["Memoria 14 FIPQ", "Varios autores"],
+  ["Memoria 20 FIPQ", "Varios autores"],
+  ["Memoria 15 FIPQ", "Varios autores"],
+  ["Memoria de las piedras", "Marvin García"],
+  ["Volumen de islas", "Javier Payeras"],
+  ["Palabras para colgar en los árboles", "Varios autores"],
+  ["Entre laureles y Conquistadores", "Paul Haase"],
+  ["Inevitable", "David Robinson"],
+  ["En ninguno de tus mapas", "Guillermo Acuña"],
+  ["Vostok", "Guillermo Acuña"],
+  ["Al fondo del corazón", "Guillermo Acuña"],
+  ["Pequeñas rutas de un azacuán con frío", "José Aguilar"],
+  ["Como Tambores", "Rodolfo Dada"],
+  ["Poemas al margen del canon", "David Robinson"],
+  ["Salvia y la sorpresa que crece", "Keren Escobar"],
+  ["Ceibario / Unupilal", "Balam Rodrigo"],
+  ["Fragmentos de un vuelo", "Génesis Ramos"],
+  ["Kyol Txin (Palabra de niña), de Concepción Chiquirichapa", "Varios autores"],
+  ["Mitos", "David Robinson"],
+  ["Álbum familiar centroamericano", "Balam Rodrigo"],
+  ["Todo viaje empieza su final", "Javier Payeras"],
+  ["Poemas de la Zona Reina", "Mario Payeras"],
+  ["Notas bibliográficas", "Vania Vargas"],
+  ["Soles y lunas", "Vilma Sánchez"],
+  ["El órgano inextirpable del sueño", "Balam Rodrigo"],
+  ["Cuentos de la muerte que ronda", "Jorge Pinto Marín"],
+  ["La palabra pintada", "Hugo Gutiérrez"],
+  ["Cuadros sin costumbre", "Julio Serrano"],
+  ["Los dedos de mi mano", "Alaíde Foppa"],
+]
+  .sort(([tituloA, autorA], [tituloB, autorB]) => {
+    const ordenAutor = autorA.localeCompare(autorB, "es", { sensitivity: "base" });
+    return ordenAutor || tituloA.localeCompare(tituloB, "es", { sensitivity: "base" });
+  })
+  .map(([titulo, autor], indice) => ({ numero: indice + 1, titulo, autor }));
+
+export const catalogByAuthor = catalogTitles.reduce<Record<string, typeof catalogTitles>>(
+  (grupos, titulo) => {
+    grupos[titulo.autor] ??= [];
+    grupos[titulo.autor].push(titulo);
+    return grupos;
+  },
+  {},
+);

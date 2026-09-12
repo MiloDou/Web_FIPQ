@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-export function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function AnimatedSection({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -12,7 +18,7 @@ export function AnimatedSection({ children, className = "" }: { children: React.
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (ref.current) {
