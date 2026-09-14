@@ -4,16 +4,7 @@ import { AnimatedSection } from "@/components/shared/AnimatedSection";
 export function FestivalProgramPage() {
   return (
     <>
-      <EncabezadoSeccion
-        eyebrow="Agenda de actividades"
-        title="Próximamente"
-        accent="Estamos preparando el programa."
-      >
-        El cronograma completo de actividades, lecturas, talleres y encuentros comunitarios del
-        Festival será publicado en este espacio muy pronto.
-      </EncabezadoSeccion>
-
-      <div className="space-y-12 pb-32">
+      <div className="space-y-12 pb-2">
         <AnimatedSection>
           <div className="border-t-2 border-ink pt-12 flex flex-col items-center justify-center text-center min-h-[40vh]">
             <span className="font-mono text-sm sm:text-base tracking-widest uppercase text-carmine font-bold mb-4">

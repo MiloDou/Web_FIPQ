@@ -43,6 +43,21 @@ export const catalogTitles = [
   ["La palabra pintada", "Hugo Gutiérrez"],
   ["Cuadros sin costumbre", "Julio Serrano"],
   ["Los dedos de mi mano", "Alaíde Foppa"],
+  ["El bulevar de los infieles y otros poemas obscenos", "Faustino Desinach"],
+  ["Noche de ronda", "Daniel Matul Romero"],
+  ["Transporte público", "Montserrat Artavia"],
+  ["Portazo en la nariz de la musa", "Armando Alanís Pulido"],
+  ["Corazón equilibrista", "Gabriel Rodríguez"],
+  ["Películas de nadie", "Esteban Aguilar Ramírez"],
+  ["La chumpa roja", "Daniel Matul Romero"],
+  ["Son palomas pensajeras", "Rei Berroa"],
+  ["Certamen nacional de poesía", "Heidy Marroquín"],
+  ["Memoria 17 FIPQ", "Varios autores"],
+  ["La voz que no marchita, breve selección de poesía costarricense", "Varios autores"],
+  ["En la quietud de los altares, breve selección de poesía hondureña", "Varios autores"],
+  ["El mar que nos unió, breve selección de poesía panameña", "Varios autores"],
+  ["Pájaro profeta, breve selección de poesía salvadoreña", "Varios autores"],
+  ["Exilio", "Gabriel Rodríguez"],
 ]
   .sort(([tituloA, autorA], [tituloB, autorB]) => {
     const ordenAutor = autorA.localeCompare(autorB, "es", { sensitivity: "base" });

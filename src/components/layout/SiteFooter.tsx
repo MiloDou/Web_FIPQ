@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Youtube } from "lucide-react";
+import { logoMetaforaEditores } from "@/assets/contenido";
 
 export function PieSitio() {
   return (
@@ -7,8 +8,9 @@ export function PieSitio() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap gap-8 justify-between items-end mb-16">
           <div className="max-w-sm">
-            <div className="text-5xl font-display text-carmine mb-4 leading-none uppercase">
+            <div className="text-5xl font-display text-carmine mb-4 leading-none uppercase flex items-center gap-4">
               <i>FIPQ</i>
+              <img src={logoMetaforaEditores} alt="Metáfora Editores" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-xs font-mono uppercase leading-relaxed">
               Festival Internacional de Poesía de Quetzaltenango y Metáfora Editores.
@@ -66,8 +68,10 @@ export function PieSitio() {
             </a>
           </div>
         </div>
-        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between text-[10px] font-mono uppercase tracking-widest text-ink/60">
-          <span>© {new Date().getFullYear()} Metáfora Editores</span>
+        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center text-[10px] font-mono uppercase tracking-widest text-ink/60">
+          <span className="flex items-center gap-2">
+            © {new Date().getFullYear()} <img src={logoMetaforaEditores} alt="Metáfora Editores" className="h-6 w-auto inline-block -mt-1" />
+          </span>
           <span>Hecho en el valle de Xelajuj No’j</span>
         </div>
       </div>

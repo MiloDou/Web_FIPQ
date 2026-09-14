@@ -48,8 +48,8 @@ export function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-8 max-w-2xl text-cream/80 font-mono text-xs sm:text-sm md:text-base uppercase tracking-[0.10em] sm:tracking-[0.4em] leading-loose font-bold text-center px-4">
-            Comunidad, territorio y memoria desde Xelajuj No’j
+          <p className="mt-8 max-w-2xl text-cream/70 font-body text-sm sm:text-base leading-relaxed text-center px-4">
+            Comunidad, territorio y memoria desde Xelajuj No'j
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export function HomePage() {
             />
           </div>
           <div className="relative z-10">
-            <span className="font-mono text-cream/80 text-xs sm:text-sm font-bold block mb-2 tracking-widest uppercase">
+            <span className="font-body text-cream/70 text-xs sm:text-sm font-medium block mb-2 tracking-wide">
               Festival Internacional de Poesía de Quetzaltenango
             </span>
             <Link to="/festival/manifiesto" className="block w-fit">
@@ -86,12 +86,12 @@ export function HomePage() {
                 FIPQ
               </h2>
             </Link>
-            <p className="mt-4 max-w-md text-cream/90 text-base md:text-lg font-medium leading-relaxed">
-              Lecturas públicas, talleres y encuentros que llevan la poesía a Xelajuj No’j y al
+            <p className="mt-4 max-w-md text-cream/80 text-sm md:text-base font-body font-light leading-relaxed">
+              Lecturas públicas, talleres y encuentros que llevan la poesía a Xelajuj No'j y al
               occidente de Guatemala.
             </p>
           </div>
-          <ul className="relative z-10 mt-6 md:mt-0 space-y-3 text-cream font-display text-lg sm:text-2xl font-normal tracking-[0.08em] uppercase opacity-95 group-hover:opacity-100 transition-opacity duration-500">
+          <ul className="relative z-10 mt-6 md:mt-0 space-y-2 text-cream font-body text-base font-light tracking-normal opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             <li className="hover:text-mustard transition-colors">
               <Link to="/festival/manifiesto" hash="contenido" className="block w-fit">
                 Manifiesto
@@ -116,20 +116,20 @@ export function HomePage() {
             />
           </div>
           <div className="relative z-10">
-            <span className="font-mono text-ink/80 text-xs sm:text-sm font-bold block mb-2 tracking-widest uppercase">
-              EDITORIAL
+            <span className="font-body text-ink/60 text-xs sm:text-sm font-medium block mb-2 tracking-wide">
+              Editorial
             </span>
             <Link to="/editorial/catalogo" className="block w-fit">
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase whitespace-nowrap group-hover:-translate-x-2 md:group-hover:-translate-x-4 transition-transform duration-500">
                 Metáfora Editores
               </h2>
             </Link>
-            <p className="mt-4 max-w-md text-ink/85 text-base md:text-lg font-medium leading-relaxed">
+            <p className="mt-4 max-w-md text-ink/75 text-sm md:text-base font-body font-light leading-relaxed">
               El sello independiente que conserva, publica y organiza la memoria editorial del
               festival.
             </p>
           </div>
-          <ul className="relative z-10 mt-6 md:mt-0 space-y-3 text-ink font-display text-lg sm:text-2xl font-normal tracking-[0.08em] uppercase opacity-95 group-hover:opacity-100 transition-opacity duration-500">
+          <ul className="relative z-10 mt-6 md:mt-0 space-y-2 text-ink font-body text-base font-light tracking-normal opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             <li className="hover:text-carmine transition-colors">
               <Link to="/editorial/catalogo" hash="contenido" className="block w-fit">
                 Catálogo editorial
@@ -170,7 +170,7 @@ export function HomePage() {
             </div>
 
             <div className="lg:col-span-8 space-y-12">
-              <p className="text-3xl md:text-5xl font-display uppercase text-balance leading-tight">
+              <p className="text-2xl md:text-4xl font-display uppercase text-balance leading-tight">
                 Más de 20 años difundiendo la poesía en{" "}
                 <span className="text-carmine">Mesoamérica</span>. Somos un proyecto independiente y
                 sin fines de lucro, dedicado a construir comunidad a través de la palabra.
@@ -183,7 +183,7 @@ export function HomePage() {
                     <h4 className="font-display text-2xl uppercase mb-4 text-carmine tracking-wider">
                       El Festival
                     </h4>
-                    <p className="text-sm leading-relaxed text-cream/80">
+                    <p className="text-sm leading-relaxed text-cream/75 font-body font-light">
                       Un festival nacido de jóvenes poetas que construye comunidad mediante la
                       palabra, el diálogo intercultural y la acción cultural.
                     </p>
@@ -203,7 +203,7 @@ export function HomePage() {
                     <h4 className="font-display text-2xl uppercase mb-4 text-cream tracking-wider">
                       La Editorial
                     </h4>
-                    <p className="text-sm leading-relaxed text-cream/80">
+                    <p className="text-sm leading-relaxed text-cream/75 font-body font-light">
                       Metáfora Editores continúa la experiencia del festival en publicaciones y memorias: de
                       la voz compartida al libro.
                     </p>

@@ -40,7 +40,7 @@ function CopyableEmail({
 export function ContactPage() {
   return (
     <>
-      <EncabezadoSeccion eyebrow="Contacto" title="Estamos para" accent="escucharte.">
+      <EncabezadoSeccion title="Estamos para" accent="escucharte.">
         PARA CONSULTAS SOBRE EL FESTIVAL INTERNACIONAL DE POESÍA (<i>FIPQ</i>), METÁFORA EDITORES
         O PRENSA. ESCRÍBENOS, QUEREMOS MANTENER VIVA LA COMUNICACIÓN.
       </EncabezadoSeccion>
@@ -52,9 +52,9 @@ export function ContactPage() {
             <h3 className="font-display text-2xl sm:text-3xl uppercase mb-6 text-cream font-bold">
               CONTACTO <i>FIPQ</i>
             </h3>
-            <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 mb-12 uppercase flex-grow">
-              INFORMACIÓN GENERAL SOBRE EL FESTIVAL, VOLUNTARIADOS, PARTICIPACIÓN DE LA COMUNIDAD Y
-              LECTURA DE POESÍA.
+            <p className="font-body text-sm leading-relaxed text-cream/80 mb-12 flex-grow">
+              Información general sobre el festival, voluntariados, participación de la comunidad y
+              lectura de poesía.
             </p>
             <CopyableEmail 
               email="correofipquetzaltenango@gmail.com"
@@ -67,8 +67,8 @@ export function ContactPage() {
             <h3 className="font-display text-2xl sm:text-3xl uppercase mb-6 font-bold">
               METÁFORA EDITORES
             </h3>
-            <p className="font-body text-sm sm:text-base leading-relaxed text-ink/90 mb-12 uppercase flex-grow">
-              CONSULTAS SOBRE NUESTRO CATÁLOGO, DISTRIBUCIÓN DE LIBROS, Y PROYECTOS DE PUBLICACIÓN.
+            <p className="font-body text-sm leading-relaxed text-ink/80 mb-12 flex-grow">
+              Consultas sobre nuestro catálogo, distribución de libros, y proyectos de publicación.
             </p>
             <CopyableEmail 
               email="correofipquetzaltenango@gmail.com"
@@ -79,9 +79,9 @@ export function ContactPage() {
           {/* Prensa */}
           <div className="bg-carmine text-cream p-6 border-2 border-ink shadow-[4px_4px_0_0_rgba(26,26,26,0.15)] flex flex-col">
             <h3 className="font-display text-2xl sm:text-3xl uppercase mb-6 font-bold">PRENSA</h3>
-            <p className="font-body text-sm sm:text-base leading-relaxed text-cream/90 mb-12 uppercase flex-grow">
-              ENTREVISTAS, COBERTURA DE MEDIOS, COMUNICADOS DE PRENSA Y ALIANZAS DE DIFUSIÓN
-              CULTURAL.
+            <p className="font-body text-sm leading-relaxed text-cream/80 mb-12 flex-grow">
+              Entrevistas, cobertura de medios, comunicados de prensa y alianzas de difusión
+              cultural.
             </p>
             <CopyableEmail 
               email="correofipquetzaltenango@gmail.com"
@@ -97,9 +97,9 @@ export function ContactPage() {
             <h3 className="font-display text-4xl uppercase mb-2 font-black text-ink">
               REDES SOCIALES
             </h3>
-            <p className="font-body text-base leading-relaxed text-ink/80 uppercase">
-              SÍGUENOS EN NUESTRAS PLATAFORMAS OFICIALES PARA ESTAR AL TANTO DE TODAS LAS
-              ACTIVIDADES.
+            <p className="font-body text-base leading-relaxed text-ink/70 font-light">
+              Síguenos en nuestras plataformas oficiales para estar al tanto de todas las
+              actividades.
             </p>
           </div>
 

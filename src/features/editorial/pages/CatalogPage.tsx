@@ -9,7 +9,15 @@ export function CatalogPage() {
       </EncabezadoSeccion>
 
       <div className="space-y-16">
-        {Object.entries(catalogByAuthor).map(([autor, titulos]) => (
+        {Object.entries(catalogByAuthor)
+          .sort(([autorA], [autorB]) => {
+            const isAntologiaA = autorA.toLowerCase().includes("varios autores") || autorA.toLowerCase().includes("varias autoras");
+            const isAntologiaB = autorB.toLowerCase().includes("varios autores") || autorB.toLowerCase().includes("varias autoras");
+            if (isAntologiaA && !isAntologiaB) return -1;
+            if (!isAntologiaA && isAntologiaB) return 1;
+            return autorA.localeCompare(autorB, "es", { sensitivity: "base" });
+          })
+          .map(([autor, titulos]) => (
           <section key={autor}>
             <div className="mb-4 border-b-2 border-ink pb-3">
               <span className="font-mono text-[11px] uppercase tracking-widest text-ink/75">

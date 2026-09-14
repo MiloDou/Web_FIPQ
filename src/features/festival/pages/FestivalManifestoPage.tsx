@@ -184,7 +184,7 @@ export function FestivalManifestoPage() {
       <AnimatedSection className="mt-32 pt-16 border-t-2 border-ink">
         <div className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl uppercase font-black text-ink tracking-wide">
-            El <i>FIPQ</i> en contexto
+            El  <i> FIPQ </i>  en contexto
           </h2>
           <p className="max-w-2xl mx-auto mt-4 text-sm sm:text-base leading-relaxed text-ink/70 tracking-wide font-semibold">
             El Festival Internacional de Poesía de Quetzaltenango es una plataforma independiente y
