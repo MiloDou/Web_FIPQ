@@ -55,9 +55,9 @@ export function EncabezadoSitio() {
       const threshold = 50;
       setIsAtTop(currentScrollY < threshold);
 
-      // En la home no aplicamos lógica de hide/show por scroll
+      // En la home, los botones solo se muestran cuando estamos hasta arriba (en la imagen principal)
       if (isHome) {
-        setVisible(true);
+        setVisible(currentScrollY < threshold);
         lastScrollY = currentScrollY;
         ticking = false;
         return;
@@ -147,7 +147,7 @@ export function EncabezadoSitio() {
     <header
       ref={headerRef}
       className={`fixed top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[85%] max-w-6xl z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isHome && isAtTop
+        isHome
           ? "bg-transparent text-cream"
           : "bg-ink/90 backdrop-blur-md border-2 border-ink shadow-[6px_6px_0_0_#121212] text-cream"
       } ${
@@ -156,9 +156,9 @@ export function EncabezadoSitio() {
           : "-translate-y-[150%] opacity-0 pointer-events-none"
       }`}
     >
-      <div className={`flex items-center ${isHome && isAtTop ? "justify-end" : "justify-between"} px-3 py-2 sm:px-4 sm:py-3 h-14 sm:h-16 transition-all duration-500`}>
+      <div className={`flex items-center ${isHome ? "justify-end" : "justify-between"} px-3 py-2 sm:px-4 sm:py-3 h-14 sm:h-16 transition-all duration-500`}>
         {/* Dynamic Avatar & Branding */}
-        {(!isHome || !isAtTop) && (
+        {!isHome && (
           <Link
             to="/"
             className="flex items-center gap-3 sm:gap-4 group shrink-0 animate-in fade-in duration-500"
@@ -318,7 +318,7 @@ export function EncabezadoSitio() {
         </nav>
 
         {/* Mobile Hamburger Menu */}
-        {(!isHome || !isAtTop) && (
+        {isHome || (!isHome) ? (
           <button
             type="button"
             className="md:hidden flex h-10 w-10 shrink-0 items-center justify-center border-2 border-transparent bg-cream/10 text-cream transition-colors hover:border-ink hover:bg-cream hover:text-ink focus:outline-none animate-in fade-in duration-500"
@@ -329,7 +329,7 @@ export function EncabezadoSitio() {
           >
             {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
-        )}
+        ) : null}
       </div>
 
       {/* Mobile Navigation Dropdown */}
