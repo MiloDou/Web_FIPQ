@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { imagenesSitio } from "@/assets/contenido";
+import { Button } from "@/components/ui/button";
 
 export function BifurcationSection() {
   return (
@@ -18,12 +19,11 @@ export function BifurcationSection() {
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
-          <span className="font-body text-cream/70 text-[10px] sm:text-xs md:text-sm font-medium block mb-2 tracking-wide uppercase">
+          <span className="font-body text-cream/70 text-xs font-medium block mb-2 tracking-wide uppercase">
             Festival Internacional de Poesía de Quetzaltenango
           </span>
           <Link to="/festival/manifiesto" className="block w-fit">
-            {/* Responsividad en el título: más pequeño en móvil para evitar desbordes */}
-            <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-cream leading-none uppercase whitespace-nowrap group-hover:translate-x-1 md:group-hover:translate-x-4 transition-transform duration-500">
+            <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-cream leading-none uppercase group-hover:translate-x-1 md:group-hover:translate-x-4 transition-transform duration-500">
               FIPQ
             </h2>
           </Link>
@@ -32,26 +32,18 @@ export function BifurcationSection() {
             occidente de Guatemala.
           </p>
         </div>
-        <ul className="relative z-10 mt-6 sm:mt-8 md:mt-0 space-y-4 md:space-y-6">
-          <li>
-            <Link to="/festival/manifiesto" hash="contenido" className="group flex items-center gap-4 w-fit text-cream font-display text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider overflow-hidden">
-              <span className="relative pb-1 sm:pb-2">
+          <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
+            <Button asChild size="lg" className="w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
+              <Link to="/festival/manifiesto" hash="contenido">
                 Leer el Manifiesto
-                <span className="absolute left-0 bottom-0 w-0 h-1.5 sm:h-2 bg-mustard transition-all duration-300 ease-out group-active:w-full"></span>
-              </span>
-              <span className="opacity-0 -translate-x-6 text-mustard group-active:opacity-100 group-active:translate-x-0 transition-all duration-300 ease-out">→</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/festival/programa" hash="contenido" className="group flex items-center gap-4 w-fit text-cream font-display text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider overflow-hidden">
-              <span className="relative pb-1 sm:pb-2">
-                Programa Oficial
-                <span className="absolute left-0 bottom-0 w-0 h-1.5 sm:h-2 bg-mustard transition-all duration-300 ease-out group-active:w-full"></span>
-              </span>
-              <span className="opacity-0 -translate-x-6 text-mustard group-active:opacity-100 group-active:translate-x-0 transition-all duration-300 ease-out">→</span>
-            </Link>
-          </li>
-        </ul>
+              </Link>
+            </Button>
+            <Button asChild size="lg" className="w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
+              <Link to="/festival/programa" hash="contenido">
+                Ver Programa Oficial
+              </Link>
+            </Button>
+          </div>
       </div>
 
       {/* Editorial */}
@@ -65,12 +57,11 @@ export function BifurcationSection() {
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
-          <span className="font-body text-ink/60 text-[10px] sm:text-xs md:text-sm font-medium block mb-2 tracking-wide uppercase">
+          <span className="font-body text-ink/60 text-xs font-medium block mb-2 tracking-wide uppercase">
             Editorial
           </span>
           <Link to="/editorial/catalogo" className="block w-fit">
-            {/* Responsividad ajustada: text-4xl en móviles para que quepa "Metáfora Editores" */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase whitespace-nowrap group-hover:-translate-x-1 md:group-hover:-translate-x-4 transition-transform duration-500">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase group-hover:-translate-x-1 md:group-hover:-translate-x-4 transition-transform duration-500">
               Metáfora Editores
             </h2>
           </Link>
@@ -79,26 +70,18 @@ export function BifurcationSection() {
             festival.
           </p>
         </div>
-        <ul className="relative z-10 mt-6 sm:mt-8 md:mt-0 space-y-4 md:space-y-6">
-          <li>
-            <Link to="/editorial/catalogo" hash="contenido" className="group flex items-center gap-4 w-fit text-ink font-display text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider overflow-hidden">
-              <span className="relative pb-1 sm:pb-2">
+          <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
+            <Button asChild size="lg" className="w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
+              <Link to="/editorial/catalogo" hash="contenido">
                 Catálogo Editorial
-                <span className="absolute left-0 bottom-0 w-0 h-1.5 sm:h-2 bg-carmine transition-all duration-300 ease-out group-active:w-full"></span>
-              </span>
-              <span className="opacity-0 -translate-x-6 text-carmine group-active:opacity-100 group-active:translate-x-0 transition-all duration-300 ease-out">→</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/editorial/contacto" hash="contenido" className="group flex items-center gap-4 w-fit text-ink font-display text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider overflow-hidden">
-              <span className="relative pb-1 sm:pb-2">
+              </Link>
+            </Button>
+            <Button asChild size="lg" className="w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
+              <Link to="/editorial/contacto" hash="contenido">
                 Contacto
-                <span className="absolute left-0 bottom-0 w-0 h-1.5 sm:h-2 bg-carmine transition-all duration-300 ease-out group-active:w-full"></span>
-              </span>
-              <span className="opacity-0 -translate-x-6 text-carmine group-active:opacity-100 group-active:translate-x-0 transition-all duration-300 ease-out">→</span>
-            </Link>
-          </li>
-        </ul>
+              </Link>
+            </Button>
+          </div>
       </div>
     </section>
   );

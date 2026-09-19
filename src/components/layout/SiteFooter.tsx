@@ -22,7 +22,7 @@ export function PieSitio() {
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook de Metáfora FIPQ"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-cream font-display text-sm uppercase hover:bg-carmine transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
             >
               <Facebook size={16} aria-hidden="true" />
               Facebook
@@ -32,7 +32,7 @@ export function PieSitio() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram de FIPQ Metáfora"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-cream font-display text-sm uppercase hover:bg-carmine transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
             >
               <Instagram size={16} aria-hidden="true" />
               Instagram
@@ -42,7 +42,7 @@ export function PieSitio() {
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube de FIPQ Metáfora Quetzaltenango"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-cream font-display text-sm uppercase hover:bg-carmine transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
             >
               <Youtube size={16} aria-hidden="true" />
               YouTube
@@ -52,7 +52,7 @@ export function PieSitio() {
               target="_blank"
               rel="noreferrer"
               aria-label="X de Metáfora FIPQ"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-cream font-display text-sm uppercase hover:bg-carmine transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
             >
               X / Twitter
             </a>
@@ -61,7 +61,7 @@ export function PieSitio() {
               target="_blank"
               rel="noreferrer"
               aria-label="Spotify de FIPQ Metáfora"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-cream font-display text-sm uppercase hover:bg-carmine transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
             >
               <Music2 size={16} aria-hidden="true" />
               Spotify

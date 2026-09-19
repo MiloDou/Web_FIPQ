@@ -178,7 +178,7 @@ export function EncabezadoSitio() {
         )}
 
         {/* Desktop Navigation */}
-        <nav className={`hidden md:flex items-center gap-1`}>
+        <nav className={`hidden lg:flex items-center gap-1`}>
           {/* FESTIVAL DROPDOWN */}
           <div className="relative group py-2 px-1">
             <Link
@@ -321,7 +321,7 @@ export function EncabezadoSitio() {
         {isHome || (!isHome) ? (
           <button
             type="button"
-            className="md:hidden flex h-10 w-10 shrink-0 items-center justify-center border-2 border-transparent bg-cream/10 text-cream transition-colors hover:border-ink hover:bg-cream hover:text-ink focus:outline-none animate-in fade-in duration-500"
+            className="lg:hidden flex h-10 w-10 shrink-0 items-center justify-center border-2 border-transparent bg-cream/10 text-cream transition-colors hover:border-ink hover:bg-cream hover:text-ink focus:outline-none animate-in fade-in duration-500"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
@@ -334,7 +334,7 @@ export function EncabezadoSitio() {
 
       {/* Mobile Navigation Dropdown */}
       {menuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-4 px-2 md:hidden">
+        <div className="absolute top-full left-0 right-0 mt-4 px-2 lg:hidden">
           <nav
             id="mobile-navigation"
             className="border-2 border-ink bg-cream p-4 shadow-[4px_4px_0_0_#121212] text-ink max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300"
@@ -380,7 +380,7 @@ export function EncabezadoSitio() {
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
-                        {isActive(to) ? "●" : "→"} {label}
+                        {isActive(to) && <span className="w-1.5 h-1.5 bg-carmine rounded-full shrink-0" aria-hidden="true" />} {label}
                       </Link>
                     ))}
                   </div>
@@ -424,7 +424,7 @@ export function EncabezadoSitio() {
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
-                        {isActive(to) ? "●" : "→"} {label}
+                        {isActive(to) && <span className="w-1.5 h-1.5 bg-ink rounded-full shrink-0" aria-hidden="true" />} {label}
                       </Link>
                     ))}
                   </div>

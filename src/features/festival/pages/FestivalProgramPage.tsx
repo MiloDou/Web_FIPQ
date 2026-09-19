@@ -19,18 +19,20 @@ export function FestivalProgramPage() {
               Mantente atento a nuestras redes oficiales. Pronto revelaremos los horarios y sedes de
               la próxima edición.
             </p>
-            <div className="mt-8 flex gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <a
                 href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-ink text-cream hover:bg-carmine px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] cursor-pointer"
+                aria-label="Seguir al FIPQ en Facebook (abre en nueva pestaña)"
+                className="bg-ink text-cream hover:bg-carmine active:bg-carmine px-6 py-3 min-h-[44px] font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] active:shadow-none active:translate-y-0.5 cursor-pointer"
               >
                 Seguir en Facebook
               </a>
               <a
                 href="/"
-                className="bg-white text-ink border-2 border-ink hover:bg-ink/5 px-6 py-3 font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] cursor-pointer"
+                aria-label="Volver a la página de inicio"
+                className="bg-white text-ink border-2 border-ink hover:bg-ink/5 active:bg-ink/10 px-6 py-3 min-h-[44px] font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] active:shadow-none active:translate-y-0.5 cursor-pointer"
               >
                 Volver al inicio
               </a>

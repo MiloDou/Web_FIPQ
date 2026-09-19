@@ -87,12 +87,17 @@ function FotoCard({
 
   return (
     <figure
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver fotografía ${index + 1} del festival ampliada`}
       onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
       className={`relative mb-8 md:mb-12 break-inside-avoid cursor-pointer group
         transition-all duration-500 ease-in-out
         animate-in fade-in zoom-in-95
         ${rotation}
-        hover:rotate-0 hover:scale-[1.04] hover:z-10`}
+        hover:rotate-0 hover:scale-[1.04] hover:z-10
+        focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4`}
     >
       {/* Marco polaroid — overflow-hidden asegura que el tape no escape */}
       <div className="bg-white p-1.5 pb-7 shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] group-hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)] transition-shadow duration-300 overflow-hidden relative">
@@ -202,9 +207,10 @@ export function FestivalGalleryPage() {
           type="button"
           onClick={handleRefresh}
           disabled={actualizando}
-          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest border-2 border-ink px-4 py-2.5 text-ink hover:bg-carmine hover:text-cream hover:border-carmine transition-all duration-200 shadow-[3px_3px_0_0_rgba(26,26,26,1)] hover:shadow-[3px_3px_0_0_rgba(186,0,56,1)] disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Actualizar la selección de fotografías"
+          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest border-2 border-ink px-5 py-3 min-h-[44px] text-ink hover:bg-carmine hover:text-cream hover:border-carmine transition-all duration-200 shadow-[3px_3px_0_0_rgba(26,26,26,1)] hover:shadow-[3px_3px_0_0_rgba(186,0,56,1)] active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(26,26,26,1)] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <RefreshCw size={12} className={`shrink-0 ${actualizando ? "animate-spin" : ""}`} />
+          <RefreshCw size={14} className={`shrink-0 ${actualizando ? "animate-spin" : ""}`} aria-hidden="true" />
           Actualizar galería
         </button>
       </div>
@@ -226,10 +232,11 @@ export function FestivalGalleryPage() {
             />
             <button
               type="button"
-              className="mt-4 font-mono text-xs text-cream uppercase tracking-widest bg-carmine px-4 py-2 hover:bg-mustard hover:text-ink transition-colors cursor-pointer border border-ink"
+              aria-label="Cerrar vista ampliada de la fotografía"
+              className="mt-4 font-mono text-xs text-cream uppercase tracking-widest bg-carmine px-5 py-3 min-h-[44px] hover:bg-mustard hover:text-ink transition-colors cursor-pointer border border-ink"
               onClick={() => setSelectedFoto(null)}
             >
-              Cerrar vista previa ×
+              Cerrar ×
             </button>
           </div>
         </div>

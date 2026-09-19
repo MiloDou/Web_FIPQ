@@ -46,12 +46,13 @@ export function HeroSection() {
         </p>
       </div>
 
-      {/* Bottom scroll indicator — maintained spacing and distance */}
+      {/* Bottom scroll indicator */}
       <a
         href="#direcciones"
+        aria-label="Ver las secciones del festival y la editorial"
         className="relative z-10 flex flex-col items-center justify-end h-20 sm:h-24 w-12 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2 sm:pb-4"
       >
-        <div className="w-px h-10 sm:h-12 bg-cream/30 animate-pulse group-hover:bg-carmine group-hover:h-14 sm:group-hover:h-16 transition-all duration-500" />
+        <div aria-hidden="true" className="w-px h-10 sm:h-12 bg-cream/30 animate-pulse group-hover:bg-carmine group-hover:h-14 sm:group-hover:h-16 transition-all duration-500" />
       </a>
     </section>
   );

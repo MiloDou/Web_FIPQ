@@ -13,8 +13,8 @@ export function EditorialArchivePage() {
         tienes uno, eres parte del archivo.
       </EncabezadoSeccion>
 
-      <div className="bg-ink text-cream p-8 md:p-12">
-        <table className="w-full text-left">
+      <div className="bg-ink text-cream p-8 md:p-12 overflow-x-auto">
+        <table className="w-full text-left min-w-[480px]">
           <thead>
             <tr className="border-b-2 border-cream/30">
               <th className="py-3 font-mono text-[11px] uppercase tracking-widest text-mustard">
@@ -66,7 +66,7 @@ export function EditorialArchivePage() {
         Escríbenos a{" "}
         <a
           href="mailto:archivo@fipq.org"
-          className="text-ink font-bold underline hover:text-ink/80 transition-colors"
+          className="text-ink font-bold underline hover:text-ink/80 active:text-ink/60 transition-colors inline-block py-2 px-1"
         >
           archivo@fipq.org
         </a>

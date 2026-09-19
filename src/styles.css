@@ -414,3 +414,28 @@ html {
   50%  { transform: translateX(0%); }
   100% { transform: translateX(100%); }
 }
+
+/* 
+ * Accesibilidad: para usuarios que prefieren movimiento reducido.
+ * Desactiva todas las animaciones continuas (pan, float, flicker, etc.)
+ * pero mantiene las transiciones de opacidad simples.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slow-pan,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-flicker,
+  .animate-fade-in-up,
+  .animate-marquee {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
