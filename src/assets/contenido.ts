@@ -46,9 +46,9 @@ export const imagenesSitio = {
   poetPortrait: obtenerImagenPorNombre("image03.jpg"),
   stageNight: obtenerImagenPorNombre("image32.jpg"),
   crowdBw: obtenerImagenPorNombre("image81.jpeg"),
-  posterRed: obtenerImagenPorNombre("image03.jpg"),
+  posterRed: obtenerImagenPorNombre("image04.jpg"),
   risographBook: obtenerImagenPorNombre("image24.jpg"),
-  workshop: obtenerImagenPorNombre("image03.jpg"),
+  workshop: obtenerImagenPorNombre("image05.jpg"),
   festivalHeaderBg: obtenerImagenPorNombre("image128.jpeg"),
   editorialHeaderBg: obtenerImagenPorNombre("image12.jpg"),
 };
