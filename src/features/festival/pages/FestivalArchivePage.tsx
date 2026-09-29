@@ -74,7 +74,7 @@ function GaleriaModal({
             Archivo Histórico
           </span>
           <h2 className="font-display text-2xl sm:text-4xl uppercase leading-none text-cream mt-1">
-            FIPQ <span className="text-carmine">#{edition.number}</span>
+            <span className="text-carmine">{edition.number}</span> FIPQ
             {edition.year && (
               <span className="text-cream/40 text-xl sm:text-3xl ml-3">{edition.year}</span>
             )}
@@ -231,7 +231,7 @@ export function FestivalArchivePage() {
                     {/* Título FIPQ N */}
                     <div>
                       <h3 className="font-display leading-none tracking-tight text-ink text-6xl sm:text-7xl lg:text-8xl uppercase">
-                        FIPQ <span className="text-carmine">{e.number}</span>
+                        <span className="text-carmine">{e.number}</span> FIPQ
                       </h3>
                     </div>
 

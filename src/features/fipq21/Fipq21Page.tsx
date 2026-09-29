@@ -5,7 +5,7 @@ export function Fipq21Page() {
     <div className="bg-[#0a1222] min-h-screen flex items-center justify-center p-4">
       <img
         src={afichemFipq21}
-        alt="FIPQ 21"
+        alt="21 FIPQ"
         className="w-full h-auto max-h-[90vh] object-contain shadow-2xl"
       />
     </div>

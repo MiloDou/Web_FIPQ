@@ -51,9 +51,9 @@ export function DisenoRama({
             <span className="font-body text-xs sm:text-sm tracking-wide opacity-60 font-medium">
               {config.title}
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
               {subRoute ? subRoute : config.title}
-            </h2>
+            </h1>
           </div>
           <p className="mt-3 max-w-2xl font-body text-sm sm:text-base text-cream opacity-80 leading-relaxed font-light">
             {tagline}

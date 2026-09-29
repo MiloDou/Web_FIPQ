@@ -29,8 +29,6 @@ export function EncabezadoSitio() {
   const [mobileFestivalOpen, setMobileFestivalOpen] = useState(false);
   const [mobileEditorialOpen, setMobileEditorialOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
-  // Zona fantasma en la parte superior de la pantalla que activa el header al pasar el mouse
-  const hoverZoneRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -39,58 +37,15 @@ export function EncabezadoSitio() {
   const currentPath = location.pathname;
 
   const [visible, setVisible] = useState(true);
-  const [isAtTop, setIsAtTop] = useState(true);
-  // hoveredTop: true cuando el mouse está en la zona superior (60px)
-  const [hoveredTop, setHoveredTop] = useState(false);
 
   // Scroll automático al contenido al cambiar de página
   useScrollToContent();
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    const updateHeader = () => {
-      const currentScrollY = window.scrollY;
-      const threshold = 50;
-      setIsAtTop(currentScrollY < threshold);
-
-      // En la home, los botones solo se muestran cuando estamos hasta arriba (en la imagen principal)
-      if (isHome) {
-        setVisible(currentScrollY < threshold);
-        lastScrollY = currentScrollY;
-        ticking = false;
-        return;
-      }
-
-      // Comportamiento unificado en todas las páginas internas:
-      // scroll arriba → mostrar | scroll abajo → ocultar
-      // pero si el mouse está en la zona top, siempre visible
-      if (hoveredTop) {
-        setVisible(true);
-      } else if (currentScrollY < lastScrollY || currentScrollY < threshold) {
-        setVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > threshold) {
-        setVisible(false);
-      }
-
-      lastScrollY = currentScrollY;
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    };
-
-    setIsAtTop(window.scrollY < 50);
+    // Keep navigation available throughout the page for touch, keyboard and
+    // assistive technology users; a scroll-away header has no equivalent gesture.
     setVisible(true);
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome, hoveredTop]);
+  }, [isHome]);
 
   // Cerrar menú al hacer clic fuera del header
   useEffect(() => {
@@ -133,17 +88,6 @@ export function EncabezadoSitio() {
 
   return (
     <>
-      {/* Zona fantasma de 60px en el top: cuando el mouse la toca, el header reaparece */}
-      {!isHome && (
-        <div
-          ref={hoverZoneRef}
-          className="fixed top-0 left-0 right-0 h-16 z-40 pointer-events-auto"
-          onMouseEnter={() => { setHoveredTop(true); setVisible(true); }}
-          onMouseLeave={() => setHoveredTop(false)}
-          aria-hidden="true"
-        />
-      )}
-
     <header
       ref={headerRef}
       className={`fixed top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[85%] max-w-6xl z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -197,7 +141,7 @@ export function EncabezadoSitio() {
             </Link>
             {/* Invisible bridge to keep dropdown open */}
             <div className="absolute top-full left-0 right-0 h-4" />
-            <div className="absolute top-[calc(100%+1px)] left-1/2 -translate-x-1/2 hidden group-hover:block z-50">
+            <div className="absolute top-[calc(100%+1px)] left-1/2 -translate-x-1/2 hidden group-hover:block group-focus-within:block z-50">
               <div className="flex flex-col bg-cream border-2 border-ink py-2 w-52 shadow-[4px_4px_0_0_#121212] animate-in fade-in zoom-in-95 duration-150">
                 <Link
                   to="/festival/fipq21"
@@ -276,7 +220,7 @@ export function EncabezadoSitio() {
             </Link>
             {/* Invisible bridge */}
             <div className="absolute top-full left-0 right-0 h-4" />
-            <div className="absolute top-[calc(100%+1px)] left-1/2 -translate-x-1/2 hidden group-hover:block z-50">
+            <div className="absolute top-[calc(100%+1px)] left-1/2 -translate-x-1/2 hidden group-hover:block group-focus-within:block z-50">
               <div className="flex flex-col bg-cream border-2 border-ink py-2 w-52 shadow-[4px_4px_0_0_#121212] animate-in fade-in zoom-in-95 duration-150">
                 <Link
                   to="/editorial/catalogo"
@@ -343,6 +287,9 @@ export function EncabezadoSitio() {
               {/* Festival Accordion */}
               <div className="flex flex-col bg-ink/5 border border-ink/20">
                 <button
+                  type="button"
+                  aria-expanded={mobileFestivalOpen}
+                  aria-controls="mobile-festival-links"
                   onClick={() => setMobileFestivalOpen(!mobileFestivalOpen)}
                   className={`flex items-center justify-between w-full px-5 py-4 font-mono text-xs uppercase tracking-widest font-bold ${
                     isFestival ? "text-carmine" : ""
@@ -358,13 +305,15 @@ export function EncabezadoSitio() {
                   />
                 </button>
                 <div
+                  id="mobile-festival-links"
+                  aria-hidden={!mobileFestivalOpen}
                   className={`flex flex-col overflow-hidden transition-all duration-300 ${
                     mobileFestivalOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
                   <div className="flex flex-col gap-1 px-4 pb-4">
                     {[
-                      { to: "/festival/fipq21", label: "FIPQ 21" },
+                      { to: "/festival/fipq21", label: "21 FIPQ" },
                       { to: "/festival/manifiesto", label: "Manifiesto" },
                       { to: "/festival/programa", label: "Programa" },
                       { to: "/festival/galeria", label: "Galería" },
@@ -390,6 +339,9 @@ export function EncabezadoSitio() {
               {/* Editorial Accordion */}
               <div className="flex flex-col bg-ink/5 border border-ink/20 mt-2">
                 <button
+                  type="button"
+                  aria-expanded={mobileEditorialOpen}
+                  aria-controls="mobile-editorial-links"
                   onClick={() => setMobileEditorialOpen(!mobileEditorialOpen)}
                   className={`flex items-center justify-between w-full px-5 py-4 font-mono text-xs uppercase tracking-widest font-bold ${
                     isEditorial ? "text-mustard" : ""
@@ -405,6 +357,8 @@ export function EncabezadoSitio() {
                   />
                 </button>
                 <div
+                  id="mobile-editorial-links"
+                  aria-hidden={!mobileEditorialOpen}
                   className={`flex flex-col overflow-hidden transition-all duration-300 ${
                     mobileEditorialOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}

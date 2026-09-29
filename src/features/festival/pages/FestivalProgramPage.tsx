@@ -1,4 +1,3 @@
-import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 export function FestivalProgramPage() {
@@ -10,9 +9,8 @@ export function FestivalProgramPage() {
             <span className="font-mono text-sm sm:text-base tracking-widest uppercase text-carmine font-bold mb-4">
               [ En construcción ]
             </span>
-            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase leading-none font-bold text-ink/20">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase leading-none font-bold text-ink">
               Programa en
-              <br />
               desarrollo
             </h2>
             <p className="mt-6 max-w-md text-ink/70 font-body text-sm sm:text-base leading-relaxed">
@@ -20,14 +18,14 @@ export function FestivalProgramPage() {
               la próxima edición.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
-              <a
-                href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
+                <a
+                  href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Seguir al FIPQ en Facebook (abre en nueva pestaña)"
                 className="bg-ink text-cream hover:bg-carmine active:bg-carmine px-6 py-3 min-h-[44px] font-body text-sm uppercase tracking-wider font-bold transition-colors shadow-[3px_3px_0_0_#121212] active:shadow-none active:translate-y-0.5 cursor-pointer"
               >
-                Seguir en Facebook
+                Seguir en Facebook (abre en nueva pestaña)
               </a>
               <a
                 href="/"

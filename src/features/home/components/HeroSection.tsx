@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section className="relative h-[100dvh] w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-6 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
       {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <img
           src={imagenesSitio.stageNight}
           alt=""

@@ -13,10 +13,14 @@ function CopyableEmail({
 }) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -30,9 +34,13 @@ function CopyableEmail({
         title="Copiar correo"
         className="shrink-0 hover:scale-110 transition-transform focus:outline-none"
         aria-label="Copiar correo"
+        type="button"
       >
         {copied ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
       </button>
+      <span className="sr-only" role="status" aria-live="polite">
+        {copied ? "Correo copiado al portapapeles" : ""}
+      </span>
     </div>
   );
 }

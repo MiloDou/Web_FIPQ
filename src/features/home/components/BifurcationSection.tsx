@@ -40,7 +40,7 @@ export function BifurcationSection() {
             </Button>
             <Button asChild size="lg" className="w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
               <Link to="/festival/programa" hash="contenido">
-                Ver Programa Oficial
+                Programa (próximamente)
               </Link>
             </Button>
           </div>
