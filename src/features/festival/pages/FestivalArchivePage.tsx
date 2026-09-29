@@ -220,15 +220,7 @@ export function FestivalArchivePage() {
                 >
                   <div className="flex flex-col gap-6 w-full max-w-xl">
 
-                    {/* Número grande + separador */}
-                    <div className="flex items-end gap-4">
-                      <span className="font-mono text-sm sm:text-base font-bold tracking-[0.15em] text-carmine uppercase leading-none">
-                        {e.year || "En proceso"}
-                      </span>
-                      <div className="flex-1 h-[3px] bg-ink mb-1" />
-                    </div>
-
-                    {/* Título FIPQ N */}
+                    {/* Número y nombre de la edición */}
                     <div>
                       <h3 className="font-display leading-none tracking-tight text-ink text-6xl sm:text-7xl lg:text-8xl uppercase">
                         <span className="text-carmine">{e.number}</span> FIPQ
@@ -237,10 +229,19 @@ export function FestivalArchivePage() {
 
                     <hr className="border-t-4 border-ink w-full" />
 
-                    {/* Memoria Textual */}
-                    <p className="font-mono text-sm sm:text-base text-ink/80 font-bold leading-relaxed">
-                      {e.body ?? "El archivo fotográfico e histórico de esta edición se encuentra en proceso de recuperación y digitalización."}
-                    </p>
+                    {/* Datos históricos de la edición */}
+                    <div className="flex flex-col gap-3 border-l-4 border-carmine pl-5">
+                      <p className="font-body text-sm sm:text-base text-ink leading-relaxed">
+                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">Dedicado a:</span>
+                        <br />
+                        <span className="font-medium">{e.dedicated ?? <span className="text-ink/60">Detalles próximamente</span>}</span>
+                      </p>
+                      <p className="font-body text-sm sm:text-base text-ink leading-relaxed">
+                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">Fechas:</span>
+                        <br />
+                        <span className="font-medium">{e.dates ?? <span className="text-ink/60">Detalles próximamente</span>}</span>
+                      </p>
+                    </div>
 
                     {/* Botón galería — solo para FIPQ 20 / mensaje de construcción para las demás */}
                     {e.number === "20" ? (
@@ -259,28 +260,7 @@ export function FestivalArchivePage() {
                           </svg>
                         </button>
                       </div>
-                    ) : (
-                      <div className="border-l-4 border-mustard pl-4 py-1 flex flex-col gap-3">
-                        <div className="flex items-center gap-2">
-                          <span className="inline-block w-2 h-2 bg-mustard shrink-0" aria-hidden="true" />
-                          <p className="font-mono text-xs sm:text-sm uppercase tracking-widest text-ink/60 font-bold">
-                            Galería en construcción
-                          </p>
-                        </div>
-                        <p className="font-body text-sm text-ink/70 leading-relaxed">
-                          Estamos recuperando el archivo visual de esta edición.
-                          Si tienes fotografías, videos o materiales de este festival,{" "}
-                          <strong className="text-ink">agradecemos profundamente tu apoyo</strong>.
-                        </p>
-                        <a
-                          href="mailto:archivo@fipq.org"
-                          aria-label="Enviar material del festival al archivo de FIPQ"
-                          className="inline-flex items-center gap-2 w-fit font-mono text-xs sm:text-sm text-carmine font-bold uppercase tracking-widest hover:text-ink active:text-ink transition-colors border-b-2 border-carmine hover:border-ink pb-0.5"
-                        >
-                          archivo@fipq.org →
-                        </a>
-                      </div>
-                    )}
+                    ) : null}
 
                   </div>
                 </div>

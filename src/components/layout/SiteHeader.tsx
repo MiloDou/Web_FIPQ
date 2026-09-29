@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { logoImage, imagenesSitio, logoMetaforaEditores } from "@/assets/contenido";
+import { logoHome, imagenesSitio } from "@/assets/contenido";
 
 // Hook que scrollea automáticamente al contenido al navegar (pasando el header)
 function useScrollToContent() {
@@ -42,9 +42,15 @@ export function EncabezadoSitio() {
   useScrollToContent();
 
   useEffect(() => {
-    // Keep navigation available throughout the page for touch, keyboard and
-    // assistive technology users; a scroll-away header has no equivalent gesture.
-    setVisible(true);
+    if (!isHome) {
+      setVisible(true);
+      return;
+    }
+
+    const updateHomeHeader = () => setVisible(window.scrollY < 50);
+    updateHomeHeader();
+    window.addEventListener("scroll", updateHomeHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHomeHeader);
   }, [isHome]);
 
   // Cerrar menú al hacer clic fuera del header
@@ -73,16 +79,6 @@ export function EncabezadoSitio() {
   }, [menuOpen]);
 
   // Determine dynamic island avatar
-  let avatarImg = logoImage;
-  let avatarAlt = "Logo FIPQ";
-  if (isFestival && !isHome) {
-    avatarImg = imagenesSitio.stageNight;
-    avatarAlt = "Festival";
-  } else if (isEditorial && !isHome) {
-    avatarImg = imagenesSitio.booksStack;
-    avatarAlt = "Editorial";
-  }
-
   // Helper para saber si un link está activo
   const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + "/");
 
@@ -90,34 +86,38 @@ export function EncabezadoSitio() {
     <>
     <header
       ref={headerRef}
-      className={`fixed top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[85%] max-w-6xl z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isHome
+          ? "top-4 left-4 right-4"
+          : "top-0 left-0 right-0 w-full"
+      } ${
         isHome
           ? "bg-transparent text-cream"
-          : "bg-ink/90 backdrop-blur-md border-2 border-ink shadow-[6px_6px_0_0_#121212] text-cream"
+          : "bg-ink/95 text-cream shadow-md"
       } ${
         visible || menuOpen
           ? "translate-y-0 opacity-100 pointer-events-auto"
           : "-translate-y-[150%] opacity-0 pointer-events-none"
       }`}
     >
-      <div className={`flex items-center ${isHome ? "justify-end" : "justify-between"} px-3 py-2 sm:px-4 sm:py-3 h-14 sm:h-16 transition-all duration-500`}>
+      <div className={`mx-auto flex items-center ${isHome ? "justify-end" : "justify-between"} px-3 py-2 sm:px-4 sm:py-3 h-14 sm:h-16 transition-all duration-500 ${isHome ? "" : "max-w-7xl px-8 sm:px-12 lg:px-16"}`}>
         {/* Dynamic Avatar & Branding */}
         {!isHome && (
           <Link
             to="/"
-            className="flex items-center gap-3 sm:gap-4 group shrink-0 animate-in fade-in duration-500"
+            aria-label="Ir al inicio"
+            title="Inicio"
+            className="group flex h-full items-center justify-center gap-0 shrink-0 animate-in fade-in duration-500 focus-visible:outline-cream focus-visible:outline-offset-4"
           >
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 overflow-hidden border-2 border-transparent group-hover:border-carmine transition-colors shrink-0 bg-cream p-1">
-              <img
-                src={logoMetaforaEditores}
-                alt="Logo Metáfora Editores"
-                className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 p-1"
-              />
-            </div>
-            <span className="font-display text-sm sm:text-base uppercase tracking-tight leading-none text-cream flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
-              <span className="flex items-center gap-1"><i>FIPQ</i> <span className="text-carmine hidden md:inline">·</span></span> 
-              <span className="text-cream/80 text-xs sm:text-sm">Metáfora Editores</span>
-            </span>
+            <img
+              src={logoHome}
+              alt=""
+              width={744}
+              height={664}
+              className="-mr-1 h-10 w-10 sm:h-11 sm:w-11 object-contain transition-transform duration-300 ease-out group-hover:scale-105 group-active:scale-95 motion-reduce:transition-none motion-reduce:transform-none"
+              decoding="async"
+            />
+            <span className="font-display text-xl sm:text-2xl leading-none tracking-tight text-cream transition-colors duration-300 group-hover:text-carmine">FIPQ</span>
           </Link>
         )}
 
@@ -278,10 +278,10 @@ export function EncabezadoSitio() {
 
       {/* Mobile Navigation Dropdown */}
       {menuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-4 px-2 lg:hidden">
+        <div className={`absolute top-full left-0 right-0 lg:hidden ${isHome ? "mt-4 px-2" : ""}`}>
           <nav
             id="mobile-navigation"
-            className="border-2 border-ink bg-cream p-4 shadow-[4px_4px_0_0_#121212] text-ink max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300"
+            className={`border-2 border-ink bg-cream p-4 shadow-[4px_4px_0_0_#121212] text-ink max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300 ${isHome ? "" : "mx-2 mt-2"}`}
           >
             <div className="flex flex-col gap-2">
               {/* Festival Accordion */}

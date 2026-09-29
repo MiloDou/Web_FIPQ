@@ -77,15 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FIPQ — Festival Internacional de Poesía de Quetzaltenango" },
+      { title: "FIPQ" },
       {
         name: "description",
         content:
           "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.",
       },
-      { name: "author", content: "FIPQ + Editorial Metáfora" },
+      { name: "author", content: "FIPQ" },
       { name: "robots", content: "index, follow" },
-      { property: "og:site_name", content: "FIPQ Metáfora" },
+      { property: "og:site_name", content: "FIPQ" },
       { property: "og:url", content: "https://fipqmetafora.com" },
       {
         property: "og:title",
@@ -103,7 +103,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://fipqmetafora.com/og-image.jpg" },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png?v=2" },
+      { rel: "shortcut icon", type: "image/png", href: "/favicon.png?v=2" },
+      { rel: "apple-touch-icon", href: "/favicon.png?v=2" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

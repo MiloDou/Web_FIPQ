@@ -8,6 +8,11 @@ const recursoLogo = import.meta.glob<string>("../../Contenido/logo.jpg", {
   import: "default",
   query: "?url",
 });
+const recursoLogoHome = import.meta.glob<string>("../../Contenido/logo.png", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
 const recursoLogoMetaforaEditores = import.meta.glob<string>("../../Contenido/logo-metafora-editores.png", {
   eager: true,
   import: "default",
@@ -54,4 +59,5 @@ export const imagenesSitio = {
 };
 
 export const logoImage = Object.values(recursoLogo)[0] ?? "";
+export const logoHome = Object.values(recursoLogoHome)[0] ?? logoImage;
 export const logoMetaforaEditores = Object.values(recursoLogoMetaforaEditores)[0] ?? "";
