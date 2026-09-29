@@ -103,9 +103,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://fipqmetafora.com/og-image.jpg" },
     ],
     links: [
-      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png?v=2" },
-      { rel: "shortcut icon", type: "image/png", href: "/favicon.png?v=2" },
-      { rel: "apple-touch-icon", href: "/favicon.png?v=2" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png?v=3" },
+      { rel: "shortcut icon", type: "image/png", href: "/favicon.png?v=3" },
+      { rel: "apple-touch-icon", href: "/favicon.png?v=3" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
