@@ -7,14 +7,17 @@ export function EditorialManifestoPage() {
         <span className="block font-mono text-xs uppercase tracking-[0.25em] text-ink font-bold mb-4">
           Carta Editorial · 2009
         </span>
-        <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide mb-10 font-bold">
+        <h1
+          id="contenido"
+          className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide mb-10 font-bold"
+        >
           Imprimir es <span>desobedecer.</span>
         </h1>
 
         <div className="space-y-8 text-base sm:text-lg leading-relaxed text-ink/85 font-medium">
           <p className="text-xl sm:text-2xl md:text-3xl font-display uppercase text-ink leading-snug font-bold">
-            Metáfora Editores nace porque el mercado del libro centroamericano expulsa a las voces que más
-            necesitamos leer.
+            Metáfora Editores nace porque el mercado del libro centroamericano expulsa a las voces
+            que más necesitamos leer.
           </p>
           <p>
             No editamos para vender. Editamos para preservar. Para que dentro de cincuenta años

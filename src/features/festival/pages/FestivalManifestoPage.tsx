@@ -10,8 +10,11 @@ export function FestivalManifestoPage() {
     <article className="max-w-5xl mx-auto px-4 py-8 bg-cream text-ink">
       {/* Cabecera Tipo Manifiesto de Arte / Zine Stamp */}
       <header className="mb-20 text-center animate-fade-in-up">
-        <div className="inline-block bg-ink text-cream px-8 py-6 text-center shadow-[6px_6px_0_0_#b23a3a] rounded-none mb-6">
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl uppercase tracking-wider font-black leading-none">
+        <div className="inline-block bg-ink text-cream px-8 py-6 text-center shadow-[6px_6px_0_0_#ba0038] rounded-none mb-6">
+          <h1
+            id="contenido"
+            className="font-display text-5xl sm:text-7xl md:text-8xl uppercase tracking-wider font-black leading-none"
+          >
             Manifiesto
           </h1>
         </div>
@@ -52,7 +55,7 @@ export function FestivalManifestoPage() {
             </p>
           </div>
           <div className="lg:col-span-5">
-            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] transition-all duration-300 hover:shadow-[8px_8px_0_0_#b23a3a] rounded-none">
+            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] transition-all duration-300 hover:shadow-[8px_8px_0_0_#ba0038] rounded-none">
               <img
                 src={imagenesSitio.poetPortrait}
                 alt="Retrato del poeta y las montañas de Quetzaltenango"
@@ -65,7 +68,7 @@ export function FestivalManifestoPage() {
         {/* MOVIMIENTO II: De la Palabra y la Verdad (Invertido) */}
         <AnimatedSection className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] transition-all duration-300 hover:shadow-[8px_8px_0_0_#b23a3a] rounded-none">
+            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] transition-all duration-300 hover:shadow-[8px_8px_0_0_#ba0038] rounded-none">
               <img
                 src={imagenesSitio.stageNight}
                 alt="Lectura poética en escenario nocturno"
@@ -95,7 +98,7 @@ export function FestivalManifestoPage() {
 
         {/* Declaración Central de los Tres Versos Libres (Ritmo de Fanzine) */}
         <AnimatedSection>
-          <div className="py-10 border-y-2 border-ink bg-[#121212] text-cream text-center shadow-[4px_4px_0_0_#b23a3a] rounded-none max-w-4xl mx-auto">
+          <div className="py-10 border-y-2 border-ink bg-[#121212] text-cream text-center shadow-[4px_4px_0_0_#ba0038] rounded-none max-w-4xl mx-auto">
             <span className="block font-mono text-[9px] uppercase tracking-[0.25em] text-carmine font-bold mb-4">
               NUESTRAS CONVICCIONES
             </span>
@@ -135,7 +138,7 @@ export function FestivalManifestoPage() {
             </p>
           </div>
           <div className="lg:col-span-5">
-            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] transition-all duration-300 hover:shadow-[8px_8px_0_0_#b23a3a] rounded-none">
+            <div className="border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#ba0038] transition-all duration-300 hover:shadow-[8px_8px_0_0_#ba0038] rounded-none">
               <img
                 src={imagenesSitio.wallCollage}
                 alt="Mural de posters y memoria del festival"
@@ -180,34 +183,39 @@ export function FestivalManifestoPage() {
         </AnimatedSection>
       </div>
 
-      {/* SECCIÓN: EL FESTIVAL EN CONTEXTO (Estructura de Fichas Físicas) */}
-      <AnimatedSection className="mt-32 pt-16 border-t-2 border-ink">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-4xl sm:text-5xl uppercase font-black text-ink tracking-wide">
-            El  <i> FIPQ </i>  en contexto
-          </h2>
-          <p className="max-w-2xl mx-auto mt-4 text-sm sm:text-base leading-relaxed text-ink/70 tracking-wide font-semibold">
-            El Festival Internacional de Poesía de Quetzaltenango es una plataforma independiente y
-            autogestionada que conecta a poetas de todo el mundo con estudiantes y comunidades de
-            Xelajuj No’j y del occidente guatemalteco. A través del diálogo intercultural, talleres
-            y lecturas, llevamos la poesía a una gran diversidad de espacios: escuelas,
-            universidades, parques, teatros, calles, hogares seguros, centros de reclusión, así como
-            comunidades rurales y urbanas
-          </p>
-        </div>
+      {/* SECCIÓN: EL FESTIVAL EN CONTEXTO */}
+      <AnimatedSection className="mt-24 border-t-2 border-ink pt-12 sm:mt-32 sm:pt-16">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="space-y-6 lg:col-span-5">
+            <h2 className="font-display text-4xl font-black uppercase leading-[0.95] tracking-wide text-ink sm:text-5xl">
+              El <i>FIPQ</i> en contexto
+            </h2>
+            <p className="max-w-prose text-justify text-base font-medium leading-relaxed text-ink/75 sm:text-lg">
+              El Festival Internacional de Poesía de Quetzaltenango es una plataforma independiente
+              y autogestionada que conecta a poetas de todo el mundo con estudiantes y comunidades
+              de Xelajuj No’j y del occidente guatemalteco. A través del diálogo intercultural,
+              talleres y lecturas, llevamos la poesía a una gran diversidad de espacios: escuelas,
+              universidades, parques, teatros, calles, hogares seguros, centros de reclusión, así
+              como comunidades rurales y urbanas
+            </p>
+          </div>
 
-        {/* Banner de la comunidad */}
-        <div className="mb-16 border-2 border-ink p-2 bg-white shadow-[6px_6px_0_0_#121212] rounded-none max-w-4xl mx-auto">
-          <img
-            src={imagenesSitio.crowdBw}
-            alt="La comunidad y el público del festival"
-            className="w-full h-72 object-cover grayscale hover:grayscale-0 transition-all duration-500"
-          />
+          <figure className="mx-auto w-full max-w-[450px] lg:col-span-7">
+            <div className="border-2 border-ink bg-white p-2 shadow-[6px_6px_0_0_#121212] transition-shadow duration-300 hover:shadow-[8px_8px_0_0_#ba0038]">
+              <img
+                src={imagenesSitio.contextCommunity}
+                alt="Participantes del festival reunidos en un abrazo comunitario"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[3/4] w-full object-contain grayscale transition-[filter] duration-500 hover:grayscale-0"
+              />
+            </div>
+          </figure>
         </div>
 
         {/* Grilla de Fichas Físicas Cuadradas */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#b23a3a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#ba0038] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
             <div className="space-y-3">
               <h3 className="font-display text-xl uppercase tracking-wider font-black text-carmine">
                 Qué es
@@ -219,7 +227,7 @@ export function FestivalManifestoPage() {
               </p>
             </div>
           </section>
-          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#b23a3a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
+          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#ba0038] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
             <div className="space-y-3">
               <h3 className="font-display text-xl uppercase tracking-wider font-black text-ink">
                 Dónde ocurre
@@ -230,7 +238,7 @@ export function FestivalManifestoPage() {
               </p>
             </div>
           </section>
-          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#b23a3a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
+          <section className="p-6 border-2 border-ink bg-white shadow-[4px_4px_0_0_#121212] hover:shadow-[6px_6px_0_0_#ba0038] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 rounded-none flex flex-col justify-between h-full">
             <div className="space-y-3">
               <h3 className="font-display text-xl uppercase tracking-wider font-black text-carmine">
                 Aporte

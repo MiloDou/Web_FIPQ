@@ -21,10 +21,7 @@ function DisenoFestival() {
   return (
     <div className="bg-cream text-ink font-body min-h-screen flex flex-col">
       <EncabezadoSitio />
-      <DisenoRama
-        branch="festival"
-        tagline="Comunidad poética: lecturas, talleres y memoria viva compartida desde Xelajuj No’j y el occidente de Guatemala."
-      />
+      <DisenoRama branch="festival" tagline="" />
       <PieSitio />
     </div>
   );

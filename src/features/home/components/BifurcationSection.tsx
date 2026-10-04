@@ -9,13 +9,13 @@ export function BifurcationSection() {
       className="grid grid-cols-1 md:grid-cols-2 min-h-[100dvh] md:min-h-screen border-y-[6px] border-ink"
     >
       {/* Festival */}
-      <div className="group relative overflow-hidden bg-carmine p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-all duration-700 md:hover:flex-[1.5] border-b-[6px] md:border-b-0 md:border-r-[6px] border-ink min-h-[50dvh] md:min-h-[80vh]">
+      <div className="home-direction-panel group relative overflow-hidden bg-carmine p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-colors duration-500 border-b-[6px] md:border-b-0 md:border-r-[6px] border-ink min-h-[50dvh] md:min-h-[80vh]">
         <div className="absolute inset-0 opacity-25 group-hover:opacity-40 transition-opacity duration-500">
           <img
             src={imagenesSitio.wallCollage}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover grayscale mix-blend-overlay"
+            className="home-direction-art h-full w-full object-cover grayscale mix-blend-overlay"
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
@@ -32,28 +32,36 @@ export function BifurcationSection() {
             occidente de Guatemala.
           </p>
         </div>
-          <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
-            <Button asChild size="lg" className="w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
-              <Link to="/festival/manifiesto" hash="contenido">
-                Leer el Manifiesto
-              </Link>
-            </Button>
-            <Button asChild size="lg" className="w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
-              <Link to="/festival/programa" hash="contenido">
-                Programa (próximamente)
-              </Link>
-            </Button>
-          </div>
+        <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="home-cta w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+          >
+            <Link to="/festival/manifiesto" hash="contenido">
+              Leer el Manifiesto
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="home-cta w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+          >
+            <Link to="/festival/programa" hash="contenido">
+              Programa (próximamente)
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Editorial */}
-      <div className="group relative overflow-hidden bg-cream p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-all duration-700 md:hover:flex-[1.5] min-h-[50dvh] md:min-h-[80vh]">
+      <div className="home-direction-panel group relative overflow-hidden bg-cream p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-colors duration-500 min-h-[50dvh] md:min-h-[80vh]">
         <div className="absolute inset-0 opacity-15 group-hover:opacity-35 transition-opacity duration-500">
           <img
             src={imagenesSitio.risographBook}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover sepia"
+            className="home-direction-art h-full w-full object-cover sepia"
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
@@ -70,18 +78,26 @@ export function BifurcationSection() {
             festival.
           </p>
         </div>
-          <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
-            <Button asChild size="lg" className="w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
-              <Link to="/editorial/catalogo" hash="contenido">
-                Catálogo Editorial
-              </Link>
-            </Button>
-            <Button asChild size="lg" className="w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all">
-              <Link to="/editorial/contacto" hash="contenido">
-                Contacto
-              </Link>
-            </Button>
-          </div>
+        <div className="relative z-10 mt-6 sm:mt-8 md:mt-0 flex flex-col gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="home-cta w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+          >
+            <Link to="/editorial/catalogo" hash="contenido">
+              Catálogo Editorial
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="home-cta w-full sm:w-fit bg-carmine text-cream hover:bg-carmine/90 active:bg-carmine/80 border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+          >
+            <Link to="/editorial/contacto" hash="contenido">
+              Contacto
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

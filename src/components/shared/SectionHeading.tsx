@@ -18,7 +18,10 @@ export function EncabezadoSeccion({
           {eyebrow}
         </span>
       )}
-      <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide font-bold">
+      <h1
+        id="contenido"
+        className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.05] tracking-wide font-bold"
+      >
         {title}
         {accent && <span className="text-carmine italic"> {accent}</span>}
       </h1>

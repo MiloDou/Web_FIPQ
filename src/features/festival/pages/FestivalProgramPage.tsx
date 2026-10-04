@@ -5,21 +5,23 @@ export function FestivalProgramPage() {
     <>
       <div className="space-y-12 pb-2">
         <AnimatedSection>
-          <div className="border-t-2 border-ink pt-12 flex flex-col items-center justify-center text-center min-h-[40vh]">
+          <div
+            id="contenido"
+            className="border-t-2 border-ink pt-12 flex flex-col items-center justify-center text-center min-h-[40vh]"
+          >
             <span className="font-mono text-sm sm:text-base tracking-widest uppercase text-carmine font-bold mb-4">
               [ En construcción ]
             </span>
-            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase leading-none font-bold text-ink">
-              Programa en
-              desarrollo
-            </h2>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase leading-none font-bold text-ink">
+              Programa en desarrollo
+            </h1>
             <p className="mt-6 max-w-md text-ink/70 font-body text-sm sm:text-base leading-relaxed">
               Mantente atento a nuestras redes oficiales. Pronto revelaremos los horarios y sedes de
               la próxima edición.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
-                <a
-                  href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
+              <a
+                href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Seguir al FIPQ en Facebook (abre en nueva pestaña)"

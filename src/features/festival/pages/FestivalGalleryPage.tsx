@@ -1,15 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
-import { galeriaImages } from "@/assets/contenido";
+import { galeriaImageAlt, galeriaImages } from "@/assets/contenido";
 import { RefreshCw } from "lucide-react";
+import { useRef } from "react";
+import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
 
 const GRID_SIZE = 9;
 const STORAGE_KEY = "fipq_galeria_estado";
 const UNA_SEMANA_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Paleta del tape — sigue los colores de la página
-const TAPE_COLORS = ["bg-carmine/70", "bg-mustard/80", "bg-ink/60", "bg-carmine/50", "bg-mustard/60"];
-const ROTATIONS = ["rotate-1", "-rotate-1", "rotate-2", "-rotate-2", "rotate-[0.5deg]", "-rotate-[0.5deg]"];
+const TAPE_COLORS = [
+  "bg-carmine/70",
+  "bg-mustard/80",
+  "bg-ink/60",
+  "bg-carmine/50",
+  "bg-mustard/60",
+];
+const ROTATIONS = [
+  "rotate-1",
+  "-rotate-1",
+  "rotate-2",
+  "-rotate-2",
+  "rotate-[0.5deg]",
+  "-rotate-[0.5deg]",
+];
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -21,14 +36,30 @@ function nuevaSeleccion(): string[] {
 
 function cargarEstado(): { slots: string[]; guardado: number } {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = window.localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as { slots: string[]; guardado: number };
-      if (Date.now() - parsed.guardado < UNA_SEMANA_MS) return parsed;
+      const slotsValidos =
+        Array.isArray(parsed.slots) &&
+        parsed.slots.length === GRID_SIZE &&
+        parsed.slots.every((slot) => galeriaImages.includes(slot));
+      if (
+        slotsValidos &&
+        Number.isFinite(parsed.guardado) &&
+        Date.now() - parsed.guardado < UNA_SEMANA_MS
+      ) {
+        return parsed;
+      }
     }
-  } catch { /* ignorar */ }
+  } catch {
+    /* ignorar */
+  }
   const estado = { slots: nuevaSeleccion(), guardado: Date.now() };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+  } catch {
+    /* La galería sigue disponible si el navegador bloquea el almacenamiento. */
+  }
   return estado;
 }
 
@@ -73,63 +104,50 @@ function PantallaActualizando() {
 // ─── Foto individual ────────────────────────────────────────────────────────
 // El tape vive DENTRO del marco polaroid (overflow-hidden) para que nunca
 // aparezca suelto: si la imagen no cargó, el tape tampoco se muestra.
-function FotoCard({
-  src,
-  index,
-  onClick,
-}: {
-  src: string;
-  index: number;
-  onClick: () => void;
-}) {
+function FotoCard({ src, index, onClick }: { src: string; index: number; onClick: () => void }) {
   const [cargada, setCargada] = useState(false);
   const { rotation, tapeColor, tapeAngle } = slotStyle(index);
 
   return (
-    <figure
-      role="button"
-      tabIndex={0}
-      aria-label={`Ver fotografía ${index + 1} del festival ampliada`}
-      onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
-      className={`relative mb-8 md:mb-12 break-inside-avoid cursor-pointer group
-        transition-all duration-500 ease-in-out
-        animate-in fade-in zoom-in-95
-        ${rotation}
-        hover:rotate-0 hover:scale-[1.04] hover:z-10
-        focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4`}
-    >
-      {/* Marco polaroid — overflow-hidden asegura que el tape no escape */}
-      <div className="bg-white p-1.5 pb-7 shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] group-hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)] transition-shadow duration-300 overflow-hidden relative">
+    <figure className={`relative mb-8 md:mb-12 break-inside-avoid group ${rotation}`}>
+      <button
+        type="button"
+        aria-label={`Ver fotografía ${index + 1} del Festival Internacional de Poesía de Quetzaltenango ampliada`}
+        onClick={onClick}
+        className="block w-full cursor-pointer text-left transition-all duration-500 ease-in-out animate-in fade-in zoom-in-95 hover:rotate-0 hover:scale-[1.04] hover:z-10 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+      >
+        {/* Marco polaroid — overflow-hidden asegura que el tape no escape */}
+        <div className="bg-white p-1.5 pb-7 shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] group-hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)] transition-shadow duration-300 overflow-hidden relative">
+          {/* TAPE — vive dentro del marco, centrado arriba, solo aparece cuando la foto cargó */}
+          {cargada && (
+            <div
+              className={`absolute top-0 left-1/2 -translate-x-1/2 w-10 md:w-12 h-[13px] md:h-[16px] ${tapeColor} ${tapeAngle} z-10 shadow-sm pointer-events-none`}
+              style={{ mixBlendMode: "multiply" }}
+              aria-hidden="true"
+            />
+          )}
 
-        {/* TAPE — vive dentro del marco, centrado arriba, solo aparece cuando la foto cargó */}
-        {cargada && (
-          <div
-            className={`absolute top-0 left-1/2 -translate-x-1/2 w-10 md:w-12 h-[13px] md:h-[16px] ${tapeColor} ${tapeAngle} z-10 shadow-sm pointer-events-none`}
-            style={{ mixBlendMode: "multiply" }}
-            aria-hidden="true"
+          {/* Skeleton mientras carga */}
+          {!cargada && <div className="w-full aspect-[4/3] bg-ink/5 animate-pulse" />}
+
+          <img
+            src={src}
+            alt={
+              galeriaImageAlt[src] ??
+              "Registro fotográfico del Festival Internacional de Poesía de Quetzaltenango"
+            }
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setCargada(true)}
+            className={`block w-full h-auto transition-opacity duration-500 ${
+              cargada ? "opacity-100" : "opacity-0 h-0"
+            }`}
+            style={{
+              filter: "contrast(1.08) saturate(1.12) brightness(1.03)",
+            }}
           />
-        )}
-
-        {/* Skeleton mientras carga */}
-        {!cargada && (
-          <div className="w-full aspect-[4/3] bg-ink/5 animate-pulse" />
-        )}
-
-        <img
-          src={src}
-          alt={`Fotografía del festival ${index + 1}`}
-          loading="lazy"
-          decoding="async"
-          onLoad={() => setCargada(true)}
-          className={`block w-full h-auto transition-opacity duration-500 ${
-            cargada ? "opacity-100" : "opacity-0 h-0"
-          }`}
-          style={{
-            filter: "contrast(1.08) saturate(1.12) brightness(1.03)",
-          }}
-        />
-      </div>
+        </div>
+      </button>
 
       {/* Número de registro — solo cuando cargó */}
       {cargada && (
@@ -143,11 +161,18 @@ function FotoCard({
 
 // ─── Página ────────────────────────────────────────────────────────────────
 export function FestivalGalleryPage() {
-  const [estado, setEstado] = useState<{ slots: string[]; guardado: number }>(
-    () => cargarEstado()
-  );
+  const [estado, setEstado] = useState<{ slots: string[]; guardado: number }>(() => ({
+    slots: galeriaImages.slice(0, GRID_SIZE),
+    guardado: 0,
+  }));
   const [selectedFoto, setSelectedFoto] = useState<string | null>(null);
   const [actualizando, setActualizando] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useAccessibleDialog(dialogRef, Boolean(selectedFoto), () => setSelectedFoto(null));
+
+  useEffect(() => {
+    setEstado(cargarEstado());
+  }, []);
 
   const handleRefresh = () => {
     // 1. Mostrar pantalla de carga
@@ -155,7 +180,11 @@ export function FestivalGalleryPage() {
     // 2. Tras 1s (da tiempo a que se vea la animación), cargar nuevas fotos
     setTimeout(() => {
       const nuevoEstado = { slots: nuevaSeleccion(), guardado: Date.now() };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(nuevoEstado));
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nuevoEstado));
+      } catch {
+        /* La selección nueva se mantiene en memoria durante esta visita. */
+      }
       setEstado(nuevoEstado);
       // 3. Ocultar pantalla de carga y subir al inicio
       setActualizando(false);
@@ -173,17 +202,9 @@ export function FestivalGalleryPage() {
       <EncabezadoSeccion title="Cada imagen" accent="conserva su forma." />
 
       {/* Grid de fotos tipo polaroid */}
-      <div
-        id="contenido-pagina"
-        className="columns-2 md:columns-3 gap-6 md:gap-10 scroll-mt-4 py-6"
-      >
+      <div className="columns-2 md:columns-3 gap-6 md:gap-10 py-6">
         {estado.slots.map((src, i) => (
-          <FotoCard
-            key={`${src}-${i}`}
-            src={src}
-            index={i}
-            onClick={() => setSelectedFoto(src)}
-          />
+          <FotoCard key={`${src}-${i}`} src={src} index={i} onClick={() => setSelectedFoto(src)} />
         ))}
       </div>
 
@@ -210,7 +231,11 @@ export function FestivalGalleryPage() {
           aria-label="Actualizar la selección de fotografías"
           className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest border-2 border-ink px-5 py-3 min-h-[44px] text-ink hover:bg-carmine hover:text-cream hover:border-carmine transition-all duration-200 shadow-[3px_3px_0_0_rgba(26,26,26,1)] hover:shadow-[3px_3px_0_0_rgba(186,0,56,1)] active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(26,26,26,1)] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <RefreshCw size={14} className={`shrink-0 ${actualizando ? "animate-spin" : ""}`} aria-hidden="true" />
+          <RefreshCw
+            size={14}
+            className={`shrink-0 ${actualizando ? "animate-spin" : ""}`}
+            aria-hidden="true"
+          />
           Actualizar galería
         </button>
       </div>
@@ -219,14 +244,20 @@ export function FestivalGalleryPage() {
       {selectedFoto && (
         <div
           role="dialog"
+          aria-modal="true"
           aria-label="Vista ampliada de la imagen"
+          ref={dialogRef}
+          tabIndex={-1}
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4 backdrop-blur-md cursor-zoom-out animate-in fade-in duration-200"
           onClick={() => setSelectedFoto(null)}
         >
           <div className="relative max-w-5xl max-h-[90vh] flex flex-col items-center">
             <img
               src={selectedFoto}
-              alt="Fotografía del festival ampliada"
+              alt={
+                galeriaImageAlt[selectedFoto] ??
+                "Registro fotográfico del Festival Internacional de Poesía de Quetzaltenango"
+              }
               className="max-h-[80vh] w-auto object-contain shadow-2xl"
               style={{ filter: "contrast(1.08) saturate(1.12) brightness(1.03)" }}
             />

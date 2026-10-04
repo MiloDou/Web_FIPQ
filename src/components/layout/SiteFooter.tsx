@@ -1,78 +1,153 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Youtube } from "lucide-react";
-import { logoMetaforaEditores } from "@/assets/contenido";
+import { logoMetaforaCompleto } from "@/assets/contenido";
+
+const linkClass =
+  "inline-flex min-h-11 items-center text-xs text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
+
+const socialClass =
+  "inline-flex min-h-11 items-center gap-1.5 px-1.5 text-[11px] text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
 
 export function PieSitio() {
   return (
-    <footer className="bg-cream pt-24 pb-12 px-6 border-t-4 border-ink">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap gap-8 justify-between items-end mb-16">
-          <div className="max-w-sm">
-            <div className="text-5xl font-display text-carmine mb-4 leading-none uppercase flex items-center gap-4">
-              <i>FIPQ</i>
-              <img src={logoMetaforaEditores} alt="Metáfora Editores" className="h-12 w-auto object-contain" />
+    <footer className="border-t-2 border-carmine bg-cream px-5 pb-4 pt-8 sm:px-8 sm:pt-9">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-7 border-b border-ink/20 pb-7 sm:grid-cols-2 lg:grid-cols-[1.1fr_1.3fr_0.9fr] lg:items-start lg:gap-10">
+          <section aria-label="Identidad institucional">
+            <div className="flex min-h-10 items-center gap-4">
+              <span className="font-display text-2xl leading-none text-carmine">FIPQ</span>
+              {logoMetaforaCompleto && (
+                <img
+                  src={logoMetaforaCompleto}
+                  alt="Metáfora, Literatura y Arte"
+                  className="h-6 w-auto object-contain"
+                  loading="lazy"
+                />
+              )}
             </div>
-            <p className="text-xs font-mono uppercase leading-relaxed">
-              Festival Internacional de Poesía de Quetzaltenango y Metáfora Editores.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Facebook de Metáfora FIPQ"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ink/65">Desde Xelajuj</p>
+          </section>
+
+          <nav aria-label="Enlaces institucionales" className="grid grid-cols-2 gap-x-5">
+            <div>
+              <h2 className="mb-2 font-display text-xs uppercase tracking-wide text-ink">
+                Festival
+              </h2>
+              <ul className="space-y-0.5">
+                <li>
+                  <Link to="/festival/fipq21" className={linkClass}>
+                    21FIPQ
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/festival/manifiesto" className={linkClass}>
+                    Manifiesto
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/festival/programa" className={linkClass}>
+                    Programa
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/festival/galeria" className={linkClass}>
+                    Galería
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/festival/archivo" className={linkClass}>
+                    Archivo
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-2 font-display text-xs uppercase tracking-wide text-ink">
+                Metáfora Editores
+              </h2>
+              <ul className="space-y-0.5">
+                <li>
+                  <Link to="/editorial/catalogo" className={linkClass}>
+                    Catálogo
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/editorial/contacto" className={linkClass}>
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <section aria-labelledby="footer-contacto">
+            <h2
+              id="footer-contacto"
+              className="mb-2 font-display text-xs uppercase tracking-wide text-ink"
             >
-              <Facebook size={16} aria-hidden="true" />
-              Facebook
-            </a>
+              Contacto
+            </h2>
             <a
-              href="https://www.instagram.com/fipq_metafora/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram de FIPQ Metáfora"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
+              href="mailto:correofipquetzaltenango@gmail.com"
+              className="inline-flex min-h-11 items-center break-all text-xs text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2"
             >
-              <Instagram size={16} aria-hidden="true" />
-              Instagram
+              correofipquetzaltenango@gmail.com
             </a>
-            <a
-              href="https://www.youtube.com/@fipqmetaforaquetzaltenango4136"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube de FIPQ Metáfora Quetzaltenango"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
-            >
-              <Youtube size={16} aria-hidden="true" />
-              YouTube
-            </a>
-            <a
-              href="https://x.com/MetaforaFIPQ"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="X de Metáfora FIPQ"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
-            >
-              X / Twitter
-            </a>
-            <a
-              href="https://open.spotify.com/show/1NorotrpoNkC6iN6nBN7rT"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Spotify de FIPQ Metáfora"
-              className="inline-flex items-center gap-2 px-4 py-3 min-h-[44px] bg-ink text-cream font-display text-sm uppercase hover:bg-carmine active:bg-carmine transition-colors"
-            >
-              <Music2 size={16} aria-hidden="true" />
-              Spotify
-            </a>
-          </div>
+            <nav aria-label="Redes sociales" className="mt-1 flex flex-wrap items-center gap-x-1">
+              <a
+                href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook de Metáfora FIPQ"
+                className={socialClass}
+              >
+                <Facebook size={14} aria-hidden="true" /> Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/fipq_metafora/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram de FIPQ Metáfora"
+                className={socialClass}
+              >
+                <Instagram size={14} aria-hidden="true" /> Instagram
+              </a>
+              <a
+                href="https://www.youtube.com/@fipqmetaforaquetzaltenango4136"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube de FIPQ Metáfora Quetzaltenango"
+                className={socialClass}
+              >
+                <Youtube size={14} aria-hidden="true" /> YouTube
+              </a>
+              <a
+                href="https://x.com/MetaforaFIPQ"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="X de Metáfora FIPQ"
+                className={socialClass}
+              >
+                X
+              </a>
+              <a
+                href="https://open.spotify.com/show/1NorotrpoNkC6iN6nBN7rT"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Spotify de FIPQ Metáfora"
+                className={socialClass}
+              >
+                <Music2 size={14} aria-hidden="true" /> Spotify
+              </a>
+            </nav>
+          </section>
         </div>
-        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center text-[10px] font-mono uppercase tracking-widest text-ink/60">
-          <span className="flex items-center gap-2">
-            © {new Date().getFullYear()} <img src={logoMetaforaEditores} alt="Metáfora Editores" className="h-6 w-auto inline-block -mt-1" />
-          </span>
-          <span>Hecho en el valle de Xelajuj No’j</span>
+
+        <div className="flex flex-col gap-1.5 pt-3 font-mono text-[9px] text-ink/70 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} Festival Internacional de Poesía de Quetzaltenango y
+            Metáfora Editores
+          </p>
         </div>
       </div>
     </footer>

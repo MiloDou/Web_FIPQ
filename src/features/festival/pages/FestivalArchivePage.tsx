@@ -1,18 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
 import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
-import { contenidoImages } from "@/assets/contenido";
+import { fotosArchivoPorEdicion } from "@/assets/contenido";
 import { ediciones } from "../data/archive";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useRef } from "react";
+import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
 
 // ─── Afiche / PosterFrame ───────────────────────────────────────────────────
-function PosterFrame({ image, title, onClick }: { image?: string; title: string; onClick: () => void }) {
+function PosterFrame({
+  image,
+  title,
+  onClick,
+}: {
+  image?: string;
+  title: string;
+  onClick: () => void;
+}) {
   return (
     <button
       type="button"
+      disabled={!image}
       onClick={onClick}
       aria-label={`Ver afiche de ${title} en tamaño completo`}
-      className="relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 active:-translate-y-1 flex items-center justify-center max-h-[55vh] lg:max-h-[65vh] w-full bg-transparent border-0 p-0 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+      className="relative group enabled:cursor-pointer disabled:cursor-not-allowed transition-transform duration-300 enabled:hover:-translate-y-2 enabled:active:-translate-y-1 flex items-center justify-center max-h-[55vh] lg:max-h-[65vh] w-full bg-transparent border-0 p-0 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4 disabled:focus-visible:outline-none"
     >
       {image ? (
         <img
@@ -24,7 +35,9 @@ function PosterFrame({ image, title, onClick }: { image?: string; title: string;
       ) : (
         <div className="w-[240px] sm:w-[300px] aspect-[3/4] bg-cream/50 flex items-center justify-center border-4 border-dashed border-ink/20 shadow-[8px_8px_0_0_rgba(26,26,26,0.3)]">
           <span className="font-mono text-sm uppercase text-ink/60 font-bold text-center px-4">
-            Registro visual<br/>pendiente
+            Registro visual
+            <br />
+            pendiente
           </span>
         </div>
       )}
@@ -45,16 +58,33 @@ function GaleriaModal({
   onClose: () => void;
 }) {
   const [current, setCurrent] = useState(initialIndex);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const thumbnailRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const touchStartX = useRef<number | null>(null);
+  useAccessibleDialog(dialogRef, true, onClose);
 
-  const prev = useCallback(() => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1)), [images.length]);
-  const next = useCallback(() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)), [images.length]);
+  const prev = useCallback(
+    () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1)),
+    [images.length],
+  );
+  const next = useCallback(
+    () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)),
+    [images.length],
+  );
+
+  useEffect(() => {
+    thumbnailRefs.current[current]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [current]);
 
   // Navegación con teclado
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
-      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -65,15 +95,17 @@ function GaleriaModal({
       role="dialog"
       aria-modal="true"
       aria-label={`Galería de fotos de ${edition.title}`}
+      ref={dialogRef}
+      tabIndex={-1}
       className="fixed inset-0 z-[60] flex flex-col bg-ink animate-in fade-in duration-200"
     >
       {/* Header del modal */}
-      <div className="flex items-center justify-between px-4 sm:px-8 py-4 border-b-4 border-cream/20 shrink-0">
+      <div className="flex shrink-0 items-center justify-between border-b border-cream/15 px-4 py-3 sm:px-8 sm:py-4">
         <div className="flex flex-col">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-carmine font-bold">
+          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-cream/55 sm:text-[10px]">
             Archivo Histórico
           </span>
-          <h2 className="font-display text-2xl sm:text-4xl uppercase leading-none text-cream mt-1">
+          <h2 className="mt-1 font-display text-xl uppercase leading-none text-cream sm:text-3xl">
             <span className="text-carmine">{edition.number}</span> FIPQ
             {edition.year && (
               <span className="text-cream/40 text-xl sm:text-3xl ml-3">{edition.year}</span>
@@ -82,8 +114,11 @@ function GaleriaModal({
         </div>
 
         {/* Contador + controles */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          <span className="font-mono text-xs sm:text-sm text-cream/50 tracking-widest tabular-nums">
+        <div className="flex items-center gap-3 sm:gap-5">
+          <span
+            className="font-mono text-[10px] tracking-widest text-cream/65 tabular-nums sm:text-xs"
+            aria-live="polite"
+          >
             {String(current + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </span>
           <button
@@ -98,24 +133,39 @@ function GaleriaModal({
       </div>
 
       {/* Área principal: imagen grande + flechas */}
-      <div className="flex-1 flex items-center justify-center relative overflow-hidden px-2 sm:px-4 py-4">
+      <div
+        className="relative flex min-h-0 flex-1 touch-pan-y items-center justify-center overflow-hidden px-2 py-2 sm:px-4 sm:py-3"
+        onTouchStart={(event) => {
+          touchStartX.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          const start = touchStartX.current;
+          const end = event.changedTouches[0]?.clientX;
+          if (start !== null && end !== undefined && Math.abs(end - start) > 48) {
+            if (end < start) next();
+            else prev();
+          }
+          touchStartX.current = null;
+        }}
+      >
         {/* Flecha izquierda */}
         <button
           type="button"
           onClick={prev}
           aria-label="Imagen anterior"
-          className="absolute left-2 sm:left-4 z-10 h-12 w-12 sm:h-14 sm:w-14 bg-cream/10 hover:bg-carmine active:bg-carmine border-2 border-cream/20 hover:border-carmine text-cream flex items-center justify-center transition-all cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-carmine"
+          className="absolute left-2 z-10 flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center border border-cream/40 bg-ink/75 text-cream transition-colors hover:border-carmine hover:bg-carmine focus-visible:outline-2 focus-visible:outline-carmine sm:left-4 sm:h-12 sm:w-12"
         >
           <ChevronLeft size={24} aria-hidden="true" />
         </button>
 
         {/* Imagen */}
-        <div className="mx-16 sm:mx-20 flex items-center justify-center w-full h-full">
+        <div className="flex h-full w-full items-center justify-center px-12 sm:px-16">
           <img
             key={current}
             src={images[current]}
-            alt={`Registro fotográfico ${current + 1} de ${edition.title}`}
-            className="max-h-[60vh] sm:max-h-[65vh] w-auto max-w-full object-contain border-4 border-cream/20 bg-cream/5 shadow-[8px_8px_0_0_rgba(186,0,56,0.4)] animate-in fade-in zoom-in-95 duration-200"
+            alt={`Fotografía ${current + 1} de ${images.length} del ${edition.title}`}
+            decoding="async"
+            className="max-h-[65dvh] w-auto max-w-full border border-cream/25 bg-cream object-contain shadow-[4px_4px_0_0_#ba0038] animate-in fade-in duration-300 sm:max-h-[76dvh] lg:max-h-[82dvh]"
           />
         </div>
 
@@ -124,33 +174,32 @@ function GaleriaModal({
           type="button"
           onClick={next}
           aria-label="Imagen siguiente"
-          className="absolute right-2 sm:right-4 z-10 h-12 w-12 sm:h-14 sm:w-14 bg-cream/10 hover:bg-carmine active:bg-carmine border-2 border-cream/20 hover:border-carmine text-cream flex items-center justify-center transition-all cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-carmine"
+          className="absolute right-2 z-10 flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center border border-cream/40 bg-ink/75 text-cream transition-colors hover:border-carmine hover:bg-carmine focus-visible:outline-2 focus-visible:outline-carmine sm:right-4 sm:h-12 sm:w-12"
         >
           <ChevronRight size={24} aria-hidden="true" />
         </button>
       </div>
 
       {/* Tira de miniaturas */}
-      <div className="shrink-0 border-t-4 border-cream/20 px-4 py-3 sm:py-4 overflow-x-auto">
-        <div className="flex gap-2 sm:gap-3 w-max mx-auto">
+      <div className="shrink-0 overflow-x-auto border-t border-cream/15 px-4 py-2 sm:py-3">
+        <div className="mx-auto flex w-max snap-x snap-mandatory gap-2">
           {images.map((img, idx) => (
             <button
               key={idx}
+              ref={(element) => {
+                thumbnailRefs.current[idx] = element;
+              }}
               type="button"
               onClick={() => setCurrent(idx)}
               aria-label={`Ver fotografía ${idx + 1}`}
               aria-pressed={idx === current}
-              className={`shrink-0 h-14 w-14 sm:h-20 sm:w-20 overflow-hidden border-4 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-carmine ${
+              className={`h-12 w-16 shrink-0 snap-center overflow-hidden border transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-carmine sm:h-14 sm:w-20 ${
                 idx === current
-                  ? "border-carmine scale-105 shadow-[0_0_0_2px_rgba(186,0,56,1)]"
-                  : "border-cream/20 opacity-50 hover:opacity-100 hover:border-cream/50"
+                  ? "border-carmine opacity-100"
+                  : "border-cream/20 opacity-45 hover:opacity-100 hover:border-cream/50"
               }`}
             >
-              <img
-                src={img}
-                alt={`Miniatura ${idx + 1}`}
-                className="h-full w-full object-cover"
-              />
+              <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
             </button>
           ))}
         </div>
@@ -158,7 +207,7 @@ function GaleriaModal({
 
       {/* Hint de teclado */}
       <div className="shrink-0 py-2 text-center">
-        <span className="font-mono text-[9px] sm:text-[10px] text-cream/25 uppercase tracking-widest">
+        <span className="font-mono text-[9px] text-cream/35 uppercase tracking-widest sm:text-[10px]">
           ← → para navegar · Esc para cerrar
         </span>
       </div>
@@ -173,12 +222,8 @@ export function FestivalArchivePage() {
     edition: (typeof ediciones)[number];
     startIndex: number;
   } | null>(null);
-
-  const getGalleryImagesForEdition = (numStr: string) => {
-    const num = parseInt(numStr) || 1;
-    const startIndex = (num * 4) % (contenidoImages.length - 6);
-    return contenidoImages.slice(startIndex, startIndex + 6);
-  };
+  const posterDialogRef = useRef<HTMLDivElement>(null);
+  useAccessibleDialog(posterDialogRef, Boolean(selectedPoster), () => setSelectedPoster(null));
 
   return (
     <>
@@ -187,14 +232,14 @@ export function FestivalArchivePage() {
         de las dos décadas de historia, memoria y poesía en la ciudad.
       </EncabezadoSeccion>
 
-      <div id="contenido-pagina" className="w-full flex flex-col border-t-4 border-ink bg-cream scroll-mt-20">
+      <div className="w-full flex flex-col border-t-4 border-ink bg-cream">
         {ediciones.map((e, i) => {
           const isImageLeft = i % 2 === 0;
+          const fotosEdicion = fotosArchivoPorEdicion[e.number] ?? [];
 
           return (
             <AnimatedSection key={e.number} className="w-full">
               <article className="w-full border-b-4 border-ink flex flex-col lg:flex-row items-stretch">
-
                 {/* COLUMNA VISUAL */}
                 <div
                   className={`w-full lg:w-1/2 p-6 sm:p-10 lg:p-12 flex items-center justify-center bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] min-h-[40vh] lg:min-h-[50vh] ${
@@ -219,7 +264,6 @@ export function FestivalArchivePage() {
                   }`}
                 >
                   <div className="flex flex-col gap-6 w-full max-w-xl">
-
                     {/* Número y nombre de la edición */}
                     <div>
                       <h3 className="font-display leading-none tracking-tight text-ink text-6xl sm:text-7xl lg:text-8xl uppercase">
@@ -232,36 +276,42 @@ export function FestivalArchivePage() {
                     {/* Datos históricos de la edición */}
                     <div className="flex flex-col gap-3 border-l-4 border-carmine pl-5">
                       <p className="font-body text-sm sm:text-base text-ink leading-relaxed">
-                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">Dedicado a:</span>
+                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">
+                          Dedicado a:
+                        </span>
                         <br />
-                        <span className="font-medium">{e.dedicated ?? <span className="text-ink/60">Detalles próximamente</span>}</span>
+                        <span className="font-medium">
+                          {e.dedicated ?? (
+                            <span className="text-ink/60">Detalles próximamente</span>
+                          )}
+                        </span>
                       </p>
                       <p className="font-body text-sm sm:text-base text-ink leading-relaxed">
-                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">Fechas:</span>
+                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-carmine">
+                          Fechas:
+                        </span>
                         <br />
-                        <span className="font-medium">{e.dates ?? <span className="text-ink/60">Detalles próximamente</span>}</span>
+                        <span className="font-medium">
+                          {e.dates ?? <span className="text-ink/60">Detalles próximamente</span>}
+                        </span>
                       </p>
                     </div>
 
-                    {/* Botón galería — solo para FIPQ 20 / mensaje de construcción para las demás */}
-                    {e.number === "20" ? (
-                      <div>
-                        <button
-                          type="button"
-                          onClick={(ev) => {
-                            ev.stopPropagation();
-                            setActiveGallery({ edition: e, startIndex: 0 });
-                          }}
-                          className="inline-flex items-center gap-4 px-6 sm:px-8 py-4 min-h-[44px] bg-ink text-cream border-4 border-ink font-mono text-sm sm:text-base uppercase tracking-widest font-bold hover:bg-mustard hover:text-ink transition-all shadow-[8px_8px_0_0_rgba(186,0,56,1)] active:translate-y-1 active:shadow-[2px_2px_0_0_rgba(186,0,56,1)] group focus-visible:outline-2 focus-visible:outline-carmine"
-                        >
-                          Abrir Galería
-                          <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>
-                        </button>
-                      </div>
-                    ) : null}
-
+                    {fotosEdicion.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setActiveGallery({ edition: e, startIndex: 0 })}
+                        className="group inline-flex min-h-12 w-fit items-center gap-3 border-2 border-ink bg-ink px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.16em] text-cream shadow-[4px_4px_0_0_#ba0038] transition-all hover:bg-carmine hover:shadow-[5px_5px_0_0_#121212] active:translate-y-0.5 active:shadow-none focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4 sm:text-sm"
+                      >
+                        Abrir galería
+                        <span className="text-cream/60">{fotosEdicion.length} fotos</span>
+                        <ArrowRight
+                          size={18}
+                          aria-hidden="true"
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </button>
+                    )}
                   </div>
                 </div>
               </article>
@@ -273,7 +323,7 @@ export function FestivalArchivePage() {
       {/* MODAL GALERÍA CON NAVEGACIÓN */}
       {activeGallery && (
         <GaleriaModal
-          images={getGalleryImagesForEdition(activeGallery.edition.number)}
+          images={fotosArchivoPorEdicion[activeGallery.edition.number] ?? []}
           initialIndex={activeGallery.startIndex}
           edition={activeGallery.edition}
           onClose={() => setActiveGallery(null)}
@@ -286,6 +336,8 @@ export function FestivalArchivePage() {
           role="dialog"
           aria-modal="true"
           aria-label="Vista ampliada del afiche"
+          ref={posterDialogRef}
+          tabIndex={-1}
           className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-lg cursor-zoom-out animate-in fade-in zoom-in-95 duration-200"
           onClick={() => setSelectedPoster(null)}
         >

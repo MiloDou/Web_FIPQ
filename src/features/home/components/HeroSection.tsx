@@ -1,59 +1,51 @@
-import { logoImage, imagenesSitio } from "@/assets/contenido";
+import { Link } from "@tanstack/react-router";
+import { imagenesSitio, logosPortada } from "@/assets/contenido";
 
 export function HeroSection() {
   return (
-    <section className="relative h-[100dvh] w-full bg-[#0a0a0a] flex flex-col justify-between items-center py-6 px-4 sm:px-6 md:px-8 text-center overflow-hidden">
-      {/* Cinematic Backdrop Image - Bookstore/Zine texture */}
-        <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+    <section className="relative flex h-[100svh] min-h-[620px] w-full flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] px-0 pb-8 pt-16 text-center">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <img
-          src={imagenesSitio.stageNight}
+          src={imagenesSitio.homeBackground}
           alt=""
-          className="h-full w-full object-cover grayscale opacity-30 animate-slow-pan"
+          className="hero-backdrop-arrive h-full w-full object-[center_58%] object-cover grayscale opacity-90 blur-[3px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/50" />
+        <div className="absolute inset-0 bg-[#0a0a0a]/60" />
       </div>
 
-      {/* Top Spacer to balance the vertical flex layout */}
-      <div className="h-6 sm:h-10" />
+      <div className="relative z-10 my-auto flex w-full flex-col items-center">
+        <div
+          aria-hidden="true"
+          className="hero-mark-print mb-1 h-16 w-16 -translate-y-6 bg-cream sm:mb-2 sm:h-20 sm:w-20"
+          style={{
+            maskImage: `url("${logosPortada.festival}")`,
+            WebkitMaskImage: `url("${logosPortada.festival}")`,
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+          }}
+        />
 
-      {/* Hero Center Content Group - Perfectly grouped and vertically centered */}
-      <div className="relative z-10 flex flex-col items-center justify-center max-w-5xl my-auto py-4 px-2 sm:px-4 w-full">
-        {/* Logo - Centered directly above the title */}
-        <div className="relative mb-6 sm:mb-8 p-0.5 bg-cream rounded-full border-2 border-cream shadow-[0_8px_30px_rgba(0,0,0,0.5)] animate-fade-in-up">
-          <div className="absolute inset-0 rounded-full bg-carmine/10 blur-lg opacity-40 scale-105 pointer-events-none" />
-          <img
-            src={logoImage}
-            alt="Logo FIPQ"
-            width={160}
-            height={160}
-            className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 object-cover rounded-full"
-          />
-        </div>
-
-        {/* Title */}
-        {/* Ajuste responsive: en móviles pequeños (320px) text-[8vw] evita que se rompa, luego escala a tamaños más fijos en md/lg */}
-        <h1 className="font-display font-normal uppercase text-cream tracking-tighter leading-[0.9] select-none text-center text-[8vw] sm:text-[7vw] md:text-7xl lg:text-8xl xl:text-[7.5rem] w-full">
-          FESTIVAL INTERNACIONAL
-          <br />
-          DE POESÍA DE
-          <br />
-          <span className="text-carmine">QUETZALTENANGO</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="mt-6 sm:mt-8 max-w-2xl text-cream/70 font-body text-xs sm:text-sm md:text-base leading-relaxed text-center px-4">
-          Comunidad, territorio y memoria desde Xelajuj No'j
-        </p>
+        <h1 className="sr-only">Festival Internacional de Poesía de Quetzaltenango</h1>
+        <div
+          role="img"
+          aria-label="Festival Internacional de Poesía de Quetzaltenango"
+          className="hero-wordmark-print aspect-[1.219] w-[min(86vw,520px)] bg-cream"
+          style={{
+            maskImage: `url("${logosPortada.central}")`,
+            WebkitMaskImage: `url("${logosPortada.central}")`,
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskSize: "100% 100%",
+            WebkitMaskSize: "100% 100%",
+          }}
+        />
       </div>
-
-      {/* Bottom scroll indicator */}
-      <a
-        href="#direcciones"
-        aria-label="Ver las secciones del festival y la editorial"
-        className="relative z-10 flex flex-col items-center justify-end h-20 sm:h-24 w-12 group cursor-pointer hover:opacity-100 opacity-80 transition-opacity pb-2 sm:pb-4"
-      >
-        <div aria-hidden="true" className="w-px h-10 sm:h-12 bg-cream/30 animate-pulse group-hover:bg-carmine group-hover:h-14 sm:group-hover:h-16 transition-all duration-500" />
-      </a>
     </section>
   );
 }

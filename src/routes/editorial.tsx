@@ -20,7 +20,7 @@ function DisenoEditorial() {
   return (
     <div className="bg-cream text-ink font-body min-h-screen flex flex-col">
       <EncabezadoSitio />
-      <DisenoRama branch="editorial" tagline="De la voz al libro. Memoria editorial." />
+      <DisenoRama branch="editorial" tagline="" />
       <PieSitio />
     </div>
   );

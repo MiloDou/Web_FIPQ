@@ -7,11 +7,13 @@ const configuracionRamas = {
     title: "Festival",
     headerClass: "bg-carmine text-cream",
     bgImage: imagenesSitio.festivalHeaderBg,
+    bgPosition: "center 65%",
   },
   editorial: {
     title: "Metáfora Editores",
     headerClass: "bg-ink text-cream",
     bgImage: imagenesSitio.editorialHeaderBg,
+    bgPosition: "center 70%",
   },
 } as const;
 
@@ -27,12 +29,13 @@ export function DisenoRama({
   const config = configuracionRamas[branch];
   const location = useLocation();
   const pathSegments = location.pathname.split("/").filter(Boolean);
-  const subRoute = pathSegments.length > 1 ? pathSegments[pathSegments.length - 1].replace(/-/g, " ") : "";
+  const subRoute =
+    pathSegments.length > 1 ? pathSegments[pathSegments.length - 1].replace(/-/g, " ") : "";
 
   return (
     <>
       <section
-        className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink min-h-[220px] md:min-h-[350px] pt-24 pb-8 md:pt-32 md:pb-12 flex flex-col justify-center`}
+        className={`${config.headerClass} relative overflow-hidden border-b-4 border-ink min-h-[170px] md:min-h-[270px] pt-20 pb-6 md:pt-24 md:pb-8 flex flex-col justify-center`}
       >
         {/* Full-bleed Background Image with Flat screen-print texture (no gradients) */}
         {config.bgImage && (
@@ -40,7 +43,8 @@ export function DisenoRama({
             <img
               src={config.bgImage}
               alt=""
-              className="w-full h-full object-cover object-[center_51%] grayscale contrast-[1.2] opacity-25 mix-blend-multiply"
+              className="w-full h-full object-cover grayscale contrast-[1.2] opacity-25 mix-blend-multiply"
+              style={{ objectPosition: config.bgPosition }}
             />
           </div>
         )}
@@ -51,13 +55,15 @@ export function DisenoRama({
             <span className="font-body text-xs sm:text-sm tracking-wide opacity-60 font-medium">
               {config.title}
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
+            <p className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
               {subRoute ? subRoute : config.title}
-            </h1>
+            </p>
           </div>
-          <p className="mt-3 max-w-2xl font-body text-sm sm:text-base text-cream opacity-80 leading-relaxed font-light">
-            {tagline}
-          </p>
+          {tagline && (
+            <p className="mt-3 max-w-2xl font-body text-sm sm:text-base text-cream opacity-80 leading-relaxed font-light">
+              {tagline}
+            </p>
+          )}
         </div>
       </section>
       <main id="contenido-pagina" className="bg-cream text-ink scroll-mt-20">

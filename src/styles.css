@@ -4,7 +4,7 @@
 
 /*
  * FIPQ + Editorial Metáfora — Urban Collage Zine.
- * Carmín #B12A3B · Crema #F5F2E9 · Tinta #1A1A1A · Mostaza #E3A01D
+ * Carmín #BA0038 · Crema #F5F2E9 · Tinta #1A1A1A · Mostaza #E3A01D
  * Font: Bebas Neue (Globally)
  */
 
@@ -13,7 +13,7 @@
   --color-cream: #f5f2e9;
   --color-ink: #1a1a1a;
   --color-mustard: #e3a01d;
-  
+
   /* Semantic Tokens for Feedback (Accessibility & UX) */
   --color-success: #166534;
   --color-warning: #b45309;
@@ -86,7 +86,7 @@
   --card-foreground: #1a1a1a;
   --popover: #f5f2e9;
   --popover-foreground: #1a1a1a;
-  --primary: #b12a3b;
+  --primary: #ba0038;
   --primary-foreground: #f5f2e9;
   --secondary: #1a1a1a;
   --secondary-foreground: #f5f2e9;
@@ -98,7 +98,7 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: rgba(26, 26, 26, 0.15);
   --input: rgba(26, 26, 26, 0.15);
-  --ring: #b12a3b;
+  --ring: #ba0038;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -377,6 +377,96 @@ html {
   }
 }
 
+@keyframes hero-backdrop-settle {
+  from {
+    opacity: 0.55;
+    scale: 1.045;
+  }
+  to {
+    opacity: 0.9;
+    scale: 1;
+  }
+}
+
+@keyframes hero-mark-print {
+  from {
+    opacity: 0;
+    scale: 0.72;
+    rotate: -9deg;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    rotate: 0deg;
+  }
+}
+
+@keyframes hero-wordmark-print {
+  from {
+    opacity: 0;
+    scale: 0.97;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes home-panel-enter {
+  from {
+    opacity: 0.8;
+    translate: 0 14px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.hero-backdrop-arrive {
+  animation: hero-backdrop-settle 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-mark-print {
+  animation: hero-mark-print 560ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.hero-wordmark-print {
+  animation: hero-wordmark-print 680ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
+}
+
+.home-directions[data-reveal-state="visible"] .home-direction-panel,
+.animated-section[data-reveal-state="visible"] .home-info-card {
+  animation: home-panel-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-directions[data-reveal-state="visible"] .home-direction-panel:nth-child(2),
+.animated-section[data-reveal-state="visible"] .home-info-card:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.home-cta {
+  transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.home-cta:hover {
+  transform: translateY(-2px);
+}
+
+.home-cta:active {
+  transform: translateY(0) scale(0.985);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .home-direction-art {
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home-direction-panel:hover .home-direction-art {
+    transform: scale(1.045);
+  }
+}
+
 .animate-fade-in-up {
   opacity: 0;
   animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -416,9 +506,15 @@ html {
 
 /* Barra de carga de la galería */
 @keyframes loading-bar {
-  0%   { transform: translateX(-100%); }
-  50%  { transform: translateX(0%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* 
@@ -438,10 +534,25 @@ html {
     transform: none !important;
   }
 
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+  .animated-section {
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
+    transition: none !important;
+  }
+
+  .hero-backdrop-arrive,
+  .hero-mark-print,
+  .hero-wordmark-print,
+  .home-direction-panel,
+  .home-info-card {
+    animation: none !important;
+  }
+
+  .home-direction-art,
+  .home-cta {
+    transition: none !important;
+    transform: none !important;
+    translate: none !important;
   }
 }

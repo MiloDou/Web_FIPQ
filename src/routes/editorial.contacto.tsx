@@ -8,7 +8,7 @@ export const Route = createFileRoute("/editorial/contacto")({
       {
         name: "description",
         content:
-          "Ponte en contacto con el Festival Internacional de Poesía de Quetzaltenango y Metáfora Editores. Servicios editoriales, prensa y consultas generales.",
+          "Ponte en contacto con el Festival Internacional de Poesía de Quetzaltenango y Metáfora Editores para consultas generales y servicios editoriales.",
       },
     ],
   }),

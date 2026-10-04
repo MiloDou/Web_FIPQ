@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { piezas } from "../data/portfolio";
+import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
 
 export function PortfolioPage() {
   const [selectedPieza, setSelectedPieza] = useState<(typeof piezas)[0] | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useAccessibleDialog(dialogRef, Boolean(selectedPieza), () => setSelectedPieza(null));
 
   return (
     <>
@@ -21,24 +24,30 @@ export function PortfolioPage() {
         {piezas.map((p, i) => (
           <figure
             key={i}
-            onClick={() => setSelectedPieza(p)}
-            className={`relative ${p.span} ${p.rotate} hover:rotate-0 hover:scale-[1.02] transition-all duration-300 group cursor-pointer`}
+            className={`relative ${p.span} ${p.rotate} hover:rotate-0 hover:scale-[1.02] transition-all duration-300 group`}
           >
-            <div className="absolute -top-3 right-6 h-6 w-20 bg-ink/60 mix-blend-multiply z-10" />
-            <img
-              src={p.src}
-              alt={p.titulo}
-              loading="lazy"
-              className="w-full aspect-[4/5] object-cover shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[12px_12px_0_0_rgba(26,26,26,0.95)] transition-shadow duration-300"
-            />
-            <figcaption className="mt-3">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink/75">
-                {p.year} · {p.tipo}
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl uppercase leading-tight font-bold mt-1 group-hover:underline transition-colors">
-                {p.titulo}
-              </h3>
-            </figcaption>
+            <button
+              type="button"
+              aria-label={`Ampliar ${p.titulo}, ${p.year}`}
+              onClick={() => setSelectedPieza(p)}
+              className="block w-full text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+            >
+              <div className="absolute -top-3 right-6 h-6 w-20 bg-ink/60 mix-blend-multiply z-10" />
+              <img
+                src={p.src}
+                alt={p.titulo}
+                loading="lazy"
+                className="w-full aspect-[4/5] object-cover shadow-[8px_8px_0_0_rgba(26,26,26,0.85)] ring-1 ring-ink/20 group-hover:shadow-[12px_12px_0_0_rgba(26,26,26,0.95)] transition-shadow duration-300"
+              />
+              <div className="mt-3">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-ink/75">
+                  {p.year} · {p.tipo}
+                </span>
+                <h3 className="font-display text-xl sm:text-2xl uppercase leading-tight font-bold mt-1 group-hover:underline transition-colors">
+                  {p.titulo}
+                </h3>
+              </div>
+            </button>
           </figure>
         ))}
       </div>
@@ -46,7 +55,10 @@ export function PortfolioPage() {
       {selectedPieza && (
         <div
           role="dialog"
+          aria-modal="true"
           aria-label={`Vista ampliada de ${selectedPieza.titulo}`}
+          ref={dialogRef}
+          tabIndex={-1}
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4 backdrop-blur-md cursor-zoom-out animate-in fade-in duration-200"
           onClick={() => setSelectedPieza(null)}
         >

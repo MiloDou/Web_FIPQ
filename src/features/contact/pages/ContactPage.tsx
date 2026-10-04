@@ -4,13 +4,7 @@ import { Facebook, Instagram, Mail, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-function CopyableEmail({
-  email,
-  className,
-}: {
-  email: string;
-  className: string;
-}) {
+function CopyableEmail({ email, className }: { email: string; className: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -24,7 +18,9 @@ function CopyableEmail({
   };
 
   return (
-    <div className={`flex items-start gap-1.5 font-mono text-[10px] leading-tight uppercase font-bold break-all w-full ${className}`}>
+    <div
+      className={`flex items-start gap-1.5 font-mono text-[10px] leading-tight uppercase font-bold break-all w-full ${className}`}
+    >
       <Mail size={12} className="shrink-0 mt-0.5" />
       <a href={`mailto:${email}`} className="hover:underline flex-1">
         {email}
@@ -32,7 +28,7 @@ function CopyableEmail({
       <button
         onClick={handleCopy}
         title="Copiar correo"
-        className="shrink-0 hover:scale-110 transition-transform focus:outline-none"
+        className="flex min-h-11 min-w-11 shrink-0 items-center justify-center hover:scale-110 transition-transform focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2"
         aria-label="Copiar correo"
         type="button"
       >
@@ -49,12 +45,12 @@ export function ContactPage() {
   return (
     <>
       <EncabezadoSeccion title="Estamos para" accent="escucharte.">
-        PARA CONSULTAS SOBRE EL FESTIVAL INTERNACIONAL DE POESÍA (<i>FIPQ</i>), METÁFORA EDITORES
-        O PRENSA. ESCRÍBENOS, QUEREMOS MANTENER VIVA LA COMUNICACIÓN.
+        Para consultas sobre el Festival Internacional de Poesía (<i>FIPQ</i>) y Metáfora Editores.
+        Escríbenos, queremos mantener viva la comunicación.
       </EncabezadoSeccion>
 
       <AnimatedSection>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 px-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 px-4 max-w-7xl mx-auto">
           {/* Contacto FIPQ */}
           <div className="bg-ink text-cream p-6 shadow-[4px_4px_0_0_rgba(26,26,26,0.15)] flex flex-col">
             <h3 className="font-display text-2xl sm:text-3xl uppercase mb-6 text-cream font-bold">
@@ -64,7 +60,7 @@ export function ContactPage() {
               Información general sobre el festival, voluntariados, participación de la comunidad y
               lectura de poesía.
             </p>
-            <CopyableEmail 
+            <CopyableEmail
               email="correofipquetzaltenango@gmail.com"
               className="text-carmine hover:text-white transition-colors"
             />
@@ -78,22 +74,9 @@ export function ContactPage() {
             <p className="font-body text-sm leading-relaxed text-ink/80 mb-12 flex-grow">
               Consultas sobre nuestro catálogo, distribución de libros, y proyectos de publicación.
             </p>
-            <CopyableEmail 
+            <CopyableEmail
               email="correofipquetzaltenango@gmail.com"
               className="text-carmine hover:text-ink transition-colors"
-            />
-          </div>
-
-          {/* Prensa */}
-          <div className="bg-carmine text-cream p-6 border-2 border-ink shadow-[4px_4px_0_0_rgba(26,26,26,0.15)] flex flex-col">
-            <h3 className="font-display text-2xl sm:text-3xl uppercase mb-6 font-bold">PRENSA</h3>
-            <p className="font-body text-sm leading-relaxed text-cream/80 mb-12 flex-grow">
-              Entrevistas, cobertura de medios, comunicados de prensa y alianzas de difusión
-              cultural.
-            </p>
-            <CopyableEmail 
-              email="correofipquetzaltenango@gmail.com"
-              className="text-ink hover:text-white transition-colors"
             />
           </div>
         </div>
@@ -112,7 +95,11 @@ export function ContactPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="inline-flex items-center justify-center gap-3 bg-ink text-cream font-display text-xl uppercase tracking-wider hover:bg-carmine shadow-[4px_4px_0_0_#121212]">
+            <Button
+              asChild
+              size="lg"
+              className="inline-flex items-center justify-center gap-3 bg-ink text-cream font-display text-xl uppercase tracking-wider hover:bg-carmine shadow-[4px_4px_0_0_#121212]"
+            >
               <a
                 href="https://www.facebook.com/MetaforaFIPQ?locale=es_LA"
                 target="_blank"
@@ -123,7 +110,11 @@ export function ContactPage() {
                 FACEBOOK
               </a>
             </Button>
-            <Button asChild size="lg" className="inline-flex items-center justify-center gap-3 bg-ink text-cream font-display text-xl uppercase tracking-wider hover:bg-carmine shadow-[4px_4px_0_0_#121212]">
+            <Button
+              asChild
+              size="lg"
+              className="inline-flex items-center justify-center gap-3 bg-ink text-cream font-display text-xl uppercase tracking-wider hover:bg-carmine shadow-[4px_4px_0_0_#121212]"
+            >
               <a
                 href="https://www.instagram.com/fipq_metafora/"
                 target="_blank"
