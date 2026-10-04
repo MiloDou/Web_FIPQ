@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HomePage } from "@/features/home/pages/HomePage";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,20 +26,20 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "WebSite",
-              "@id": "https://fipqmetafora.com/#website",
-              url: "https://fipqmetafora.com/",
+              "@id": `${SITE_URL}/#website`,
+              url: `${SITE_URL}/`,
               name: "FIPQ",
               alternateName: "Festival Internacional de Poesía de Quetzaltenango",
               inLanguage: "es-GT",
-              publisher: { "@id": "https://fipqmetafora.com/#organization" },
+              publisher: { "@id": `${SITE_URL}/#organization` },
             },
             {
               "@type": "Organization",
-              "@id": "https://fipqmetafora.com/#organization",
+              "@id": `${SITE_URL}/#organization`,
               name: "Festival Internacional de Poesía de Quetzaltenango",
               alternateName: "FIPQ",
-              url: "https://fipqmetafora.com/",
-              logo: "https://fipqmetafora.com/logo.png",
+              url: `${SITE_URL}/`,
+              logo: `${SITE_URL}/logo.png`,
               sameAs: [
                 "https://www.facebook.com/MetaforaFIPQ",
                 "https://www.instagram.com/fipq_metafora/",

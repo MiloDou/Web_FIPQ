@@ -19,6 +19,7 @@ import { Route as EditorialContactoRouteImport } from './routes/editorial.contac
 import { Route as EditorialManifiestoRouteImport } from './routes/editorial.manifiesto'
 import { Route as EditorialPortafolioRouteImport } from './routes/editorial.portafolio'
 import { Route as FestivalIndexRouteImport } from './routes/festival.index'
+import { Route as Festival21fipqRouteImport } from './routes/festival.21fipq'
 import { Route as FestivalArchivoRouteImport } from './routes/festival.archivo'
 import { Route as FestivalFipq21RouteImport } from './routes/festival.fipq21'
 import { Route as FestivalGaleriaRouteImport } from './routes/festival.galeria'
@@ -75,6 +76,11 @@ const FestivalIndexRoute = FestivalIndexRouteImport.update({
   path: '/',
   getParentRoute: () => FestivalRoute,
 } as any)
+const Festival21fipqRoute = Festival21fipqRouteImport.update({
+  id: '/21fipq',
+  path: '/21fipq',
+  getParentRoute: () => FestivalRoute,
+} as any)
 const FestivalArchivoRoute = FestivalArchivoRouteImport.update({
   id: '/archivo',
   path: '/archivo',
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/editorial/contacto': typeof EditorialContactoRoute
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
+  '/festival/21fipq': typeof Festival21fipqRoute
   '/festival/archivo': typeof FestivalArchivoRoute
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/editorial/contacto': typeof EditorialContactoRoute
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
+  '/festival/21fipq': typeof Festival21fipqRoute
   '/festival/archivo': typeof FestivalArchivoRoute
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/editorial/contacto': typeof EditorialContactoRoute
   '/editorial/manifiesto': typeof EditorialManifiestoRoute
   '/editorial/portafolio': typeof EditorialPortafolioRoute
+  '/festival/21fipq': typeof Festival21fipqRoute
   '/festival/archivo': typeof FestivalArchivoRoute
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/editorial/contacto'
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
+    | '/festival/21fipq'
     | '/festival/archivo'
     | '/festival/fipq21'
     | '/festival/galeria'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/editorial/contacto'
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
+    | '/festival/21fipq'
     | '/festival/archivo'
     | '/festival/fipq21'
     | '/festival/galeria'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/editorial/contacto'
     | '/editorial/manifiesto'
     | '/editorial/portafolio'
+    | '/festival/21fipq'
     | '/festival/archivo'
     | '/festival/fipq21'
     | '/festival/galeria'
@@ -281,6 +293,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FestivalIndexRouteImport
       parentRoute: typeof FestivalRoute
     }
+    '/festival/21fipq': {
+      id: '/festival/21fipq'
+      path: '/21fipq'
+      fullPath: '/festival/21fipq'
+      preLoaderRoute: typeof Festival21fipqRouteImport
+      parentRoute: typeof FestivalRoute
+    }
     '/festival/archivo': {
       id: '/festival/archivo'
       path: '/archivo'
@@ -342,6 +361,7 @@ const EditorialRouteWithChildren = EditorialRoute._addFileChildren(
 )
 
 interface FestivalRouteChildren {
+  Festival21fipqRoute: typeof Festival21fipqRoute
   FestivalArchivoRoute: typeof FestivalArchivoRoute
   FestivalFipq21Route: typeof FestivalFipq21Route
   FestivalGaleriaRoute: typeof FestivalGaleriaRoute
@@ -351,6 +371,7 @@ interface FestivalRouteChildren {
 }
 
 const FestivalRouteChildren: FestivalRouteChildren = {
+  Festival21fipqRoute: Festival21fipqRoute,
   FestivalArchivoRoute: FestivalArchivoRoute,
   FestivalFipq21Route: FestivalFipq21Route,
   FestivalGaleriaRoute: FestivalGaleriaRoute,

@@ -22,11 +22,9 @@ export function BifurcationSection() {
           <span className="font-body text-cream/70 text-xs font-medium block mb-2 tracking-wide uppercase">
             Festival Internacional de Poesía de Quetzaltenango
           </span>
-          <Link to="/festival/manifiesto" className="block w-fit">
-            <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-cream leading-none uppercase group-hover:translate-x-1 md:group-hover:translate-x-4 transition-transform duration-500">
-              FIPQ
-            </h2>
-          </Link>
+          <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-cream leading-none uppercase">
+            FIPQ
+          </h2>
           <p className="mt-3 sm:mt-4 max-w-md text-cream/80 text-xs sm:text-sm md:text-base font-body font-light leading-relaxed">
             Lecturas públicas, talleres y encuentros que llevan la poesía a Xelajuj No'j y al
             occidente de Guatemala.
@@ -42,15 +40,13 @@ export function BifurcationSection() {
               Leer el Manifiesto
             </Link>
           </Button>
-          <Button
-            asChild
-            size="lg"
-            className="home-cta w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+          <span
+            role="status"
+            aria-disabled="true"
+            className="inline-flex min-h-11 w-full sm:w-fit items-center border border-dashed border-cream/55 px-4 py-2 text-cream uppercase font-display tracking-widest cursor-default"
           >
-            <Link to="/festival/programa" hash="contenido">
-              Programa (próximamente)
-            </Link>
-          </Button>
+            Programa (próximamente)
+          </span>
         </div>
       </div>
 
@@ -68,11 +64,9 @@ export function BifurcationSection() {
           <span className="font-body text-ink/60 text-xs font-medium block mb-2 tracking-wide uppercase">
             Editorial
           </span>
-          <Link to="/editorial/catalogo" className="block w-fit">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase group-hover:-translate-x-1 md:group-hover:-translate-x-4 transition-transform duration-500">
-              Metáfora Editores
-            </h2>
-          </Link>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase">
+            Metáfora Editores
+          </h2>
           <p className="mt-3 sm:mt-4 max-w-md text-ink/75 text-xs sm:text-sm md:text-base font-body font-light leading-relaxed">
             El sello independiente que conserva, publica y organiza la memoria editorial del
             festival.

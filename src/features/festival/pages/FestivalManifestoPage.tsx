@@ -184,8 +184,8 @@ export function FestivalManifestoPage() {
       </div>
 
       {/* SECCIÓN: EL FESTIVAL EN CONTEXTO */}
-      <AnimatedSection className="mt-24 border-t-2 border-ink pt-12 sm:mt-32 sm:pt-16">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <AnimatedSection className="mt-16 border-t-2 border-ink pt-8 sm:mt-20 sm:pt-10">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="space-y-6 lg:col-span-5">
             <h2 className="font-display text-4xl font-black uppercase leading-[0.95] tracking-wide text-ink sm:text-5xl">
               El <i>FIPQ</i> en contexto

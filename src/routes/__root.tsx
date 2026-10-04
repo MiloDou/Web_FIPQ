@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE_URL } from "../lib/site-url";
 
 function ComponenteNoEncontrado() {
   return (
@@ -73,48 +74,61 @@ function ComponenteError({ error, reset }: { error: Error; reset: () => void }) 
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FIPQ" },
-      {
-        name: "description",
-        content:
-          "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.",
-      },
-      { name: "author", content: "FIPQ" },
-      { name: "robots", content: "index, follow" },
-      { property: "og:site_name", content: "FIPQ" },
-      { property: "og:url", content: "https://fipqmetafora.com" },
-      {
-        property: "og:title",
-        content: "FIPQ — Festival Internacional de Poesía de Quetzaltenango",
-      },
-      {
-        property: "og:description",
-        content: "Poesía en acción: comunidad, territorio y memoria desde Xelajuj No’j.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://fipqmetafora.com/og-image.jpg" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://fipqmetafora.com/og-image.jpg" },
-    ],
-    links: [
-      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png?v=3" },
-      { rel: "shortcut icon", type: "image/png", href: "/favicon.png?v=3" },
-      { rel: "apple-touch-icon", href: "/favicon.png?v=3" },
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap",
-      },
-    ],
-  }),
+  head: ({ matches }) => {
+    const leafMatch = matches[matches.length - 1];
+    const canonicalUrl = new URL(leafMatch?.fullPath ?? "/", SITE_URL).href;
+    const pageTitle =
+      leafMatch?.meta?.find((item) => item && "title" in item)?.title ??
+      "FIPQ — Festival Internacional de Poesía de Quetzaltenango";
+    const pageDescription =
+      leafMatch?.meta?.find((item) => item && "name" in item && item.name === "description")
+        ?.content ??
+      "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.";
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "FIPQ" },
+        {
+          name: "description",
+          content:
+            "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.",
+        },
+        { name: "author", content: "FIPQ" },
+        { name: "robots", content: "index, follow" },
+        { property: "og:site_name", content: "FIPQ" },
+        { property: "og:url", content: canonicalUrl },
+        {
+          property: "og:title",
+          content: String(pageTitle),
+        },
+        { property: "og:description", content: String(pageDescription) },
+        { property: "og:type", content: "website" },
+        { property: "og:image", content: new URL("/og-image.jpg", SITE_URL).href },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: String(pageTitle) },
+        { name: "twitter:description", content: String(pageDescription) },
+        { name: "twitter:image", content: new URL("/og-image.jpg", SITE_URL).href },
+        { name: "twitter:url", content: canonicalUrl },
+      ],
+      links: [
+        { rel: "canonical", href: canonicalUrl },
+        { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png?v=3" },
+        { rel: "shortcut icon", type: "image/png", href: "/favicon.png?v=3" },
+        { rel: "apple-touch-icon", href: "/favicon.png?v=3" },
+        { rel: "stylesheet", href: appCss },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap",
+        },
+      ],
+    };
+  },
   shellComponent: EnvolturaRaiz,
   component: ComponenteRaiz,
   notFoundComponent: ComponenteNoEncontrado,

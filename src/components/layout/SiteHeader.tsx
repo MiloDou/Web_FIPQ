@@ -12,6 +12,7 @@ export function EncabezadoSitio() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isFestival = location.pathname.includes("/festival");
+  const isFipq21 = location.pathname === "/festival/21fipq";
   const isEditorial = location.pathname.includes("/editorial");
   const currentPath = location.pathname;
 
@@ -63,7 +64,7 @@ export function EncabezadoSitio() {
       >
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:h-16 sm:px-8 lg:px-12">
           {/* Dynamic Avatar & Branding */}
-          {!isHome && (
+          {(!isHome || scrolled) && (
             <Link
               to="/"
               aria-label="Ir al inicio"
@@ -85,7 +86,7 @@ export function EncabezadoSitio() {
                 }}
               />
               <span className="font-display text-xl sm:text-2xl leading-none tracking-tight text-cream transition-colors duration-300 group-hover:text-carmine">
-                FIPQ
+                {isFipq21 ? "21FIPQ" : "FIPQ"}
               </span>
             </Link>
           )}
@@ -113,14 +114,14 @@ export function EncabezadoSitio() {
               <div className="absolute top-[calc(100%+1px)] left-1/2 -translate-x-1/2 hidden group-hover:block group-focus-within:block z-50">
                 <div className="flex flex-col bg-cream border-2 border-ink py-2 w-52 shadow-[4px_4px_0_0_#121212] animate-in fade-in zoom-in-95 duration-150">
                   <Link
-                    to="/festival/fipq21"
+                    to="/festival/21fipq"
                     className={`px-4 py-2.5 text-left font-mono text-[10px] tracking-wider uppercase transition-colors flex items-center gap-2 ${
-                      isActive("/festival/fipq21")
+                      isActive("/festival/21fipq")
                         ? "bg-carmine text-cream"
                         : "hover:bg-carmine hover:text-cream text-ink"
                     }`}
                   >
-                    {isActive("/festival/fipq21") && (
+                    {isActive("/festival/21fipq") && (
                       <span className="w-1.5 h-1.5 rounded-full bg-cream shrink-0" />
                     )}
                     21FIPQ
@@ -288,7 +289,7 @@ export function EncabezadoSitio() {
                 >
                   <div className="flex flex-col gap-1 px-4 pb-4">
                     {[
-                      { to: "/festival/fipq21", label: "21FIPQ" },
+                      { to: "/festival/21fipq", label: "21FIPQ" },
                       { to: "/festival/manifiesto", label: "Manifiesto" },
                       { to: "/festival/programa", label: "Programa" },
                       { to: "/festival/galeria", label: "Galería" },

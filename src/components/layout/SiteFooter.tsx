@@ -1,41 +1,45 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Youtube } from "lucide-react";
 import { logoMetaforaCompleto } from "@/assets/contenido";
 
 const linkClass =
-  "inline-flex min-h-11 items-center text-xs text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
+  "inline-flex min-h-11 items-center text-sm text-ink/80 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
 
 const socialClass =
-  "inline-flex min-h-11 items-center gap-1.5 px-1.5 text-[11px] text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
+  "inline-flex min-h-11 items-center gap-1.5 px-1.5 text-xs text-ink/80 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
 
 export function PieSitio() {
+  const isFipq21 = useLocation().pathname === "/festival/21fipq";
+
   return (
     <footer className="border-t-2 border-carmine bg-cream px-5 pb-4 pt-8 sm:px-8 sm:pt-9">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-7 border-b border-ink/20 pb-7 sm:grid-cols-2 lg:grid-cols-[1.1fr_1.3fr_0.9fr] lg:items-start lg:gap-10">
+        <div className="grid gap-7 border-b border-ink/20 pb-7 sm:grid-cols-2 lg:grid-cols-[1fr_1.15fr_1.2fr] lg:items-start lg:gap-8">
           <section aria-label="Identidad institucional">
-            <div className="flex min-h-10 items-center gap-4">
-              <span className="font-display text-2xl leading-none text-carmine">FIPQ</span>
+            <div className="flex min-h-12 items-center gap-5">
+              <span className="font-display text-3xl leading-none text-carmine">
+                {isFipq21 ? "21FIPQ" : "FIPQ"}
+              </span>
               {logoMetaforaCompleto && (
                 <img
                   src={logoMetaforaCompleto}
                   alt="Metáfora, Literatura y Arte"
-                  className="h-6 w-auto object-contain"
+                  className="h-8 w-auto object-contain"
                   loading="lazy"
                 />
               )}
             </div>
-            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ink/65">Desde Xelajuj</p>
+            <p className="mt-4 max-w-xs text-base leading-relaxed text-ink/75">Desde Xelajuj</p>
           </section>
 
           <nav aria-label="Enlaces institucionales" className="grid grid-cols-2 gap-x-5">
             <div>
-              <h2 className="mb-2 font-display text-xs uppercase tracking-wide text-ink">
+              <h2 className="mb-2 font-display text-sm uppercase tracking-wide text-ink">
                 Festival
               </h2>
               <ul className="space-y-0.5">
                 <li>
-                  <Link to="/festival/fipq21" className={linkClass}>
+                  <Link to="/festival/21fipq" className={linkClass}>
                     21FIPQ
                   </Link>
                 </li>
@@ -62,7 +66,7 @@ export function PieSitio() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-2 font-display text-xs uppercase tracking-wide text-ink">
+              <h2 className="mb-2 font-display text-sm uppercase tracking-wide text-ink">
                 Metáfora Editores
               </h2>
               <ul className="space-y-0.5">
@@ -83,13 +87,13 @@ export function PieSitio() {
           <section aria-labelledby="footer-contacto">
             <h2
               id="footer-contacto"
-              className="mb-2 font-display text-xs uppercase tracking-wide text-ink"
+              className="mb-2 font-display text-sm uppercase tracking-wide text-ink"
             >
               Contacto
             </h2>
             <a
               href="mailto:correofipquetzaltenango@gmail.com"
-              className="inline-flex min-h-11 items-center break-all text-xs text-ink/70 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2"
+              className="inline-flex min-h-11 items-center break-all text-sm text-ink/80 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2"
             >
               correofipquetzaltenango@gmail.com
             </a>
@@ -143,7 +147,7 @@ export function PieSitio() {
           </section>
         </div>
 
-        <div className="flex flex-col gap-1.5 pt-3 font-mono text-[9px] text-ink/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-1.5 pt-3 font-mono text-xs text-ink/75 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Festival Internacional de Poesía de Quetzaltenango y
             Metáfora Editores

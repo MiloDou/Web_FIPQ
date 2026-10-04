@@ -100,15 +100,15 @@ function GaleriaModal({
       className="fixed inset-0 z-[60] flex flex-col bg-ink animate-in fade-in duration-200"
     >
       {/* Header del modal */}
-      <div className="flex shrink-0 items-center justify-between border-b border-cream/15 px-4 py-3 sm:px-8 sm:py-4">
+      <div className="flex shrink-0 items-center justify-between border-b border-cream/15 px-4 py-1.5 sm:px-6 sm:py-2">
         <div className="flex flex-col">
-          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-cream/55 sm:text-[10px]">
+          <span className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-cream/55 sm:text-[9px]">
             Archivo Histórico
           </span>
-          <h2 className="mt-1 font-display text-xl uppercase leading-none text-cream sm:text-3xl">
+          <h2 className="mt-0.5 font-display text-lg uppercase leading-none text-cream sm:text-2xl">
             <span className="text-carmine">{edition.number}</span> FIPQ
             {edition.year && (
-              <span className="text-cream/40 text-xl sm:text-3xl ml-3">{edition.year}</span>
+              <span className="text-cream/40 text-lg sm:text-2xl ml-2">{edition.year}</span>
             )}
           </h2>
         </div>
@@ -125,9 +125,9 @@ function GaleriaModal({
             type="button"
             onClick={onClose}
             aria-label="Cerrar galería"
-            className="h-10 w-10 sm:h-12 sm:w-12 bg-carmine text-cream border-2 border-cream/20 hover:bg-mustard hover:text-ink active:scale-95 transition-all flex items-center justify-center cursor-pointer shrink-0"
+            className="h-8 w-8 sm:h-10 sm:w-10 bg-carmine text-cream border-2 border-cream/20 hover:bg-mustard hover:text-ink active:scale-95 transition-all flex items-center justify-center cursor-pointer shrink-0"
           >
-            <X size={20} aria-hidden="true" />
+            <X size={18} aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -159,13 +159,13 @@ function GaleriaModal({
         </button>
 
         {/* Imagen */}
-        <div className="flex h-full w-full items-center justify-center px-12 sm:px-16">
+        <div className="flex h-full min-h-0 w-full items-center justify-center px-12 sm:px-16">
           <img
             key={current}
             src={images[current]}
             alt={`Fotografía ${current + 1} de ${images.length} del ${edition.title}`}
             decoding="async"
-            className="max-h-[65dvh] w-auto max-w-full border border-cream/25 bg-cream object-contain shadow-[4px_4px_0_0_#ba0038] animate-in fade-in duration-300 sm:max-h-[76dvh] lg:max-h-[82dvh]"
+            className="h-auto max-h-full w-auto max-w-full border border-cream/25 bg-ink object-contain shadow-[4px_4px_0_0_#ba0038] animate-in fade-in duration-300"
           />
         </div>
 
@@ -199,7 +199,12 @@ function GaleriaModal({
                   : "border-cream/20 opacity-45 hover:opacity-100 hover:border-cream/50"
               }`}
             >
-              <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
+              <img
+                src={img}
+                alt=""
+                loading="lazy"
+                className="h-full w-full bg-ink object-contain"
+              />
             </button>
           ))}
         </div>
@@ -304,7 +309,6 @@ export function FestivalArchivePage() {
                         className="group inline-flex min-h-12 w-fit items-center gap-3 border-2 border-ink bg-ink px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.16em] text-cream shadow-[4px_4px_0_0_#ba0038] transition-all hover:bg-carmine hover:shadow-[5px_5px_0_0_#121212] active:translate-y-0.5 active:shadow-none focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4 sm:text-sm"
                       >
                         Abrir galería
-                        <span className="text-cream/60">{fotosEdicion.length} fotos</span>
                         <ArrowRight
                           size={18}
                           aria-hidden="true"

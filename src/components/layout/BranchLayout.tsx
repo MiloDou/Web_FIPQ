@@ -29,8 +29,9 @@ export function DisenoRama({
   const config = configuracionRamas[branch];
   const location = useLocation();
   const pathSegments = location.pathname.split("/").filter(Boolean);
-  const subRoute =
-    pathSegments.length > 1 ? pathSegments[pathSegments.length - 1].replace(/-/g, " ") : "";
+  const currentSlug = pathSegments[pathSegments.length - 1];
+  const subRoute = pathSegments.length > 1 ? currentSlug.replace(/-/g, " ") : "";
+  const subRouteLabel = branch === "festival" && currentSlug === "21fipq" ? "21FIPQ" : subRoute;
 
   return (
     <>
@@ -56,7 +57,7 @@ export function DisenoRama({
               {config.title}
             </span>
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight">
-              {subRoute ? subRoute : config.title}
+              {subRouteLabel ? subRouteLabel : config.title}
             </p>
           </div>
           {tagline && (
