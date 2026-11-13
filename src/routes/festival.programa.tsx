@@ -8,7 +8,7 @@ export const Route = createFileRoute("/festival/programa")({
       {
         name: "description",
         content:
-          "Agenda actual del Festival Internacional de Poesía de Quetzaltenango. Próximamente.",
+          "Agenda completa del 21 Festival Internacional de Poesía de Quetzaltenango: horarios, actividades, sedes y poetas participantes.",
       },
     ],
   }),
