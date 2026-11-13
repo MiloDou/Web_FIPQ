@@ -62,12 +62,6 @@ const agenda: Dia[] = [
               "Jorge Valbuena (Colombia), Mirtha Luz (México), Jorge Miguel Cocom Pech (México), Fadir Delgado (Colombia), Ana María Rivas (El Salvador), Javier Flores Masaya (Guatemala), Rodrigo Tarabillo (Bolivia), Sarawi Andrago (Ecuador), Guillermo Acuña (Costa Rica)",
           },
           {
-            sede: "Asociación Mujer Tejedora del Desarrollo (AMUTED)",
-            direccion: "9a. Calle C 20-42A, Diagonal 11, Zona 1, Quetzaltenango",
-            poetas:
-              "Carlos Villalobos (Costa Rica), Flavia Garcia (Argentina), Douglas de Almeida (Brasil), Leonardo Nin (República Dominicana), Karla Armas (Ecuador), Vilma Sánchez (Guatemala), Gloria Hernández (Guatemala), Gabriel Woltke (Guatemala), Wingston González (Guatemala)",
-          },
-          {
             sede: "Teatro Café La Luna",
             direccion: "8a. Av. 4-11, Zona 1, Quetzaltenango",
             poetas:
@@ -134,12 +128,6 @@ const agenda: Dia[] = [
             direccion: "14 Avenida 3-21, zona 1, Quetzaltenango",
             poetas:
               "Renato Rodriguez-Lefebvre (Canadá), Jorge Miguel Cocom Pech (México), Beatriz Sánchez (Guatemala), Vilma Sánchez (Guatemala), Douglas de Almeida (Brasil), Leanardo Nin (República Dominicana), Vilma Calderón (Guatemala), Juan Carlos Abril (España)",
-          },
-          {
-            sede: "Departamento de Protección a la Niñez Víctima de la Violencia Sexual con Enfoque de Género",
-            direccion: "4a. Avenida 3-45, Zona 1, Quetzaltenango",
-            poetas:
-              "Fadir Delgado (Colombia), Guillermo Acuña (Costa Rica), Kory Hernández (México), Wingston González (Guatemala), Gloria Hernández (Guatemala), Cynthia Guardado (Américas)",
           },
           {
             sede: "Escuela Taller Quetzaltenango",
