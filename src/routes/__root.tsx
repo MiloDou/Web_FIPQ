@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       leafMatch?.meta?.find((item) => item && "name" in item && item.name === "description")
         ?.content ??
       "Festival Internacional de Poesía de Quetzaltenango: lecturas, talleres, comunidad y memoria desde Xelajuj No’j.";
+    const ogImageUrl = new URL("/og-image.jpg?v=20261119", SITE_URL).href;
 
     return {
       meta: [
@@ -105,13 +106,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         { property: "og:description", content: String(pageDescription) },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: new URL("/og-image.jpg", SITE_URL).href },
+        { property: "og:image", content: ogImageUrl },
+        { property: "og:image:secure_url", content: ogImageUrl },
+        { property: "og:image:type", content: "image/jpeg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
+        { property: "og:image:alt", content: "Festival Internacional de Poesía de Quetzaltenango" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: String(pageTitle) },
         { name: "twitter:description", content: String(pageDescription) },
-        { name: "twitter:image", content: new URL("/og-image.jpg", SITE_URL).href },
+        { name: "twitter:image", content: ogImageUrl },
         { name: "twitter:url", content: canonicalUrl },
       ],
       links: [

@@ -10,7 +10,7 @@ const socialClass =
 
 export function PieSitio() {
   return (
-    <footer className="border-t-2 border-carmine bg-cream px-5 pb-4 pt-8 sm:px-8 sm:pt-9">
+    <footer className="relative z-30 border-t-2 border-carmine bg-cream px-5 pb-4 pt-8 sm:px-8 sm:pt-9">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-7 border-b border-ink/20 pb-7 sm:grid-cols-2 lg:grid-cols-[1fr_1.15fr_1.2fr] lg:items-start lg:gap-8">
           <section aria-label="Identidad institucional">
@@ -162,7 +162,9 @@ export function PieSitio() {
           </p>
           <a
             href="https://tukursolutions.com/#inicio"
-            aria-label="Tukur Solutions — ir al inicio del sitio"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Tukur Solutions — abre en una nueva pestaña"
             className="tukur-credit flex items-center gap-2 text-ink transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
           >
             <img

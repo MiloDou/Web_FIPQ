@@ -24,6 +24,7 @@ import { Route as FestivalArchivoRouteImport } from './routes/festival.archivo'
 import { Route as FestivalFipq21RouteImport } from './routes/festival.fipq21'
 import { Route as FestivalGaleriaRouteImport } from './routes/festival.galeria'
 import { Route as FestivalManifiestoRouteImport } from './routes/festival.manifiesto'
+import { Route as FestivalPrensa21fipqRouteImport } from './routes/festival.prensa-21fipq'
 import { Route as FestivalProgramaRouteImport } from './routes/festival.programa'
 
 const IndexRoute = IndexRouteImport.update({
@@ -101,6 +102,11 @@ const FestivalManifiestoRoute = FestivalManifiestoRouteImport.update({
   path: '/manifiesto',
   getParentRoute: () => FestivalRoute,
 } as any)
+const FestivalPrensa21fipqRoute = FestivalPrensa21fipqRouteImport.update({
+  id: '/prensa-21fipq',
+  path: '/prensa-21fipq',
+  getParentRoute: () => FestivalRoute,
+} as any)
 const FestivalProgramaRoute = FestivalProgramaRouteImport.update({
   id: '/programa',
   path: '/programa',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
+  '/festival/prensa-21fipq': typeof FestivalPrensa21fipqRoute
   '/festival/programa': typeof FestivalProgramaRoute
   '/editorial/': typeof EditorialIndexRoute
   '/festival/': typeof FestivalIndexRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
+  '/festival/prensa-21fipq': typeof FestivalPrensa21fipqRoute
   '/festival/programa': typeof FestivalProgramaRoute
   '/editorial': typeof EditorialIndexRoute
   '/festival': typeof FestivalIndexRoute
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/festival/fipq21': typeof FestivalFipq21Route
   '/festival/galeria': typeof FestivalGaleriaRoute
   '/festival/manifiesto': typeof FestivalManifiestoRoute
+  '/festival/prensa-21fipq': typeof FestivalPrensa21fipqRoute
   '/festival/programa': typeof FestivalProgramaRoute
   '/editorial/': typeof EditorialIndexRoute
   '/festival/': typeof FestivalIndexRoute
@@ -176,6 +185,7 @@ export interface FileRouteTypes {
     | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
+    | '/festival/prensa-21fipq'
     | '/festival/programa'
     | '/editorial/'
     | '/festival/'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
+    | '/festival/prensa-21fipq'
     | '/festival/programa'
     | '/editorial'
     | '/festival'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/festival/fipq21'
     | '/festival/galeria'
     | '/festival/manifiesto'
+    | '/festival/prensa-21fipq'
     | '/festival/programa'
     | '/editorial/'
     | '/festival/'
@@ -328,6 +340,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FestivalManifiestoRouteImport
       parentRoute: typeof FestivalRoute
     }
+    '/festival/prensa-21fipq': {
+      id: '/festival/prensa-21fipq'
+      path: '/prensa-21fipq'
+      fullPath: '/festival/prensa-21fipq'
+      preLoaderRoute: typeof FestivalPrensa21fipqRouteImport
+      parentRoute: typeof FestivalRoute
+    }
     '/festival/programa': {
       id: '/festival/programa'
       path: '/programa'
@@ -366,6 +385,7 @@ interface FestivalRouteChildren {
   FestivalFipq21Route: typeof FestivalFipq21Route
   FestivalGaleriaRoute: typeof FestivalGaleriaRoute
   FestivalManifiestoRoute: typeof FestivalManifiestoRoute
+  FestivalPrensa21fipqRoute: typeof FestivalPrensa21fipqRoute
   FestivalProgramaRoute: typeof FestivalProgramaRoute
   FestivalIndexRoute: typeof FestivalIndexRoute
 }
@@ -376,6 +396,7 @@ const FestivalRouteChildren: FestivalRouteChildren = {
   FestivalFipq21Route: FestivalFipq21Route,
   FestivalGaleriaRoute: FestivalGaleriaRoute,
   FestivalManifiestoRoute: FestivalManifiestoRoute,
+  FestivalPrensa21fipqRoute: FestivalPrensa21fipqRoute,
   FestivalProgramaRoute: FestivalProgramaRoute,
   FestivalIndexRoute: FestivalIndexRoute,
 }

@@ -67,46 +67,62 @@ function seleccionSemanal(semana: number, variacion = 0): string[] {
 // aparezca suelto: si la imagen no cargó, el tape tampoco se muestra.
 function FotoCard({ src, index, onClick }: { src: string; index: number; onClick: () => void }) {
   const [cargada, setCargada] = useState(false);
+  const [error, setError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const { rotation, tapeColor, tapeAngle } = slotStyle(index);
 
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setCargada(true);
+    }
+  }, [src]);
+
+  if (error) return null;
+
   return (
-    <figure className={`relative mb-8 md:mb-12 break-inside-avoid group ${rotation}`}>
+    <figure className="relative mb-8 md:mb-10 break-inside-avoid inline-block w-full">
       <button
         type="button"
         aria-label={`Ver fotografía ${index + 1} del Festival Internacional de Poesía de Quetzaltenango ampliada`}
         onClick={onClick}
-        className="block w-full cursor-pointer text-left transition-all duration-500 ease-in-out animate-in fade-in zoom-in-95 hover:rotate-0 hover:scale-[1.04] hover:z-10 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+        className={`group block w-full cursor-pointer text-left transition-transform duration-300 ease-out hover:scale-[1.03] hover:z-10 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4 ${rotation} hover:rotate-0`}
       >
         {/* Marco polaroid — overflow-hidden asegura que el tape no escape */}
-        <div className="bg-white p-1.5 pb-7 shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] group-hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)] transition-shadow duration-300 overflow-hidden relative">
+        <div className="bg-white p-2 pb-7 shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] group-hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)] transition-shadow duration-300 overflow-hidden relative">
           {/* TAPE — vive dentro del marco, centrado arriba, solo aparece cuando la foto cargó */}
           {cargada && (
             <div
-              className={`absolute top-0 left-1/2 -translate-x-1/2 w-10 md:w-12 h-[13px] md:h-[16px] ${tapeColor} ${tapeAngle} z-10 shadow-sm pointer-events-none`}
+              className={`absolute top-0 left-1/2 -translate-x-1/2 w-10 md:w-12 h-[13px] md:h-[16px] ${tapeColor} ${tapeAngle} z-10 shadow-sm pointer-events-none transition-opacity duration-300`}
               style={{ mixBlendMode: "multiply" }}
               aria-hidden="true"
             />
           )}
 
-          {/* Skeleton mientras carga */}
-          {!cargada && <div className="w-full aspect-[4/3] bg-ink/5 animate-pulse" />}
+          {/* Contenedor de la foto con placeholder neutro sin forzar altura cero */}
+          <div className="relative w-full overflow-hidden bg-ink/5">
+            {!cargada && (
+              <div className="absolute inset-0 aspect-[4/3] bg-ink/10 animate-pulse pointer-events-none" />
+            )}
 
-          <img
-            src={src}
-            alt={
-              galeriaImageAlt[src] ??
-              "Registro fotográfico del Festival Internacional de Poesía de Quetzaltenango"
-            }
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setCargada(true)}
-            className={`block w-full h-auto transition-opacity duration-500 ${
-              cargada ? "opacity-100" : "opacity-0 h-0"
-            }`}
-            style={{
-              filter: "contrast(1.08) saturate(1.12) brightness(1.03)",
-            }}
-          />
+            <img
+              ref={imgRef}
+              src={src}
+              alt={
+                galeriaImageAlt[src] ??
+                "Registro fotográfico del Festival Internacional de Poesía de Quetzaltenango"
+              }
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setCargada(true)}
+              onError={() => setError(true)}
+              className={`block w-full h-auto transition-opacity duration-500 ${
+                cargada ? "opacity-100" : "opacity-0"
+              }`}
+              style={{
+                filter: "contrast(1.08) saturate(1.12) brightness(1.03)",
+              }}
+            />
+          </div>
         </div>
       </button>
 
@@ -122,8 +138,11 @@ function FotoCard({ src, index, onClick }: { src: string; index: number; onClick
 
 // ─── Página ────────────────────────────────────────────────────────────────
 export function FestivalGalleryPage() {
-  const [slots, setSlots] = useState(() => galeriaImages.slice(0, GRID_SIZE));
+  const [slots, setSlots] = useState(() =>
+    seleccionSemanal(Math.floor(Date.now() / UNA_SEMANA_MS), 0),
+  );
   const [variacion, setVariacion] = useState(0);
+  const [actualizando, setActualizando] = useState(false);
   const [selectedFoto, setSelectedFoto] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   useAccessibleDialog(dialogRef, Boolean(selectedFoto), () => setSelectedFoto(null));
@@ -144,26 +163,37 @@ export function FestivalGalleryPage() {
     return () => window.clearTimeout(timeoutId);
   }, [variacion]);
 
+  const handleActualizar = () => {
+    setActualizando(true);
+    setVariacion((actual) => actual + 1);
+    window.setTimeout(() => setActualizando(false), 500);
+  };
+
   return (
     <>
       <EncabezadoSeccion title="Cada imagen" accent="conserva su forma." />
 
-      <div className="flex justify-center pt-2">
-        <button
-          type="button"
-          onClick={() => setVariacion((actual) => actual + 1)}
-          className="inline-flex min-h-11 items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
-        >
-          <RefreshCw size={15} aria-hidden="true" />
-          Actualizar galería
-        </button>
-      </div>
-
       {/* Grid de fotos tipo polaroid */}
-      <div className="columns-2 md:columns-3 gap-6 md:gap-10 py-6">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 md:gap-8 py-6">
         {slots.map((src, i) => (
           <FotoCard key={`${src}-${i}`} src={src} index={i} onClick={() => setSelectedFoto(src)} />
         ))}
+      </div>
+
+      {/* Botón de actualizar galería al final de la página */}
+      <div className="flex justify-center pb-12 pt-4">
+        <button
+          type="button"
+          onClick={handleActualizar}
+          className="inline-flex min-h-11 items-center gap-2.5 border border-ink bg-ink px-6 py-3.5 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4 cursor-pointer shadow-[4px_4px_0_0_rgba(26,26,26,0.65)] hover:shadow-[6px_6px_0_0_rgba(186,0,56,0.75)]"
+        >
+          <RefreshCw
+            size={15}
+            className={actualizando ? "animate-spin" : ""}
+            aria-hidden="true"
+          />
+          Actualizar galería
+        </button>
       </div>
 
       {/* Modal lightbox */}
@@ -177,7 +207,10 @@ export function FestivalGalleryPage() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4 backdrop-blur-md cursor-zoom-out animate-in fade-in duration-200"
           onClick={() => setSelectedFoto(null)}
         >
-          <div className="relative max-w-5xl max-h-[90vh] flex flex-col items-center">
+          <div
+            className="relative max-w-5xl max-h-[90vh] flex flex-col items-center cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               src={selectedFoto}
               alt={

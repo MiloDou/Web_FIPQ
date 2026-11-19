@@ -33,6 +33,14 @@ export function DisenoRama({
   const subRoute = pathSegments.length > 1 ? currentSlug.replace(/-/g, " ") : "";
   const subRouteLabel = branch === "festival" && currentSlug === "21fipq" ? "21FIPQ" : subRoute;
 
+  if (branch === "festival" && (currentSlug === "21fipq" || currentSlug === "prensa-21fipq")) {
+    return (
+      <main id="contenido-pagina" className="flex-1 scroll-mt-16">
+        <Outlet />
+      </main>
+    );
+  }
+
   return (
     <>
       <section

@@ -236,6 +236,61 @@ html {
   }
 }
 
+.sponsor-marquee {
+  overflow: hidden;
+}
+
+.sponsor-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: sponsor-scroll 170s linear infinite;
+}
+
+.sponsor-marquee:hover .sponsor-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes sponsor-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-marquee {
+    overflow-x: auto;
+  }
+
+  .sponsor-marquee-track {
+    animation: none;
+  }
+}
+
+@font-face {
+  font-family: "Bahnschrift FIPQ21";
+  src: url("/21fipq/fonts/bahnschrift.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer utilities {
+  .fipq21-font.font-body,
+  .fipq21-font .font-body,
+  .fipq21-font .font-display {
+    font-family: "Bahnschrift FIPQ21", sans-serif !important;
+  }
+
+  .fipq21-font.font-body {
+    font-weight: 400;
+  }
+
+  .fipq21-font h1,
+  .fipq21-font h2 {
+    overflow-wrap: anywhere;
+  }
+}
+
 @utility heading-hero {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 8vw, 8.5rem);
