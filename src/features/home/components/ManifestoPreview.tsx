@@ -45,7 +45,7 @@ export function ManifestoPreview() {
               <div className="home-info-card p-6 md:p-8 border border-carmine/30 bg-[#121212] hover:bg-carmine/[0.06] hover:border-carmine/50 transition-all duration-300 flex flex-col justify-between h-full">
                 <div>
                   <h4 className="font-display text-xl sm:text-2xl uppercase mb-3 sm:mb-4 text-carmine tracking-wider">
-                    El Festival
+                    El FIPQ
                   </h4>
                   <p className="text-xs sm:text-sm leading-relaxed text-cream/75 font-body font-light">
                     Un festival nacido de jóvenes poetas que construye comunidad mediante la

@@ -44,7 +44,7 @@ export function BifurcationSection() {
           <Button
             asChild
             size="lg"
-            className="home-cta w-full sm:w-fit bg-cream text-carmine hover:bg-white active:bg-white border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
+            className="home-cta w-full sm:w-fit bg-[#121212] text-cream hover:bg-ink active:bg-ink border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
           >
             <Link to="/festival/programa" hash="contenido">
               Programa

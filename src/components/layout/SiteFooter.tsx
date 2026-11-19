@@ -38,7 +38,6 @@ export function PieSitio() {
                 <image href="/logo-fipq-footer.png" width="4501" height="4501" />
               </svg>
             </div>
-            <p className="mt-4 max-w-xs text-base leading-relaxed text-ink/75">Desde Xelajuj</p>
           </section>
 
           <nav aria-label="Enlaces institucionales" className="grid grid-cols-2 gap-x-5">
@@ -164,17 +163,17 @@ export function PieSitio() {
           <a
             href="https://tukursolutions.com/#inicio"
             aria-label="Tukur Solutions — ir al inicio del sitio"
-            className="tukur-credit flex items-center gap-3 text-ink transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+            className="tukur-credit flex items-center gap-2 text-ink transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
           >
             <img
               src="/tukur-solutions.png"
               alt="Logotipo de Tukur Solutions"
-              className="h-16 w-auto shrink-0 mix-blend-multiply"
+              className="h-14 w-auto shrink-0 mix-blend-multiply"
               loading="lazy"
             />
-            <div className="border-l border-ink/25 pl-3">
+            <div className="border-l border-ink/25 pl-2">
               <p className="text-xs font-medium text-ink/65">Desarrollado por</p>
-              <p className="mt-1 text-lg font-semibold leading-tight tracking-wide">
+              <p className="mt-1 text-base font-semibold leading-tight tracking-wide">
                 Tukur Solutions
               </p>
             </div>
