@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { RefreshCw } from "lucide-react";
 import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { galeriaImageAlt, galeriaImages } from "@/assets/contenido";
 import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
@@ -49,8 +50,9 @@ function slotStyle(i: number) {
   };
 }
 
-function seleccionSemanal(semana: number): string[] {
-  const seleccion = shuffleConSemilla(galeriaImages, semana).slice(0, GRID_SIZE);
+function seleccionSemanal(semana: number, variacion = 0): string[] {
+  const semilla = (semana + Math.imul(variacion, 0x9e3779b9)) >>> 0;
+  const seleccion = shuffleConSemilla(galeriaImages, semilla).slice(0, GRID_SIZE);
   const seleccionAnterior = shuffleConSemilla(galeriaImages, semana - 1).slice(0, GRID_SIZE);
 
   if (seleccion.every((foto, i) => foto === seleccionAnterior[i]) && seleccion.length > 1) {
@@ -121,6 +123,7 @@ function FotoCard({ src, index, onClick }: { src: string; index: number; onClick
 // ─── Página ────────────────────────────────────────────────────────────────
 export function FestivalGalleryPage() {
   const [slots, setSlots] = useState(() => galeriaImages.slice(0, GRID_SIZE));
+  const [variacion, setVariacion] = useState(0);
   const [selectedFoto, setSelectedFoto] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   useAccessibleDialog(dialogRef, Boolean(selectedFoto), () => setSelectedFoto(null));
@@ -133,17 +136,28 @@ export function FestivalGalleryPage() {
       const semanaActual = Math.floor(ahora / UNA_SEMANA_MS);
       const proximaSemana = (semanaActual + 1) * UNA_SEMANA_MS;
 
-      setSlots(seleccionSemanal(semanaActual));
+      setSlots(seleccionSemanal(semanaActual, variacion));
       timeoutId = window.setTimeout(activarSeleccionSemanal, proximaSemana - ahora);
     };
 
     activarSeleccionSemanal();
     return () => window.clearTimeout(timeoutId);
-  }, []);
+  }, [variacion]);
 
   return (
     <>
       <EncabezadoSeccion title="Cada imagen" accent="conserva su forma." />
+
+      <div className="flex justify-center pt-2">
+        <button
+          type="button"
+          onClick={() => setVariacion((actual) => actual + 1)}
+          className="inline-flex min-h-11 items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+        >
+          <RefreshCw size={15} aria-hidden="true" />
+          Actualizar galería
+        </button>
+      </div>
 
       {/* Grid de fotos tipo polaroid */}
       <div className="columns-2 md:columns-3 gap-6 md:gap-10 py-6">
