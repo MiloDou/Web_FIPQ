@@ -10,22 +10,23 @@ export function BifurcationSection() {
     >
       {/* Festival */}
       <div className="home-direction-panel group relative overflow-hidden bg-carmine p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-colors duration-500 border-b-[6px] md:border-b-0 md:border-r-[6px] border-ink min-h-[50dvh] md:min-h-[80vh]">
-        <div className="absolute inset-0 opacity-25 group-hover:opacity-40 transition-opacity duration-500">
+        <div className="absolute inset-0" aria-hidden="true">
           <img
             src={imagenesSitio.wallCollage}
             alt=""
             loading="lazy"
-            className="home-direction-art h-full w-full object-cover grayscale mix-blend-overlay"
+            className="home-direction-art h-full w-full object-cover"
           />
+          <div className="festival-panel-overlay absolute inset-0" />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
-          <span className="font-body text-cream/70 text-xs font-medium block mb-2 tracking-wide uppercase">
+          <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-cream/90 sm:text-sm">
             Festival Internacional de Poesía de Quetzaltenango
           </span>
           <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-cream leading-none uppercase">
             FIPQ
           </h2>
-          <p className="mt-3 sm:mt-4 max-w-md text-cream/80 text-xs sm:text-sm md:text-base font-body font-light leading-relaxed">
+          <p className="mt-3 max-w-lg text-sm font-normal leading-relaxed text-cream/95 sm:mt-4 sm:text-base lg:text-lg">
             Lecturas públicas, talleres y encuentros que llevan la poesía a Xelajuj No'j y al
             occidente de Guatemala.
           </p>
@@ -40,34 +41,37 @@ export function BifurcationSection() {
               Leer el Manifiesto
             </Link>
           </Button>
-          <span
-            role="status"
-            aria-disabled="true"
-            className="inline-flex min-h-11 w-full sm:w-fit items-center border border-dashed border-cream/55 px-4 py-2 text-cream uppercase font-display tracking-widest cursor-default"
+          <Button
+            asChild
+            size="lg"
+            className="home-cta w-full sm:w-fit bg-cream text-carmine hover:bg-white active:bg-white border-transparent uppercase font-display tracking-widest shadow-[3px_3px_0_0_#0a0a0a] active:shadow-none active:translate-y-0.5 transition-all"
           >
-            Programa (próximamente)
-          </span>
+            <Link to="/festival/programa" hash="contenido">
+              Programa
+            </Link>
+          </Button>
         </div>
       </div>
 
       {/* Editorial */}
       <div className="home-direction-panel group relative overflow-hidden bg-cream p-5 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-between transition-colors duration-500 min-h-[50dvh] md:min-h-[80vh]">
-        <div className="absolute inset-0 opacity-15 group-hover:opacity-35 transition-opacity duration-500">
+        <div className="absolute inset-0" aria-hidden="true">
           <img
-            src={imagenesSitio.risographBook}
+            src={imagenesSitio.editorialPanel}
             alt=""
             loading="lazy"
-            className="home-direction-art h-full w-full object-cover sepia"
+            className="home-direction-art h-full w-full object-cover object-[68%_center]"
           />
+          <div className="editorial-panel-overlay absolute inset-0" />
         </div>
         <div className="relative z-10 flex flex-col justify-center h-full md:justify-start">
-          <span className="font-body text-ink/60 text-xs font-medium block mb-2 tracking-wide uppercase">
+          <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-ink/75 sm:text-sm">
             Editorial
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display text-ink leading-none uppercase">
             Metáfora Editores
           </h2>
-          <p className="mt-3 sm:mt-4 max-w-md text-ink/75 text-xs sm:text-sm md:text-base font-body font-light leading-relaxed">
+          <p className="mt-3 max-w-lg text-sm font-normal leading-relaxed text-ink/90 sm:mt-4 sm:text-base lg:text-lg">
             El sello independiente que conserva, publica y organiza la memoria editorial del
             festival.
           </p>

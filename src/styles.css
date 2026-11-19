@@ -457,6 +457,23 @@ html {
   transform: translateY(0) scale(0.985);
 }
 
+.festival-panel-overlay,
+.editorial-panel-overlay {
+  backdrop-filter: blur(3px);
+}
+
+.festival-panel-overlay {
+  background: rgb(186 0 56 / 76%);
+}
+
+.editorial-panel-overlay {
+  background: rgb(255 255 255 / 76%);
+}
+
+.tukur-credit {
+  font-family: "Manrope", sans-serif;
+}
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .home-direction-art {
     transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Youtube } from "lucide-react";
 import { logoMetaforaCompleto } from "@/assets/contenido";
 
@@ -9,25 +9,34 @@ const socialClass =
   "inline-flex min-h-11 items-center gap-1.5 px-1.5 text-xs text-ink/80 transition-colors hover:text-carmine focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-2";
 
 export function PieSitio() {
-  const isFipq21 = useLocation().pathname === "/festival/21fipq";
-
   return (
     <footer className="border-t-2 border-carmine bg-cream px-5 pb-4 pt-8 sm:px-8 sm:pt-9">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-7 border-b border-ink/20 pb-7 sm:grid-cols-2 lg:grid-cols-[1fr_1.15fr_1.2fr] lg:items-start lg:gap-8">
           <section aria-label="Identidad institucional">
-            <div className="flex min-h-12 items-center gap-5">
-              <span className="font-display text-3xl leading-none text-carmine">
-                {isFipq21 ? "21FIPQ" : "FIPQ"}
-              </span>
+            <div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
               {logoMetaforaCompleto && (
-                <img
-                  src={logoMetaforaCompleto}
-                  alt="Metáfora, Literatura y Arte"
-                  className="h-8 w-auto object-contain"
-                  loading="lazy"
-                />
+                <svg
+                  role="img"
+                  aria-label="Metáfora, Literatura y Arte"
+                  viewBox="285 100 3226 1383"
+                  width="3226"
+                  height="1383"
+                  className="h-11 w-auto max-w-full shrink-0 sm:h-12"
+                >
+                  <image href={logoMetaforaCompleto} width="3796" height="1583" />
+                </svg>
               )}
+              <svg
+                role="img"
+                aria-label="Festival Internacional de Poesía de Quetzaltenango"
+                viewBox="640 1590 3221 1320"
+                width="3221"
+                height="1320"
+                className="h-11 w-auto max-w-full shrink-0 sm:h-12"
+              >
+                <image href="/logo-fipq-footer.png" width="4501" height="4501" />
+              </svg>
             </div>
             <p className="mt-4 max-w-xs text-base leading-relaxed text-ink/75">Desde Xelajuj</p>
           </section>
@@ -147,11 +156,25 @@ export function PieSitio() {
           </section>
         </div>
 
-        <div className="flex flex-col gap-1.5 pt-3 font-mono text-xs text-ink/75 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-5 pt-5 font-mono text-xs text-ink/75 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Festival Internacional de Poesía de Quetzaltenango y
             Metáfora Editores
           </p>
+          <div className="tukur-credit flex items-center gap-3 text-ink">
+            <img
+              src="/tukur-solutions.png"
+              alt="Logotipo de Tukur Solutions"
+              className="h-16 w-auto shrink-0 mix-blend-multiply"
+              loading="lazy"
+            />
+            <div className="border-l border-ink/25 pl-3">
+              <p className="text-xs font-medium text-ink/65">Desarrollado por</p>
+              <p className="mt-1 text-lg font-semibold leading-tight tracking-wide">
+                Tukur Solutions
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

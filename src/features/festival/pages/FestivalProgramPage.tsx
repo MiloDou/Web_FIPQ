@@ -284,24 +284,18 @@ function EventoCard({ evento }: { evento: Evento }) {
 
 export function FestivalProgramPage() {
   return (
-    <div className="space-y-12 pb-12">
+    <div className="space-y-4 pb-12">
       <AnimatedSection>
-        <header id="contenido" className="border-t-2 border-ink pt-10">
-          <p className="font-mono text-sm tracking-widest uppercase text-carmine font-bold">
-            21 FIPQ · Quetzaltenango
-          </p>
-          <h1 className="mt-3 font-display text-5xl sm:text-7xl uppercase leading-none font-bold text-ink">
+        <header id="contenido" className="pt-2">
+          <h1 className="font-display text-5xl sm:text-7xl uppercase leading-none font-bold text-ink">
             Agenda completa
           </h1>
-          <p className="mt-4 max-w-2xl font-body text-ink/70">
-            Cuatro días de poesía, encuentros y actividades en distintas sedes.
-          </p>
         </header>
       </AnimatedSection>
       <div className="space-y-10">
         {agenda.map((dia) => (
           <AnimatedSection key={dia.fecha}>
-            <section className="border-t-2 border-ink pt-5" aria-label={dia.fecha}>
+            <section aria-label={dia.fecha}>
               <h2 className="font-display text-3xl sm:text-4xl uppercase text-carmine">
                 {dia.fecha}
               </h2>

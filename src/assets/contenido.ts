@@ -69,6 +69,7 @@ export const imagenesSitio = {
   contextCommunity: obtenerImagenContenido("20FIPQ/20FIPQ_image130.jpeg"),
   posterRed: obtenerImagenContenido("20FIPQ/20FIPQ_image04.jpg"),
   risographBook: obtenerImagenContenido("19FIPQ/19FIPQ_image24.jpg"),
+  editorialPanel: obtenerImagenContenido("image60.jpeg"),
   workshop: obtenerImagenContenido("20FIPQ/20FIPQ_image05.jpg"),
   festivalHeaderBg: obtenerImagenContenido("20FIPQ/20FIPQ_image04.jpg"),
   editorialHeaderBg: obtenerImagenContenido("image04.jpg"),
