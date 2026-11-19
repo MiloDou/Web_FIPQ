@@ -36,17 +36,6 @@ const agenda: Dia[] = [
     fecha: "Jueves 26 de noviembre",
     bloques: [
       {
-        horario: "09:00 – 12:00 hrs.",
-        eventos: [
-          {
-            sede: "Parque Intercultural",
-            direccion: "21 Avenida y 4a Calle, Zona 3, Quetzaltenango",
-            actividad: "Invocación del Fuego",
-            poetas: "Todos los poetas participantes",
-          },
-        ],
-      },
-      {
         horario: "15:00 – 17:00 hrs.",
         eventos: [
           {
