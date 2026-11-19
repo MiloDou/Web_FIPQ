@@ -161,7 +161,11 @@ export function PieSitio() {
             © {new Date().getFullYear()} Festival Internacional de Poesía de Quetzaltenango y
             Metáfora Editores
           </p>
-          <div className="tukur-credit flex items-center gap-3 text-ink">
+          <a
+            href="https://tukursolutions.com/#inicio"
+            aria-label="Tukur Solutions — ir al inicio del sitio"
+            className="tukur-credit flex items-center gap-3 text-ink transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-carmine focus-visible:outline-offset-4"
+          >
             <img
               src="/tukur-solutions.png"
               alt="Logotipo de Tukur Solutions"
@@ -174,7 +178,7 @@ export function PieSitio() {
                 Tukur Solutions
               </p>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </footer>
