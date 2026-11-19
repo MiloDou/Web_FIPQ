@@ -40,24 +40,28 @@ export const fotosArchivoPorEdicion = entradasContenido.reduce<Record<string, st
   {},
 );
 
+// La galería sirve copias WebP optimizadas para reducir el peso de descarga.
 // Los promocionales se conservan para el archivo histórico, pero no aparecen en Galería.
-export const galeriaImages = entradasContenido
-  .filter(([ruta]) => !ruta.toLocaleLowerCase().includes("/promocionales/"))
-  .map(([, url]) => url);
+const entradasGaleria = entradasContenido.filter(
+  ([ruta]) => !ruta.toLocaleLowerCase().includes("/promocionales/") && /\.(jpe?g|png)$/i.test(ruta),
+);
+
+export const galeriaImages = entradasGaleria.map(
+  ([ruta]) =>
+    `/galeria/${ruta.replace(/^\.\.\/\.\.\/Contenido\//, "").replace(/\.(jpe?g|png)$/i, ".webp")}`,
+);
 
 export const galeriaImageAlt = Object.fromEntries(
-  entradasContenido
-    .filter(([ruta]) => !ruta.toLocaleLowerCase().includes("/promocionales/"))
-    .map(([ruta, url]) => {
-      const edicion = ruta.match(/\/(\d+)FIPQ\//i)?.[1];
-      const contexto = edicion
-        ? `archivo fotográfico de la edición ${edicion}`
-        : "archivo fotográfico institucional";
-      return [
-        url,
-        `Registro del ${contexto} del Festival Internacional de Poesía de Quetzaltenango`,
-      ];
-    }),
+  entradasGaleria.map(([ruta], index) => {
+    const edicion = ruta.match(/\/(\d+)FIPQ\//i)?.[1];
+    const contexto = edicion
+      ? `archivo fotográfico de la edición ${edicion}`
+      : "archivo fotográfico institucional";
+    return [
+      galeriaImages[index],
+      `Registro del ${contexto} del Festival Internacional de Poesía de Quetzaltenango`,
+    ];
+  }),
 );
 
 export const imagenesSitio = {

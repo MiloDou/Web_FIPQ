@@ -3,7 +3,7 @@ import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { galeriaImageAlt, galeriaImages } from "@/assets/contenido";
 import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
 
-const GRID_SIZE = 9;
+const GRID_SIZE = 20;
 const UNA_SEMANA_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Paleta del tape — sigue los colores de la página
