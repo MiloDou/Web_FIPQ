@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EncabezadoSeccion } from "@/components/shared/SectionHeading";
 import { galeriaImageAlt, galeriaImages } from "@/assets/contenido";
-import { RefreshCw } from "lucide-react";
-import { useRef } from "react";
 import { useAccessibleDialog } from "@/hooks/useAccessibleDialog";
 
 const GRID_SIZE = 9;
-const STORAGE_KEY = "fipq_galeria_estado";
 const UNA_SEMANA_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Paleta del tape — sigue los colores de la página
@@ -26,41 +23,22 @@ const ROTATIONS = [
   "-rotate-[0.5deg]",
 ];
 
-function shuffle<T>(arr: T[]): T[] {
-  return [...arr].sort(() => Math.random() - 0.5);
-}
+function shuffleConSemilla<T>(arr: T[], semilla: number): T[] {
+  const resultado = [...arr];
+  let estado = semilla >>> 0;
+  const aleatorio = () => {
+    estado += 0x6d2b79f5;
+    let valor = estado;
+    valor = Math.imul(valor ^ (valor >>> 15), valor | 1);
+    valor ^= valor + Math.imul(valor ^ (valor >>> 7), valor | 61);
+    return ((valor ^ (valor >>> 14)) >>> 0) / 4294967296;
+  };
 
-function nuevaSeleccion(): string[] {
-  return shuffle(galeriaImages).slice(0, GRID_SIZE);
-}
-
-function cargarEstado(): { slots: string[]; guardado: number } {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as { slots: string[]; guardado: number };
-      const slotsValidos =
-        Array.isArray(parsed.slots) &&
-        parsed.slots.length === GRID_SIZE &&
-        parsed.slots.every((slot) => galeriaImages.includes(slot));
-      if (
-        slotsValidos &&
-        Number.isFinite(parsed.guardado) &&
-        Date.now() - parsed.guardado < UNA_SEMANA_MS
-      ) {
-        return parsed;
-      }
-    }
-  } catch {
-    /* ignorar */
+  for (let i = resultado.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(aleatorio() * (i + 1));
+    [resultado[i], resultado[j]] = [resultado[j], resultado[i]];
   }
-  const estado = { slots: nuevaSeleccion(), guardado: Date.now() };
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
-  } catch {
-    /* La galería sigue disponible si el navegador bloquea el almacenamiento. */
-  }
-  return estado;
+  return resultado;
 }
 
 function slotStyle(i: number) {
@@ -71,34 +49,15 @@ function slotStyle(i: number) {
   };
 }
 
-function diasHastaProximaActualizacion(guardado: number): number {
-  const diff = UNA_SEMANA_MS - (Date.now() - guardado);
-  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
-}
+function seleccionSemanal(semana: number): string[] {
+  const seleccion = shuffleConSemilla(galeriaImages, semana).slice(0, GRID_SIZE);
+  const seleccionAnterior = shuffleConSemilla(galeriaImages, semana - 1).slice(0, GRID_SIZE);
 
-// ─── Pantalla de carga al actualizar ──────────────────────────────────────
-function PantallaActualizando() {
-  return (
-    <div className="fixed inset-0 z-50 bg-cream flex flex-col items-center justify-center gap-8 animate-in fade-in duration-200">
-      <div className="flex flex-col items-center gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-carmine">
-          Actualizando galería
-        </span>
-        <h2 className="font-display text-5xl md:text-7xl uppercase text-ink leading-none tracking-tight">
-          FIPQ
-        </h2>
-      </div>
+  if (seleccion.every((foto, i) => foto === seleccionAnterior[i]) && seleccion.length > 1) {
+    seleccion.push(seleccion.shift()!);
+  }
 
-      {/* Barra brutalista */}
-      <div className="w-48 h-[3px] bg-ink/10 relative overflow-hidden border border-ink/20">
-        <div className="absolute inset-y-0 left-0 bg-carmine w-full animate-[loading-bar_1.4s_ease-in-out_infinite]" />
-      </div>
-
-      <span className="font-mono text-[9px] uppercase tracking-widest text-ink/30">
-        Preparando nuevas fotografías
-      </span>
-    </div>
-  );
+  return seleccion;
 }
 
 // ─── Foto individual ────────────────────────────────────────────────────────
@@ -161,83 +120,36 @@ function FotoCard({ src, index, onClick }: { src: string; index: number; onClick
 
 // ─── Página ────────────────────────────────────────────────────────────────
 export function FestivalGalleryPage() {
-  const [estado, setEstado] = useState<{ slots: string[]; guardado: number }>(() => ({
-    slots: galeriaImages.slice(0, GRID_SIZE),
-    guardado: 0,
-  }));
+  const [slots, setSlots] = useState(() => galeriaImages.slice(0, GRID_SIZE));
   const [selectedFoto, setSelectedFoto] = useState<string | null>(null);
-  const [actualizando, setActualizando] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   useAccessibleDialog(dialogRef, Boolean(selectedFoto), () => setSelectedFoto(null));
 
   useEffect(() => {
-    setEstado(cargarEstado());
+    let timeoutId: number;
+
+    const activarSeleccionSemanal = () => {
+      const ahora = Date.now();
+      const semanaActual = Math.floor(ahora / UNA_SEMANA_MS);
+      const proximaSemana = (semanaActual + 1) * UNA_SEMANA_MS;
+
+      setSlots(seleccionSemanal(semanaActual));
+      timeoutId = window.setTimeout(activarSeleccionSemanal, proximaSemana - ahora);
+    };
+
+    activarSeleccionSemanal();
+    return () => window.clearTimeout(timeoutId);
   }, []);
-
-  const handleRefresh = () => {
-    // 1. Mostrar pantalla de carga
-    setActualizando(true);
-    // 2. Tras 1s (da tiempo a que se vea la animación), cargar nuevas fotos
-    setTimeout(() => {
-      const nuevoEstado = { slots: nuevaSeleccion(), guardado: Date.now() };
-      try {
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nuevoEstado));
-      } catch {
-        /* La selección nueva se mantiene en memoria durante esta visita. */
-      }
-      setEstado(nuevoEstado);
-      // 3. Ocultar pantalla de carga y subir al inicio
-      setActualizando(false);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 1200);
-  };
-
-  const diasRestantes = diasHastaProximaActualizacion(estado.guardado);
 
   return (
     <>
-      {/* Pantalla de carga al presionar actualizar */}
-      {actualizando && <PantallaActualizando />}
-
       <EncabezadoSeccion title="Cada imagen" accent="conserva su forma." />
 
       {/* Grid de fotos tipo polaroid */}
       <div className="columns-2 md:columns-3 gap-6 md:gap-10 py-6">
-        {estado.slots.map((src, i) => (
+        {slots.map((src, i) => (
           <FotoCard key={`${src}-${i}`} src={src} index={i} onClick={() => setSelectedFoto(src)} />
         ))}
-      </div>
-
-      {/* Pie de galería */}
-      <div className="mt-4 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t-2 border-ink pt-6">
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 bg-carmine" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-ink/50">
-              Selección semanal activa
-            </span>
-          </div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30 pl-4">
-            {diasRestantes === 0
-              ? "Nueva selección disponible"
-              : `Próxima renovación en ${diasRestantes} día${diasRestantes !== 1 ? "s" : ""}`}
-          </span>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleRefresh}
-          disabled={actualizando}
-          aria-label="Actualizar la selección de fotografías"
-          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest border-2 border-ink px-5 py-3 min-h-[44px] text-ink hover:bg-carmine hover:text-cream hover:border-carmine transition-all duration-200 shadow-[3px_3px_0_0_rgba(26,26,26,1)] hover:shadow-[3px_3px_0_0_rgba(186,0,56,1)] active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(26,26,26,1)] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <RefreshCw
-            size={14}
-            className={`shrink-0 ${actualizando ? "animate-spin" : ""}`}
-            aria-hidden="true"
-          />
-          Actualizar galería
-        </button>
       </div>
 
       {/* Modal lightbox */}

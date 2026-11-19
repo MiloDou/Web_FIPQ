@@ -234,7 +234,7 @@ export function FestivalManifestoPage() {
               </h3>
               <p className="font-body text-xs sm:text-sm leading-relaxed text-ink/80">
                 La palabra viaja por escuelas rurales, universidades, parques, teatros y espacios
-                autogestionados de Quetzaltenango y el occidente de Guatemala.
+                autogestionados del Occidente de Guatemala.
               </p>
             </div>
           </section>
